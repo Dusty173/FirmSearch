@@ -3,6 +3,14 @@ CREATE TABLE States(
     name TEXT NOT NULL,
 )
 
+CREATE TABLE users(
+    id SERIAL PRIMARY KEY,
+    username TEXT NOT NULL UNIQUE,
+    hashed_pw TEXT NOT NULL,
+    email TEXT NOT NULL CHECK (position('@' IN email) > 1),
+    created_at TIMESTAMP
+)
+
 CREATE TABLE Counties(
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
