@@ -13,7 +13,7 @@ const { BCRYPT_WORK_FACTOR } = require("../config.js");
 class User {
   static async authenticate(username, password) {
     const res = await db.query(
-      `SELECT username, hashed_pw, is_admin FROM users WHERE username = $1`,
+      `SELECT username, hashed_pw FROM users WHERE username = $1`,
       [username]
     );
     const user = res.rows[0];
@@ -28,7 +28,7 @@ class User {
     throw new UnauthorizedError("Invalid username or password");
   }
 
-  static async register({ username, password, email, is_admin }) {
+  static async register({ username, password, email }) {
     const duplicateCheck = await db.query(
       `SELECT username FROM users WHERE username = $1`,
       [username]
@@ -37,11 +37,10 @@ class User {
       throw new BadRequestError(`Username ${username} already exists.`);
 
     const hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
-    if (!is_admin) is_admin = false;
     const res = await db.query(
-      `INSERT INTO users (username, hashed_pw, email, created_at, is_admin) 
-        VALUES ($1, $2, $3, $4, $5) RETURNING username, email, created_at, is_admin`,
-      [username, hashedPassword, email, new Date(), is_admin]
+      `INSERT INTO users (username, hashed_pw, email, created_at) 
+        VALUES ($1, $2, $3, $4, $5) RETURNING username, email, created_at`,
+      [username, hashedPassword, email, new Date()]
     );
 
     const user = res.rows[0];
@@ -53,7 +52,6 @@ class User {
     const result = await db.query(
       `SELECT username,
                   email,
-                  is_admin
            FROM users
            ORDER BY username`
     );
@@ -64,8 +62,7 @@ class User {
   static async get(username) {
     const userRes = await db.query(
       `SELECT id, username,
-                  email,
-                  is_admin
+                  email
            FROM users
            WHERE username = $1`,
       [username]
@@ -82,12 +79,11 @@ class User {
     const { setCols, values } = sqlForPartialUpdate(data, {
       username: "username",
       email: "email",
-      is_admin: "is_admin",
     });
     const usernameIdx = "$" + (values.length + 1);
 
     const querySql = `UPDATE users SET ${setCols} WHERE username = ${usernameIdx}
-    RETURNING username, email, is_admin`;
+    RETURNING username, email`;
 
     const res = await db.query(querySql, [...values, username]);
 
