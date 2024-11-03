@@ -14,7 +14,11 @@ class Firm {
   }
 
   // Get a certain firm by id
-  static async getFirm({ id }) {}
+  static async getFirm({ id }) {
+    const res = await db.query(`SELECT * FROM firms WHERE id=$1`, [id]);
+    const firm = res.rows;
+    return firm;
+  }
 
   // Add a firm
   static async addFirm({ data }) {}
