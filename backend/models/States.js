@@ -13,7 +13,7 @@ class States {
 
   // Get a specific state
   static async getState(name) {
-    const res = await db.query(`SELECT id,name FROM states WHERE name = $1`, [
+    const res = await db.query(`SELECT id, name FROM states WHERE name = $1`, [
       name,
     ]);
 
