@@ -2,6 +2,8 @@
 
 This website is for people looking for investment advice, quality, well known firms are saved in this database. Judged by industry experts who can identify what Investment firms are considered well to do business with.
 
+This is a side project I've been working on in my free time.
+
 ## Database Layout:
     Coming soon.
 
