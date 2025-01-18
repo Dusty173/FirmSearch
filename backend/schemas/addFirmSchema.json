@@ -1,0 +1,43 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "established": {
+        "type": "string"
+      },
+      "contact": {
+        "type": "string"
+      },
+      "aumrecord": {
+        "type": "string"
+      },
+      "RIA": {
+        "contentMediaType": "PDF"
+    },
+      "serviceId": {
+        "type": "array"
+    },
+    "countyId": {
+        "type": "integer"
+    },
+    "stateId": {
+        "type": "integer"
+    }
+    
+    },
+    "additionalProperties": false,
+    "required": [
+        "name",
+        "establishe",
+        "contact",
+        "aumrecord",
+        "RIA",
+        "serviceId",
+        "countyId",
+        "stateId"
+    ]
+  }
