@@ -14,8 +14,11 @@ class Firm {
   }
 
   // Get a certain firm by id
-  static async getFirm({ id }) {
-    const res = await db.query(`SELECT * FROM firms WHERE id=$1`, [id]);
+  static async getFirm({ id, name }) {
+    const res = await db.query(`SELECT * FROM firms WHERE id=$1 AND name=$2`, [
+      id,
+      name,
+    ]);
     const firm = res.rows;
     return firm;
   }

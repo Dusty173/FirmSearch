@@ -19,9 +19,9 @@ router.get("/:stateId/:countyId", async (req, res, next) => {
 });
 
 // GET route for retrieving data on a single firm.
-router.get("/:id", async (req, res, next) => {
+router.get("/:id/:name", async (req, res, next) => {
   try {
-    const firm = await Firm.getFirm(req.params.id);
+    const firm = await Firm.getFirm(req.params.id, req.params.name);
     return res.json({ firm });
   } catch (err) {
     return next(err);
@@ -48,7 +48,7 @@ router.post("/add", ensureAdmin, async (req, res, next) => {
 // DELETE route for deleting a firm, only accessible by administrators.
 router.delete("/:id", ensureAdmin, async (req, res, next) => {
   try {
-    const deleted = await Firm.removeFirm(req.params.id);
+    await Firm.removeFirm(req.params.id);
     return res.json({ deleted: req.params.id });
   } catch (err) {
     return next(err);

@@ -42,11 +42,8 @@ class Services {
   }
 
   // Remove a service
-  static async removeService({ data }) {
-    const res = await db.query(
-      `DELETE FROM services WHERE id = $1 AND servicename = $2`,
-      [data.id, data.serviceName]
-    );
+  static async removeService(id) {
+    const res = await db.query(`DELETE FROM services WHERE id = $1`, [id]);
 
     const deleted = res.rows[0];
     return deleted;
