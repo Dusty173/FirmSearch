@@ -1,3 +1,4 @@
+"use strict";
 const jsonschema = require("jsonschema");
 const express = require("express");
 const router = new express.Router();
@@ -57,3 +58,5 @@ router.delete("/:id", ensureAdmin, async (req, res, next) => {
 
 // PATCH route for updating a firm, admin access only.
 router.patch("/:id", ensureAdmin, async (req, res, next) => {});
+
+module.exports = router;

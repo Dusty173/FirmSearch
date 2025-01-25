@@ -1,3 +1,4 @@
+"use strict";
 const jsonschema = require("jsonschema");
 const express = require("express");
 const router = new express.Router();
@@ -52,3 +53,5 @@ router.delete("/:id", ensureAdmin, async (req, res, next) => {
     return next(err);
   }
 });
+
+module.exports = router;

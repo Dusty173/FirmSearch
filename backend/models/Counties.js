@@ -1,7 +1,5 @@
-const { count } = require("console");
 const db = require("../db");
 const { BadRequestError, NotFoundError } = require("../expressError");
-const { sqlForPartialUpdate } = require("../helpers/updateSql");
 
 class Counties {
   // List all counties by state_id (All counties for a state)
@@ -37,10 +35,10 @@ class Counties {
   }
 
   //Remove a county
-  static async removeCounty({ data }) {
+  static async removeCounty(name, stateId) {
     const res = await db.query(
-      `DELETE FROM counties WHERE name = $1 and state_id = $2`,
-      [data.name, data.stateId]
+      `DELETE FROM counties WHERE name = $1 AND state_id = $2`,
+      [name, stateId]
     );
   }
 }
