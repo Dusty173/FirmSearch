@@ -1,0 +1,39 @@
+const db = require("../db.js");
+const bcrypt = require("bcrypt");
+const { sqlForPartialUpdate } = require("../helpers/updateSql.js");
+const {
+  NotFoundError,
+  BadRequestError,
+  UnauthorizedError,
+  ExpressError,
+} = require("../expressError.js");
+
+const { BCRYPT_WORK_FACTOR } = require("../config.js");
+
+class Page {
+  // GET request for text on About page,
+  // stored in db so that it is editable without bringing service down.
+  static async getAboutInfo() {
+    const result = await db.query(
+      `SELECT email, aboutinfo, contact FROM pagedata`
+    );
+
+    return result.rows;
+  }
+
+  // GET request for text on home page,
+  // stored in db so that it is editable without bringing service down.
+  static async getHomeInfo() {
+    const result = await db.query(`SELECT homepgtxt FROM pagedata`);
+  }
+
+  // UPDATE method for updating mission statement
+  static async updateHomeinfo(data) {
+    const updateSql = db.query(`UPDATE pagedata SET homepgtxt = $1`, [data]);
+  }
+
+  // UPDATE method for updating about us page
+  static async updateAboutInfo(data) {}
+}
+
+module.exports = Page;

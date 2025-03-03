@@ -11,7 +11,6 @@ CREATE TABLE users(
 
 CREATE TABLE pagedata(
     email TEXT NOT NULL CHECK (position('@' IN email) > 1),
-    author INTEGER REFERENCES users,
     aboutinfo TEXT NOT NULL,
     contact TEXT NOT NULL,
     homepgtxt TEXT NOT NULL
