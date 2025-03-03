@@ -12,18 +12,17 @@ function Homepage() {
           <i>
             Welcome to our site! Our goal is to take the large amount of
             confusing data about Investment firms in your area and compress them
-            into something that is more easily understood,
-            <br />
-            as well as give you a downloadable PDF format of that information!
+            into something that is more easily understood, as well as give you a
+            downloadable PDF format of that information!
           </i>
         </p>
-        {currUser ? (
+        {currUser.is_admin ? (
           <>
             <h3>
               <i>Welcome back, {currUser.username}!</i>
             </h3>
-            <div>
-              <p>
+            <div className="admin-msg-container">
+              <p className="admin-msg">
                 You're seeing this message because you've been logged in as an
                 Administrator and are capable of manipulatiing all data on this
                 site.

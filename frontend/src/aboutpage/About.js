@@ -15,7 +15,7 @@ function Aboutpage() {
           </p>
         </div>
       </div>
-      {currUser ? (
+      {currUser.is_admin ? (
         <div className="edit-container">
           <button className="edit-btn">Edit About Us</button>
         </div>
