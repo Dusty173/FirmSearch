@@ -16,12 +16,20 @@
       "email": {
         "type": "string",
         "format": "email"
+      },
+      "firstname": {
+        "type": "string"
+      },
+      "lastname": {
+        "type": "string"
       }
     },
     "additionalProperties": false,
     "required": [
       "username",
       "password",
-      "email"
+      "email",
+      "firstname",
+      "lastname"
     ]
   }

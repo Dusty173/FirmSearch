@@ -22,7 +22,7 @@ router.get("/", async (req, res, next) => {
 // Route for updating hompage data, Admin only.
 router.patch("/updhome", ensureAdmin, async (req, res, next) => {
   try {
-    const home = await Page.updateHomeinfo(data);
+    const home = await Page.updateHomeInfo(data);
     return res.json({ home });
   } catch (err) {
     return next(err);
@@ -35,6 +35,16 @@ router.patch("/updhome", ensureAdmin, async (req, res, next) => {
 router.get("/aboutus", async (req, res, next) => {
   try {
     const about = await Page.getAboutInfo();
+    return res.json({ about });
+  } catch (err) {
+    return next(err);
+  }
+});
+
+// Route for updating About Us data, Admin only.
+router.patch("/updabout", ensureAdmin, async (req, res, next) => {
+  try {
+    const about = await Page.updateAboutInfo(data);
     return res.json({ about });
   } catch (err) {
     return next(err);

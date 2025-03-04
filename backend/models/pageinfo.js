@@ -28,7 +28,7 @@ class Page {
   }
 
   // UPDATE method for updating mission statement
-  static async updateHomeinfo(data) {
+  static async updateHomeInfo(data) {
     const updateSql = db.query(`UPDATE pagedata SET homepgtxt = $1`, [data]);
   }
 
