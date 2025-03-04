@@ -33,7 +33,18 @@ class Page {
   }
 
   // UPDATE method for updating about us page
-  static async updateAboutInfo(data) {}
+  static async updateAboutInfo(data) {
+    const { aboutinfo, email, contact } = data;
+    const updated = db.query(
+      `UPDATE pagedata SET aboutinfo, email, contact VALUES $1, $2, $3`,
+      [aboutinfo, email, contact]
+    );
+    updated = res.rows[0];
+
+    if (!updated) throw new BadRequestError(`Unable to update about page`);
+
+    return updated;
+  }
 }
 
 module.exports = Page;

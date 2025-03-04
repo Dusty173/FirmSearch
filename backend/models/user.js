@@ -28,7 +28,7 @@ class User {
     throw new UnauthorizedError("Invalid username or password");
   }
 
-  static async register({ username, password, email }) {
+  static async register({ username, password, email, firstname, lastname }) {
     const duplicateCheck = await db.query(
       `SELECT username FROM users WHERE username = $1`,
       [username]
@@ -38,9 +38,9 @@ class User {
 
     const hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
     const res = await db.query(
-      `INSERT INTO users (username, hashed_pw, email, created_at) 
-        VALUES ($1, $2, $3, $4, $5) RETURNING username, email, created_at`,
-      [username, hashedPassword, email, new Date()]
+      `INSERT INTO users (username, hashed_pw, email, created_at, firstname, lastname) 
+        VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING username, email, created_at`,
+      [username, hashedPassword, email, new Date(), firstname, lastname]
     );
 
     const user = res.rows[0];
@@ -50,8 +50,7 @@ class User {
 
   static async findAll() {
     const result = await db.query(
-      `SELECT username,
-                  email,
+      `SELECT username, email, firstname, lastname,
            FROM users
            ORDER BY username`
     );
