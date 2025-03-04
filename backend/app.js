@@ -9,7 +9,9 @@ const { NotFoundError } = require("./expressError");
 
 const { authenticateJWT } = require("./middleware/auth");
 
-// Import Routes!!! <------------------------
+const authRoutes = require("./routes/auth");
+const userRoutes = require("./routes/users");
+const pageRoutes = require("./routes/sitepages");
 
 const morgan = require("morgan");
 
@@ -20,7 +22,9 @@ app.use(express.json());
 app.use(morgan("tiny"));
 app.use(authenticateJWT);
 
-// Add app.use for imported routes! <----------------
+app.use("/auth", authRoutes);
+app.use("/users", userRoutes);
+app.use("/", pageRoutes);
 
 /** Handle 404 errors -- this matches everything */
 app.use(function (req, res, next) {
