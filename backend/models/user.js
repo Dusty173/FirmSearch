@@ -28,7 +28,14 @@ class User {
     throw new UnauthorizedError("Invalid username or password");
   }
 
-  static async register({ username, password, email, firstname, lastname }) {
+  static async register({
+    username,
+    password,
+    email,
+    firstname,
+    lastname,
+    is_admin,
+  }) {
     const duplicateCheck = await db.query(
       `SELECT username FROM users WHERE username = $1`,
       [username]
@@ -38,9 +45,17 @@ class User {
 
     const hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
     const res = await db.query(
-      `INSERT INTO users (username, hashed_pw, email, created_at, firstname, lastname) 
-        VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING username, email, created_at`,
-      [username, hashedPassword, email, new Date(), firstname, lastname]
+      `INSERT INTO users (username, hashed_pw, email, created_at, firstname, lastname, is_admin) 
+        VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING username, email, is_admin, created_at`,
+      [
+        username,
+        hashedPassword,
+        email,
+        new Date(),
+        firstname,
+        lastname,
+        is_admin,
+      ]
     );
 
     const user = res.rows[0];
@@ -50,7 +65,7 @@ class User {
 
   static async findAll() {
     const result = await db.query(
-      `SELECT username, email, firstname, lastname,
+      `SELECT username, email, firstname, lastname, is_admin
            FROM users
            ORDER BY username`
     );
@@ -60,7 +75,7 @@ class User {
 
   static async get(username) {
     const userRes = await db.query(
-      `SELECT id, username, email, firstname, lastname
+      `SELECT id, username, email, firstname, lastname, is_admin
            FROM users
            WHERE username = $1`,
       [username]

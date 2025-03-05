@@ -22,6 +22,9 @@
       },
       "lastname": {
         "type": "string"
+      },
+      "is_admin":{
+        "type": "boolean"
       }
     },
     "additionalProperties": false,
@@ -30,6 +33,7 @@
       "password",
       "email",
       "firstname",
-      "lastname"
+      "lastname",
+      "is_admin"
     ]
   }
