@@ -25,11 +25,20 @@ class Page {
   // stored in db so that it is editable without bringing service down.
   static async getHomeInfo() {
     const result = await db.query(`SELECT homepgtxt FROM pagedata`);
+    return result.rows[0];
   }
 
   // UPDATE method for updating mission statement
   static async updateHomeInfo(data) {
-    const updateSql = db.query(`UPDATE pagedata SET homepgtxt = $1`, [data]);
+    const { homepgtxt } = data;
+    const updated = db.query(`UPDATE pagedata SET homepgtxt VALUES $1`, [
+      homepgtxt,
+    ]);
+    updated = res.rows[0];
+
+    if (!updated) throw new BadRequestError(`Unable to update about page`);
+
+    return updated;
   }
 
   // UPDATE method for updating about us page
