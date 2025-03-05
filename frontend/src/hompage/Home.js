@@ -21,13 +21,18 @@ function Homepage() {
             <h3>
               <i>Welcome back, {currUser.username}!</i>
             </h3>
-            <div className="admin-msg-container">
-              <p className="admin-msg">
-                You're seeing this message because you've been logged in as an
-                Administrator and are capable of manipulatiing all data on this
-                site.
-              </p>
-            </div>
+
+            {currUser.is_admin ? (
+              <div className="admin-msg-container">
+                <p className="admin-msg">
+                  You're seeing this message because you've been logged in as an
+                  Administrator and are capable of manipulatiing all data on
+                  this site.
+                </p>
+              </div>
+            ) : (
+              <span></span>
+            )}
           </>
         ) : (
           <span></span>

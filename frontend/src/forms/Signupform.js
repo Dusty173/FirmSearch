@@ -12,6 +12,7 @@ function SignupForm({ signup }) {
     email: "",
     firstname: "",
     lastname: "",
+    is_admin: false,
   });
 
   async function handleSubmit(evt) {

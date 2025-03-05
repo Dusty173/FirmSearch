@@ -13,18 +13,28 @@ function Aboutpage() {
 
   async function loader() {
     const aboutInfo = await FirmSearchApi.getAbout();
-    console.log(aboutInfo);
-    setAboutState(aboutInfo);
+    setAboutState(aboutInfo[0]);
   }
 
   const { currUser } = useContext(UserContext);
 
+  console.log("STATE", aboutState);
+
+  if (!aboutState) return <LoadIcon />;
+
+  const { email, aboutinfo, contact } = aboutState;
   return (
     <>
       <div className="About">
         <h1>About Firm Search</h1>
         <div className="about-container">
-          <p className="about-us">{aboutState}</p>
+          <p className="about-us">{aboutinfo}</p>
+        </div>
+        <div className="contactinfo-container">
+          <ul className="contactinfo">
+            <li className="contact-number">{contact}</li>
+            <li className="contact-email">{email}</li>
+          </ul>
         </div>
       </div>
       {currUser ? (
