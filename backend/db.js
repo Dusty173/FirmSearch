@@ -9,7 +9,7 @@ let db;
 dotenv.config({ path: "./.env" });
 if (process.env.NODE_ENV === "production") {
   db = new Client({
-    password: "pw",
+    password: PASSWORD,
     connectionString: getDatabaseUri(),
     ssl: {
       rejectUnauthorized: false,
@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === "production") {
   });
 } else {
   db = new Client({
-    password: "pw",
+    password: PASSWORD,
     connectionString: getDatabaseUri(),
     ssl: {
       rejectUnauthorized: false,

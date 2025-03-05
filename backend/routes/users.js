@@ -11,7 +11,7 @@ const {
 } = require("../middleware/auth");
 const User = require("../models/user");
 const { createToken } = require("../helpers/token");
-const userNewSchema = require("../schemas/userNew.json");
+const userRegister = require("../schemas/userRegister.json");
 const userUpdateSchema = require("../schemas/userUpdate.json");
 
 const router = express.Router();
@@ -30,7 +30,7 @@ router.get("/:username", ensureCorrectUserOrAdmin, async (req, res, next) => {
 
 router.post("/", ensureAdmin, async (req, res, next) => {
   try {
-    const validator = jsonschema.validate(req.body, userNewSchema);
+    const validator = jsonschema.validate(req.body, userRegister);
     if (!validator.valid) {
       const errs = validator.errors.map((e) => e.message);
       throw new BadRequestError(errs);
