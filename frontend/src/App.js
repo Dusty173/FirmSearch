@@ -8,7 +8,7 @@ import FirmSearchApi from "./Api";
 import UserContext from "./Usercontext";
 import jwt from "jsonwebtoken";
 
-export const TOKEN_STORAGE_ID = "twolane-token";
+export const TOKEN_STORAGE_ID = "FS-token";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,9 +51,9 @@ function App() {
     setToken(null);
   }
 
-  async function signup(signupData) {
+  async function signup(signup) {
     try {
-      let token = await FirmSearchApi.signup(signupData);
+      let token = await FirmSearchApi.signup(signup);
       setToken(token);
       return { success: true };
     } catch (err) {

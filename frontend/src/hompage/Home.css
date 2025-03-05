@@ -4,33 +4,32 @@
   position: absolute;
   background-image: linear-gradient(
     to bottom right,
-    rgb(34, 34, 34),
-    rgb(0, 0, 0)
-  );
+    rgb(255, 255, 255),
+    rgb(102, 102, 102))
 }
 
 h1 {
   text-align: center;
-  border: 1px solid yellow;
+  border: 1px solid rgb(0, 0, 0);
   border-radius: 0.5em;
   width: inherit;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 h3 {
-  color: yellowgreen;
+  color: rgb(0, 0, 0);
   width: inherit;
   text-align: center;
 }
 
 .app-description {
-  color: white;
+  color: rgb(0, 0, 0);
   width: inherit;
   text-align: center;
 }
 
 .msg {
-  color: yellow;
+  color: rgb(0, 0, 0);
   text-align: center;
   padding: 2px;
   font-style: italic;

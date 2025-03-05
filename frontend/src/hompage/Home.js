@@ -16,7 +16,7 @@ function Homepage() {
             downloadable PDF format of that information!
           </i>
         </p>
-        {currUser.is_admin ? (
+        {currUser ? (
           <>
             <h3>
               <i>Welcome back, {currUser.username}!</i>

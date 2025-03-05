@@ -43,6 +43,7 @@ class FirmSearchApi {
   // Signup route
   static async signup(data) {
     let res = await this.request(`auth/register`, data, "post");
+    console.log(res);
     return res.token;
   }
 
