@@ -7,11 +7,11 @@ CREATE TABLE users(
     email TEXT NOT NULL CHECK (position('@' IN email) > 1),
     is_admin BOOLEAN,
     created_at TIMESTAMP
-)
+);
 
 CREATE TABLE pagedata(
     email TEXT NOT NULL CHECK (position('@' IN email) > 1),
     aboutinfo TEXT NOT NULL,
     contact TEXT NOT NULL,
     homepgtxt TEXT NOT NULL
-)
+);
