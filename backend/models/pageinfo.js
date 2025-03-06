@@ -40,6 +40,16 @@ class Page {
   static async updateAboutInfo(data) {
     console.log("DATA AT MODEL", data);
     const { aboutinfo, email, contact } = data;
+
+    if (aboutinfo.length < 1)
+      throw new BadRequestError("About info cannot be empty");
+
+    if (contact.length < 1)
+      throw new BadRequestError("Contact info cannot be empty");
+
+    if (!email.includes("@"))
+      throw new BadRequestError("Email format not accepted. Must contain @");
+
     const updated = db.query(
       `UPDATE pagedata SET aboutinfo = $1, email = $2, contact = $3`,
       [aboutinfo, email, contact]

@@ -16,13 +16,12 @@ function AboutForm() {
   // Submission handler -----------------------------------------------
   async function handleSubmit(evt) {
     evt.preventDefault();
-    
-    const result = await FirmSearchApi.editAbout(formData);
-    console.log("RESULT", result);
-    if (result) {
+    try {
+      let result = await FirmSearchApi.editAbout(formData);
       navigate("/aboutus");
-    } else {
-      setFormErrors(result.errs);
+      return result;
+    } catch (err) {
+      setFormErrors(err);
     }
   }
 
@@ -55,6 +54,7 @@ function AboutForm() {
             />
             <label htmlFor="contact">Contact</label>
             <input
+              type="tel"
               id="contact"
               name="contact"
               value={formData.contact}

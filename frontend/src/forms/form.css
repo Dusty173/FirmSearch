@@ -1,0 +1,78 @@
+.carform-title {
+    color: white;
+    text-align: center;
+  }
+  
+  form {
+    display: grid;
+    justify-content: center;
+    max-width: 20em;
+    margin: auto;
+    align-items: center;
+    border: 2px solid rgb(0, 0, 0);
+    padding: 0.3rem;
+    border-radius: 10px;
+    background-image: linear-gradient(
+      to bottom right,
+      rgb(255, 255, 255),
+      rgb(117, 117, 117)
+    );
+  }
+  
+  form label {
+    display: flex;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    margin-top: 10px;
+  }
+  
+  form input {
+    background-color: white;
+    color: grey;
+    width: 16em;
+    max-width: 16em;
+    padding: 0.5em;
+    border-radius: 10px;
+    border: 1px solid transparent;
+  }
+  
+  form input:focus {
+    background-color: rgb(255, 255, 150);
+    outline: none;
+  }
+  
+  form button {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    background-color: yellow;
+    border: none;
+    border-radius: 0.5em;
+  }
+  
+  form button:hover {
+    background-color: green;
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+  }
+
+  .body {
+    background-color: white;
+    color: rgb(255, 255, 255);
+    padding: 1em;
+    border-radius: 10px;
+    width: 15em;
+    height: 15em;
+    max-width: 15em;
+    max-height: 20em;
+    border: 2px solid transparent;
+  }
+  
+  .body:focus {
+    outline: none;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  button:hover{
+    cursor: pointer;
+  }

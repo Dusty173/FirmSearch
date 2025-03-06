@@ -4,7 +4,7 @@ const express = require("express");
 const router = new express.Router();
 const Page = require("../models/pageinfo");
 const { ensureAdmin } = require("../middleware/auth");
-const { BadRequestError } = require("../expressError");
+const { BadRequestError, ExpressError } = require("../expressError");
 const { default: test } = require("node:test");
 const updateAboutSchema = require("../schemas/updateAboutSchema.json");
 
@@ -46,8 +46,9 @@ router.get("/aboutus", async (req, res, next) => {
 router.patch("/updabout", ensureAdmin, async (req, res, next) => {
   try {
     const validator = jsonschema.validate(req.body, updateAboutSchema);
+    console.log("DATA AT ROUTE", req.body);
     if (!validator.valid) {
-      const err = validator.errors.map((e) => e.stack);
+      const err = validator.errors.map((e) => e.message);
       throw new BadRequestError(err);
     }
 
