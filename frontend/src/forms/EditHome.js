@@ -13,11 +13,13 @@ function HomeForm() {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    let result = await FirmSearchApi.updateHome(formData);
-    if (result.success) {
+
+    try {
+      let result = await FirmSearchApi.editHome(formData);
       navigate("/");
-    } else {
-      setFormErrors(result.err);
+      return result;
+    } catch (err) {
+      setFormErrors(err);
     }
   }
 
@@ -40,9 +42,7 @@ function HomeForm() {
               value={formData.homepgtxt}
               onChange={handleChange}
             />
-            {formErrors.length ? (
-              <Alert type="danger" messages={formErrors} />
-            ) : null}
+            {formErrors ? <Alert type="danger" messages={formErrors} /> : null}
 
             <button className="changebtn" onClick={handleSubmit}>
               Submit Changes

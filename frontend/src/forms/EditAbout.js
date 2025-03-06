@@ -60,14 +60,14 @@ function AboutForm() {
               value={formData.contact}
               onChange={handleChange}
             />
+            <button className="changebtn" onClick={handleSubmit}>
+              Submit Changes
+            </button>
+            {formErrors.length ? (
+              <Alert type="danger" messages={formErrors} />
+            ) : null}
           </form>
-          <button className="changebtn" onClick={handleSubmit}>
-            Submit Changes
-          </button>
         </div>
-        {formErrors.length ? (
-          <Alert type="danger" messages={formErrors} />
-        ) : null}
       </div>
     </>
   );

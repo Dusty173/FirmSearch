@@ -59,6 +59,20 @@ class FirmSearchApi {
     return res.user;
   }
 
+  // Home page related requests -----------------------------
+
+  // GET for mission statement
+  static async getHome() {
+    let res = await this.request("/");
+    return res;
+  }
+
+  // PATCH for updating mission statement
+  static async editHome(data) {
+    let res = await this.request("/updhome", data, "patch");
+    return res;
+  }
+
   // About page related requests -----------------------------
 
   // GET for About Us info

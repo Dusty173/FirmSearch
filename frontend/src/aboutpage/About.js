@@ -42,12 +42,21 @@ function Aboutpage() {
           </ul>
         </div>
       </div>
-      {currUser.is_admin ? (
-        <div className="edit-container">
-          <button onClick={handleClick} className="edit-btn">
-            Edit About Us
-          </button>
-        </div>
+      {currUser ? (
+        <>
+          <h6>
+            <p>Logged in as: {currUser.username}</p>
+          </h6>
+          {currUser.is_admin ? (
+            <div className="edit-container">
+              <button onClick={handleClick} className="edit-btn">
+                Edit About us
+              </button>
+            </div>
+          ) : (
+            <span></span>
+          )}
+        </>
       ) : (
         <span></span>
       )}

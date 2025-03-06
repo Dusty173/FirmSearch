@@ -1,20 +1,38 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import UserContext from "../Usercontext";
 import "./Home.css";
+import FirmSearchApi from "../Api";
+import LoadIcon from "../common/LoadIcon";
 
 function Homepage() {
   const { currUser } = useContext(UserContext);
+  const navigate = useNavigate();
+  const [homeState, setHomeState] = useState(null);
+
+  function handleClick(e) {
+    e.preventDefault();
+    navigate("/updhome");
+  }
+
+  useEffect(function getHomeOnLoad() {
+    loader();
+  }, []);
+
+  async function loader() {
+    const hometxt = await FirmSearchApi.getHome();
+    setHomeState(hometxt.home);
+  }
+
+  if (!homeState) return <LoadIcon />;
+
+  const { homepgtxt } = homeState;
   return (
     <>
       <div className="Home">
         <h1>Firm Search!</h1>
         <p className="app-description">
-          <i>
-            Welcome to our site! Our goal is to take the large amount of
-            confusing data about Investment firms in your area and compress them
-            into something that is more easily understood, as well as give you a
-            downloadable PDF format of that information!
-          </i>
+          <i>{homepgtxt}</i>
         </p>
         {currUser ? (
           <>
@@ -29,6 +47,11 @@ function Homepage() {
                   Administrator and are capable of manipulatiing all data on
                   this site.
                 </p>
+                <div className="edit-container">
+                  <button onClick={handleClick} className="edit-btn">
+                    Edit Mission Statement
+                  </button>
+                </div>
               </div>
             ) : (
               <span></span>

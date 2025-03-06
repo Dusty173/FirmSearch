@@ -23,8 +23,8 @@ router.get("/", async (req, res, next) => {
 // Route for updating hompage data, Admin only.
 router.patch("/updhome", ensureAdmin, async (req, res, next) => {
   try {
-    const home = await Page.updateHomeInfo(data);
-    return res.json({ home });
+    const home = await Page.updateHomeInfo(req.body);
+    return res.status(201).json({ home });
   } catch (err) {
     return next(err);
   }
@@ -46,7 +46,6 @@ router.get("/aboutus", async (req, res, next) => {
 router.patch("/updabout", ensureAdmin, async (req, res, next) => {
   try {
     const validator = jsonschema.validate(req.body, updateAboutSchema);
-    console.log("DATA AT ROUTE", req.body);
     if (!validator.valid) {
       const err = validator.errors.map((e) => e.message);
       throw new BadRequestError(err);

@@ -26,10 +26,13 @@ class Page {
   // UPDATE method for updating mission statement
   static async updateHomeInfo(data) {
     const { homepgtxt } = data;
-    const updated = db.query(`UPDATE pagedata SET homepgtxt VALUES $1`, [
-      homepgtxt,
-    ]);
-    updated = res.rows[0];
+
+    if (homepgtxt.length < 20)
+      throw new BadRequestError(
+        "Mission Statement MUST be more than 20 characters."
+      );
+
+    const updated = db.query(`UPDATE pagedata SET homepgtxt = $1`, [homepgtxt]);
 
     if (!updated) throw new BadRequestError(`Unable to update about page`);
 
@@ -38,7 +41,6 @@ class Page {
 
   // UPDATE method for updating about us page
   static async updateAboutInfo(data) {
-    console.log("DATA AT MODEL", data);
     const { aboutinfo, email, contact } = data;
 
     if (aboutinfo.length < 1)
