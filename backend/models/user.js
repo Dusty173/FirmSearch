@@ -13,7 +13,7 @@ const { BCRYPT_WORK_FACTOR } = require("../config.js");
 class User {
   static async authenticate(username, password) {
     const res = await db.query(
-      `SELECT username, hashed_pw FROM users WHERE username = $1`,
+      `SELECT username, hashed_pw, is_admin FROM users WHERE username = $1`,
       [username]
     );
     const user = res.rows[0];

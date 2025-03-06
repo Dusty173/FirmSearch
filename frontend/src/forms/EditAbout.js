@@ -13,16 +13,20 @@ function AboutForm() {
     email: "",
   });
 
+  // Submission handler -----------------------------------------------
   async function handleSubmit(evt) {
     evt.preventDefault();
-    let result = await FirmSearchApi.updateAbout(formData);
-    if (result.success) {
-      navigate("/");
+    
+    const result = await FirmSearchApi.editAbout(formData);
+    console.log("RESULT", result);
+    if (result) {
+      navigate("/aboutus");
     } else {
-      setFormErrors(result.err);
+      setFormErrors(result.errs);
     }
   }
 
+  // Form control change handler -----------------------------------------------
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData((data) => ({ ...data, [name]: value }));
@@ -31,7 +35,7 @@ function AboutForm() {
   return (
     <>
       <div className="about-page">
-        <h2 className="about-title">Sign Up!</h2>
+        <h2 className="about-title">Edit about information</h2>
         <div className="aboutform">
           <form onSubmit={handleSubmit}>
             <label htmlFor="aboutinfo">Write About Info here</label>
@@ -56,15 +60,14 @@ function AboutForm() {
               value={formData.contact}
               onChange={handleChange}
             />
-            {formErrors.length ? (
-              <Alert type="danger" messages={formErrors} />
-            ) : null}
-
-            <button className="changebtn" onClick={handleSubmit}>
-              Submit Changes
-            </button>
           </form>
+          <button className="changebtn" onClick={handleSubmit}>
+            Submit Changes
+          </button>
         </div>
+        {formErrors.length ? (
+          <Alert type="danger" messages={formErrors} />
+        ) : null}
       </div>
     </>
   );

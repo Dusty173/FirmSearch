@@ -14,7 +14,6 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const [currUser, setCurrUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
-
   console.debug("App:", "loaded:", loaded, "User:", currUser, "token:", token);
 
   useEffect(
@@ -28,11 +27,8 @@ function App() {
 
             FirmSearchApi.token = token;
 
-            console.log("APi token:", FirmSearchApi.token);
-
             let currentUser = await FirmSearchApi.getCurrentUser(username);
             setCurrUser(currentUser);
-            console.log("CURRENT USER:", currentUser);
           } catch (err) {
             console.error("App: loadUser: Problem loading", err);
             setCurrUser(null);

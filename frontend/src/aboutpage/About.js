@@ -1,11 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import UserContext from "../Usercontext";
 import "./About.css";
 import FirmSearchApi from "../Api";
 import LoadIcon from "../common/LoadIcon";
 
 function Aboutpage() {
+  const navigate = useNavigate();
   const [aboutState, setAboutState] = useState(null);
+
+  function handleClick(e) {
+    e.preventDefault();
+    navigate("/updabout");
+  }
 
   useEffect(function getAboutOnLoad() {
     loader();
@@ -17,8 +24,6 @@ function Aboutpage() {
   }
 
   const { currUser } = useContext(UserContext);
-
-  console.log("STATE", aboutState);
 
   if (!aboutState) return <LoadIcon />;
 
@@ -37,9 +42,11 @@ function Aboutpage() {
           </ul>
         </div>
       </div>
-      {currUser ? (
+      {currUser.is_admin ? (
         <div className="edit-container">
-          <button className="edit-btn">Edit About Us</button>
+          <button onClick={handleClick} className="edit-btn">
+            Edit About Us
+          </button>
         </div>
       ) : (
         <span></span>

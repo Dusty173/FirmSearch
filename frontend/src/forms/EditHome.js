@@ -29,7 +29,7 @@ function HomeForm() {
   return (
     <>
       <div className="about-page">
-        <h2 className="about-title">Sign Up!</h2>
+        <h2 className="about-title">Edit Mission Statement</h2>
         <div className="aboutform">
           <form onSubmit={handleSubmit}>
             <label htmlFor="homepgtxt">Write a blurb about this site</label>

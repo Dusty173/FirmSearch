@@ -1,12 +1,7 @@
 const db = require("../db.js");
 const bcrypt = require("bcrypt");
 const { sqlForPartialUpdate } = require("../helpers/updateSql.js");
-const {
-  NotFoundError,
-  BadRequestError,
-  UnauthorizedError,
-  ExpressError,
-} = require("../expressError.js");
+const { BadRequestError } = require("../expressError.js");
 
 const { BCRYPT_WORK_FACTOR } = require("../config.js");
 
@@ -43,13 +38,12 @@ class Page {
 
   // UPDATE method for updating about us page
   static async updateAboutInfo(data) {
+    console.log("DATA AT MODEL", data);
     const { aboutinfo, email, contact } = data;
     const updated = db.query(
-      `UPDATE pagedata SET aboutinfo, email, contact VALUES $1, $2, $3`,
+      `UPDATE pagedata SET aboutinfo = $1, email = $2, contact = $3`,
       [aboutinfo, email, contact]
     );
-    updated = res.rows[0];
-
     if (!updated) throw new BadRequestError(`Unable to update about page`);
 
     return updated;

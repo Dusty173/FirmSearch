@@ -34,3 +34,7 @@ h3 {
   padding: 2px;
   font-style: italic;
 }
+
+.admin-msg{
+  color: red;
+}

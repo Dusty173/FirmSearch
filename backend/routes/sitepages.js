@@ -6,6 +6,7 @@ const Page = require("../models/pageinfo");
 const { ensureAdmin } = require("../middleware/auth");
 const { BadRequestError } = require("../expressError");
 const { default: test } = require("node:test");
+const updateAboutSchema = require("../schemas/updateAboutSchema.json");
 
 // ----------- Homepage -----------
 
@@ -44,8 +45,14 @@ router.get("/aboutus", async (req, res, next) => {
 // Route for updating About Us data, Admin only.
 router.patch("/updabout", ensureAdmin, async (req, res, next) => {
   try {
-    const about = await Page.updateAboutInfo(data);
-    return res.json({ about });
+    const validator = jsonschema.validate(req.body, updateAboutSchema);
+    if (!validator.valid) {
+      const err = validator.errors.map((e) => e.stack);
+      throw new BadRequestError(err);
+    }
+
+    const about = await Page.updateAboutInfo(req.body);
+    return res.status(201).json({ about });
   } catch (err) {
     return next(err);
   }
