@@ -1,16 +1,22 @@
 # FirmSearch
 
-This website is for people looking for investment advice, quality, well known firms are saved in this database. Judged by industry experts who can identify what Investment firms are considered well to do business with.
+This website is for people looking for investment advice, all registered firms are located by relevant search terms and SEC API access.
+Relevant information is then display in novice readable terms judged by industry experts who can identify what information is most helpful for the average person.
 
 ## Database Layout:
-    Coming soon.
+- Database is only used for storing relevant text data as well as user data. no relations are required as any searched data is generated on demand.
+
+![Database](Db.PNG)
 
 ## Features:
-- Users can select the county and state they live in and retrieve a list of firms in that county
-- Clicking on a firm pulls up data about said firm and even shows contact information, the RIA and other relevant info helpful to make decisions
+
+- Users can select the state,city, or zip code they live in and retrieve a list of firms in those parameters
+- Clicking on a firm pulls up data about said firm and shows contact information, address, data about what that firm does and other relevant info helpful to make decisions.
+- Certain fields are updatable by Admin users so site does not have to be pulled offline to update About or Home page information.
 - Admins are the only ones allowed to manipulate data, anyone visiting the site that does not have an admin account can only search for and view information.
 
 ## Tech:
+
 - React
 - Node
 - Postgres
@@ -18,6 +24,7 @@ This website is for people looking for investment advice, quality, well known fi
 - jsonschema
 - bcrypt
 - axios
-  
+
 ## Future additions:
-- TBD
+
+- More search fields
