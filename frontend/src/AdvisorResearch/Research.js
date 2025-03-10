@@ -5,10 +5,14 @@ import Alert from "../common/Alert";
 import FirmSearchApi from "../Api";
 
 function ResearchPage() {
+  const [advisorData, setAdvisorData] = useState(null);
+
   return (
     <>
-      <div className="firm-container">
-        <h2 className="firm-title">{firmname}</h2>
+      <div className="search-div">
+        <div className="search-bar">
+          <input type="text"></input>
+        </div>
       </div>
     </>
   );
