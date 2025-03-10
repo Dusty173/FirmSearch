@@ -4,6 +4,12 @@ import "./form.css";
 import Alert from "../common/Alert";
 import FirmSearchApi from "../Api";
 
-function AdvisorDetail() {}
+function AdvisorDetail() {
+  return (
+    <>
+      <div className="details"></div>
+    </>
+  );
+}
 
 export default AdvisorDetail;

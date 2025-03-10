@@ -14,6 +14,18 @@ function AdvisorList() {
 
   return (
     <>
+      <p className="inclusion notes">
+        Who is included: Independent Registered Investment Advisers, as per the
+        SEC.
+      </p>
+      <p className="informative-notes">
+        We pull our data directly from SEC filings, which are updated once
+        <i>daily</i>, as well as all registered firms are required to update
+        <i>annually</i>. If you believe any data is not correct, or is not being
+        displayed properly, please contact {contactinfo} to correct any
+        problems. Thank you!
+      </p>
+
       {advisors.length ? (
         <div className="advisor-list">
           {advisors.map((a) => (
