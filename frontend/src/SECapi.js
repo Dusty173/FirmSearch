@@ -24,41 +24,47 @@ class SECApi {
 
   //   Search by zipcode
   static async getByZipcode(zipcode) {
-    let data = {
+    let dataObj = {
       query: `MainAddr.PostlCd:${zipcode}`,
       from: "0",
       size: "10",
     };
 
+    let data = json.stringify(dataObj);
+
     let res = await this.request(BASE_URL, data, "post");
 
-    return res.filings;
+    return res;
   }
 
   //   Search by State
   static async getByState(stateCode) {
-    let data = {
+    let dataObj = {
       query: `MainAddr.State:${stateCode}`,
       from: "0",
       size: "10",
     };
 
+    let data = json.stringify(dataObj);
+
     let res = await this.request(BASE_URL, data, "post");
 
-    return res.filings;
+    return res;
   }
 
   //   Search By City
   static async getByCity(cityName) {
-    let data = {
+    let dataObj = {
       query: `MainAddr.City:${cityName}`,
       from: "0",
       size: "10",
     };
 
+    let data = json.stringify(dataObj);
+
     let res = await this.request(BASE_URL, data, "post");
 
-    return res.filings;
+    return res;
   }
 
   // Brochure requests -----------------------------

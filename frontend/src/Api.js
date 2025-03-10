@@ -84,11 +84,8 @@ class FirmSearchApi {
   // PATCH for editing About Us info
   static async editAbout(data) {
     let res = await this.request("/updabout", data, "patch");
+    console.log(res);
     return res.about;
   }
-
-  // Data Collection routes -----------------------------
-
-  // Under Construction
 }
 export default FirmSearchApi;
