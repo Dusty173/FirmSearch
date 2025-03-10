@@ -30,7 +30,7 @@ class SECApi {
       size: "10",
     };
 
-    let data = json.stringify(dataObj);
+    let data = JSON.stringify(dataObj);
 
     let res = await this.request(BASE_URL, data, "post");
 
@@ -45,7 +45,7 @@ class SECApi {
       size: "10",
     };
 
-    let data = json.stringify(dataObj);
+    let data = JSON.stringify(dataObj);
 
     let res = await this.request(BASE_URL, data, "post");
 
@@ -60,7 +60,7 @@ class SECApi {
       size: "10",
     };
 
-    let data = json.stringify(dataObj);
+    let data = JSON.stringify(dataObj);
 
     let res = await this.request(BASE_URL, data, "post");
 
