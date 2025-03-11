@@ -7,10 +7,12 @@ import FirmSearchApi from "../Api";
 import UserContext from "../Usercontext";
 import AdvisorCard from "./AdvisorCard";
 
-function AdvisorList() {
+function AdvisorList(advisorData) {
   const [advisors, setAdvisors] = useState(null);
 
   if (!advisors) return LoadIcon;
+
+  setAdvisors(advisorData);
 
   return (
     <>

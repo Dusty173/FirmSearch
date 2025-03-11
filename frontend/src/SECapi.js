@@ -27,7 +27,7 @@ class SECApi {
     let dataObj = {
       query: `MainAddr.PostlCd:${zipcode}`,
       from: "0",
-      size: "10",
+      size: "20",
     };
 
     let data = JSON.stringify(dataObj);
@@ -42,7 +42,7 @@ class SECApi {
     let dataObj = {
       query: `MainAddr.State:${stateCode}`,
       from: "0",
-      size: "10",
+      size: "20",
     };
 
     let data = JSON.stringify(dataObj);
@@ -57,10 +57,42 @@ class SECApi {
     let dataObj = {
       query: `MainAddr.City:${cityName}`,
       from: "0",
+      size: "20",
+    };
+
+    let data = JSON.stringify(dataObj);
+
+    let res = await this.request(BASE_URL, data, "post");
+
+    return res;
+  }
+
+  // Search by Firm Name
+  static async getByName(firmName) {
+    let dataObj = {
+      query: `Info.BusNm:${firmName}`,
+      from: "0",
       size: "10",
     };
 
     let data = JSON.stringify(dataObj);
+
+    let res = await this.request(BASE_URL, data, "post");
+
+    return res;
+  }
+
+  // Bulk search Logic (combination search runs query => Postalcode OR cityName AND statecode)
+  static async getCombination(inData) {
+    const { state, zip, city } = inData;
+
+    const dataObj = {
+      query: `MainAddr.PostlCd:${zip} OR MainAddr.City:${city} AND MainAddr.State:${state}`,
+      from: "0",
+      size: "10",
+    };
+
+    const data = JSON.stringify(dataObj);
 
     let res = await this.request(BASE_URL, data, "post");
 

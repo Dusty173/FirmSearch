@@ -6,6 +6,7 @@ import SignupForm from "./forms/Signupform";
 import HomeForm from "./forms/EditHome";
 import AboutForm from "./forms/EditAbout";
 import Aboutpage from "./aboutpage/About";
+import AdvisorList from "./AdvisorResearch/AdvisorList";
 
 function Routing({ login, signup }) {
   const Navigate = useNavigate();
@@ -31,6 +32,8 @@ function Routing({ login, signup }) {
         <Route path="/signup" element={<SignupForm signup={signup} />}></Route>
 
         <Route path="/aboutus" element={<Aboutpage />}></Route>
+
+        <Route path="/advisorlist" element={<AdvisorList {...advisors} />} />
 
         <Route element={<PrivateRoutes />}>
           <Route path="/updabout" element={<AboutForm />} />

@@ -2,10 +2,19 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./form.css";
 import stateCodes from "./stateCodes";
+import SECApi from "../SECapi";
+import AdvisorList from "./AdvisorList";
 
 function ResearchPage() {
   const [advisorData, setAdvisorData] = useState(null);
-  const [formData, setFormData] = useState({});
+  const [formErr, setFormErr] = useState([]);
+  const [formData, setFormData] = useState({
+    state: "",
+    zip: "",
+    city: "",
+  });
+
+  const navigate = useNavigate();
 
   // Dropdown for states logic
   const dropdown = document.getElementById("stateDropdown");
@@ -27,10 +36,31 @@ function ResearchPage() {
     setFormErr([]);
   }
 
-  function handleSubmit(e) {
+  // Submission handler also checks for possible empty fields
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    // To do
+    if (!formData.state) setFormErr("Please select a state");
+
+    if (!formData.city) setFormErr("Must type a city name!");
+
+    if (!formData.zip) setFormErr("Must input 5 digit zip code!");
+
+    let inData = {
+      state: formData.state,
+      city: formData.city,
+      zip: formData.zip,
+    };
+
+    try {
+      let res = await SECApi.getCombination(inData);
+      setFormData({ state: "", zip: "", city: "" });
+      console.log(res); //Check for accurate data in console (Delete this later)
+      navigate("/advisorlist", <AdvisorList {...res} />);
+    } catch (err) {
+      setFormErr(err);
+      return;
+    }
   }
 
   return (
@@ -38,6 +68,8 @@ function ResearchPage() {
       <div className="search-div">
         <div className="search-form">
           <form>
+            <label htmlFor="city">City</label>
+            <input id="city" name="city" type="text" />
             <label htmlFor="zip">Zip Code</label>
             <input
               name="zip"
@@ -48,6 +80,9 @@ function ResearchPage() {
             />
             <label htmlFor="state">State</label>
             <select id="stateDropdown" onChange={handleChange}></select>
+            <button className="submit-btn" onClick={handleSubmit}>
+              Search
+            </button>
           </form>
         </div>
       </div>

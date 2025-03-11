@@ -4,6 +4,7 @@ import UserContext from "../Usercontext";
 import "./Home.css";
 import FirmSearchApi from "../Api";
 import LoadIcon from "../common/LoadIcon";
+import ResearchPage from "../AdvisorResearch/Research";
 
 function Homepage() {
   const { currUser } = useContext(UserContext);
@@ -34,6 +35,11 @@ function Homepage() {
         <p className="app-description">
           <i>{homepgtxt}</i>
         </p>
+
+        <div className="search-area">
+          <ResearchPage />
+        </div>
+
         {currUser ? (
           <>
             <h3>
