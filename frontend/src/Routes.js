@@ -8,7 +8,7 @@ import AboutForm from "./forms/EditAbout";
 import Aboutpage from "./aboutpage/About";
 import AdvisorList from "./AdvisorResearch/AdvisorList";
 
-function Routing({ login, signup }) {
+function Routing({ login, signup, advisorData }) {
   const Navigate = useNavigate();
 
   const PrivateRoutes = () => {
@@ -33,7 +33,10 @@ function Routing({ login, signup }) {
 
         <Route path="/aboutus" element={<Aboutpage />}></Route>
 
-        <Route path="/advisorlist" element={<AdvisorList {...advisors} />} />
+        <Route
+          path="/advisorlist"
+          element={<AdvisorList advisorData={advisorData} />}
+        />
 
         <Route element={<PrivateRoutes />}>
           <Route path="/updabout" element={<AboutForm />} />

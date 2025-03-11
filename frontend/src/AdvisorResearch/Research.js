@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./form.css";
+import "../forms/form.css";
 import stateCodes from "./stateCodes";
 import SECApi from "../SECapi";
 import AdvisorList from "./AdvisorList";
@@ -16,16 +16,6 @@ function ResearchPage() {
 
   const navigate = useNavigate();
 
-  // Dropdown for states logic
-  const dropdown = document.getElementById("stateDropdown");
-
-  stateCodes.forEach((state) => {
-    const option = document.createElement("option");
-    option.value = state.code;
-    option.text = `${state.code} - ${state.name}`;
-    dropdown.add(option);
-  });
-
   // Form data change event handler
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -33,7 +23,23 @@ function ResearchPage() {
       ...f,
       [name]: value,
     }));
+
     setFormErr([]);
+    console.log(formData);
+  }
+
+  // Dropdown component, could move to other file but easier to keep here.
+
+  function Dropdown() {
+    return (
+      <select id="state" name="state" onChange={handleChange}>
+        {stateCodes.map((option) => (
+          <option key={option.code} value={option.code}>
+            {option.name}
+          </option>
+        ))}
+      </select>
+    );
   }
 
   // Submission handler also checks for possible empty fields
@@ -51,12 +57,12 @@ function ResearchPage() {
       city: formData.city,
       zip: formData.zip,
     };
-
+    console.log("FORM", formData); //Check for accurate data in console (Delete this later)
     try {
       let res = await SECApi.getCombination(inData);
-      setFormData({ state: "", zip: "", city: "" });
-      console.log(res); //Check for accurate data in console (Delete this later)
-      navigate("/advisorlist", <AdvisorList {...res} />);
+
+      console.log(res);
+      navigate("/advisorlist");
     } catch (err) {
       setFormErr(err);
       return;
@@ -68,8 +74,12 @@ function ResearchPage() {
       <div className="search-div">
         <div className="search-form">
           <form>
+            <label htmlFor="state">
+              State-<i>required</i>
+            </label>
+            <Dropdown />
             <label htmlFor="city">City</label>
-            <input id="city" name="city" type="text" />
+            <input onChange={handleChange} id="city" name="city" type="text" />
             <label htmlFor="zip">Zip Code</label>
             <input
               name="zip"
@@ -78,8 +88,7 @@ function ResearchPage() {
               pattern="[0-9]{5}"
               onChange={handleChange}
             />
-            <label htmlFor="state">State</label>
-            <select id="stateDropdown" onChange={handleChange}></select>
+
             <button className="submit-btn" onClick={handleSubmit}>
               Search
             </button>

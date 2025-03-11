@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./form.css";
+import "../forms/form.css";
 import Alert from "../common/Alert";
 import FirmSearchApi from "../Api";
 

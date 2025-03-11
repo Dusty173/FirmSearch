@@ -1,16 +1,15 @@
 import axios from "axios";
 
 const BASE_URL = "https://api.sec-api.io/form-adv/firm";
-const SEC_API = process.env.SEC_API_KEY;
+const SEC_API = process.env.REACT_APP_API_KEY;
 
 class SECApi {
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = { Authorization: `Bearer ${SEC_API}` };
+    const headers = { Authorization: `${SEC_API}` };
     const params = method === "get" ? data : {};
-
     try {
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
@@ -24,60 +23,52 @@ class SECApi {
 
   //   Search by zipcode
   static async getByZipcode(zipcode) {
-    let dataObj = {
+    let data = {
       query: `MainAddr.PostlCd:${zipcode}`,
       from: "0",
       size: "20",
     };
 
-    let data = JSON.stringify(dataObj);
-
-    let res = await this.request(BASE_URL, data, "post");
+    let res = await this.request("", data, "post");
 
     return res;
   }
 
   //   Search by State
   static async getByState(stateCode) {
-    let dataObj = {
+    let data = {
       query: `MainAddr.State:${stateCode}`,
       from: "0",
       size: "20",
     };
 
-    let data = JSON.stringify(dataObj);
-
-    let res = await this.request(BASE_URL, data, "post");
+    let res = await this.request("", data, "post");
 
     return res;
   }
 
   //   Search By City
   static async getByCity(cityName) {
-    let dataObj = {
+    let data = {
       query: `MainAddr.City:${cityName}`,
       from: "0",
       size: "20",
     };
 
-    let data = JSON.stringify(dataObj);
-
-    let res = await this.request(BASE_URL, data, "post");
+    let res = await this.request("", data, "post");
 
     return res;
   }
 
   // Search by Firm Name
   static async getByName(firmName) {
-    let dataObj = {
+    let data = {
       query: `Info.BusNm:${firmName}`,
       from: "0",
       size: "10",
     };
 
-    let data = JSON.stringify(dataObj);
-
-    let res = await this.request(BASE_URL, data, "post");
+    let res = await this.request("", data, "post");
 
     return res;
   }
@@ -86,16 +77,13 @@ class SECApi {
   static async getCombination(inData) {
     const { state, zip, city } = inData;
 
-    const dataObj = {
+    const data = {
       query: `MainAddr.PostlCd:${zip} OR MainAddr.City:${city} AND MainAddr.State:${state}`,
       from: "0",
       size: "10",
     };
 
-    const data = JSON.stringify(dataObj);
-
-    let res = await this.request(BASE_URL, data, "post");
-
+    let res = await this.request("", data, "post");
     return res;
   }
 

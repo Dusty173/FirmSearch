@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./form.css";
+import "../forms/form.css";
 import LoadIcon from "../common/LoadIcon";
 import Alert from "../common/Alert";
 import FirmSearchApi from "../Api";
@@ -14,6 +14,7 @@ function AdvisorList(advisorData) {
 
   setAdvisors(advisorData);
 
+  console.log(advisors);
   return (
     <>
       <p className="inclusion notes">
@@ -24,8 +25,8 @@ function AdvisorList(advisorData) {
         We pull our data directly from SEC filings, which are updated once
         <i>daily</i>, as well as all registered firms are required to update
         <i>annually</i>. If you believe any data is not correct, or is not being
-        displayed properly, please contact {contactinfo} to correct any
-        problems. Thank you!
+        displayed properly, please contact 1234567890 to correct any problems.
+        Thank you!
       </p>
 
       {advisors.length ? (
