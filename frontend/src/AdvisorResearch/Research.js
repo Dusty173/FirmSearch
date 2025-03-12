@@ -4,6 +4,7 @@ import "../forms/form.css";
 import stateCodes from "./stateCodes";
 import SECApi from "../SECapi";
 import AdvisorList from "./AdvisorList";
+import SECAlert from "../common/SECAlert";
 
 function ResearchPage() {
   const [advisorData, setAdvisorData] = useState(null);
@@ -25,14 +26,18 @@ function ResearchPage() {
     }));
 
     setFormErr([]);
-    console.log(formData);
   }
 
   // Dropdown component, could move to other file but easier to keep here.
 
   function Dropdown() {
     return (
-      <select id="state" name="state" onChange={handleChange}>
+      <select
+        id="state"
+        name="state"
+        value={formData.state}
+        onChange={handleChange}
+      >
         {stateCodes.map((option) => (
           <option key={option.code} value={option.code}>
             {option.name}
@@ -42,26 +47,20 @@ function ResearchPage() {
     );
   }
 
-  // Submission handler also checks for possible empty fields
+  // Submission handler, any empty fields are handled by Api and errors are sent to custom error display.
   async function handleSubmit(e) {
     e.preventDefault();
-
-    if (!formData.state) setFormErr("Please select a state");
-
-    if (!formData.city) setFormErr("Must type a city name!");
-
-    if (!formData.zip) setFormErr("Must input 5 digit zip code!");
 
     let inData = {
       state: formData.state,
       city: formData.city,
       zip: formData.zip,
     };
-    console.log("FORM", formData); //Check for accurate data in console (Delete this later)
+
     try {
       let res = await SECApi.getCombination(inData);
-
-      console.log(res);
+      console.log(inData);
+      console.log(res); // Check for accurate data in console <=== (Delete later)
       navigate("/advisorlist");
     } catch (err) {
       setFormErr(err);
@@ -74,12 +73,21 @@ function ResearchPage() {
       <div className="search-div">
         <div className="search-form">
           <form>
-            <label htmlFor="state">
-              State-<i>required</i>
-            </label>
+            <div className="requiredmsg">
+              <b>
+                <i>All fields are required</i>
+              </b>
+            </div>
+            <label htmlFor="state">State</label>
             <Dropdown />
             <label htmlFor="city">City</label>
-            <input onChange={handleChange} id="city" name="city" type="text" />
+            <input
+              placeholder="Correct spelling sensitive!"
+              onChange={handleChange}
+              id="city"
+              name="city"
+              type="text"
+            />
             <label htmlFor="zip">Zip Code</label>
             <input
               name="zip"
@@ -88,7 +96,7 @@ function ResearchPage() {
               pattern="[0-9]{5}"
               onChange={handleChange}
             />
-
+            {formErr ? <SECAlert type="danger" messages={formErr} /> : null}
             <button className="submit-btn" onClick={handleSubmit}>
               Search
             </button>
