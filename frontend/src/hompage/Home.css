@@ -38,3 +38,29 @@ h3 {
 .admin-msg{
   color: red;
 }
+
+.informative-notes{
+  margin: auto;
+  padding: 0.5rem;
+  padding-bottom: 0.9rem;
+  width: 40vw;
+}
+
+.admin-msg{
+  margin: 50vw, 10vh;
+  padding: 1.0rem;
+  text-align: center;
+}
+
+.edit-btn{
+  margin-left: 40vw;
+ 
+  border-radius: 5px;
+  border-style: none;
+  padding: 2px;
+}
+
+.edit-btn:hover{
+  background-color: yellow;
+  
+}

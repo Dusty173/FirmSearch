@@ -35,7 +35,7 @@ function Routing({ login, signup, advisorData }) {
 
         <Route
           path="/advisorlist"
-          element={<AdvisorList advisorData={advisorData} />}
+          element={<AdvisorList />}
         />
 
         <Route element={<PrivateRoutes />}>

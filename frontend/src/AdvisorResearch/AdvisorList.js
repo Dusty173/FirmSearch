@@ -7,9 +7,9 @@ import FirmSearchApi from "../Api";
 import UserContext from "../Usercontext";
 import AdvisorCard from "./AdvisorCard";
 
-function AdvisorList(advisorData) {
+function AdvisorList({ advisorData }) {
   const [advisors, setAdvisors] = useState(null);
-
+  console.log("Advisor List State", advisorData);
   if (!advisors) return LoadIcon;
 
   setAdvisors(advisorData);
@@ -17,18 +17,6 @@ function AdvisorList(advisorData) {
   console.log(advisors);
   return (
     <>
-      <p className="inclusion notes">
-        Who is included: Independent Registered Investment Advisers, as per the
-        SEC.
-      </p>
-      <p className="informative-notes">
-        We pull our data directly from SEC filings, which are updated once
-        <i>daily</i>, as well as all registered firms are required to update
-        <i>annually</i>. If you believe any data is not correct, or is not being
-        displayed properly, please contact 1234567890 to correct any problems.
-        Thank you!
-      </p>
-
       {advisors.length ? (
         <div className="advisor-list">
           {advisors.map((a) => (

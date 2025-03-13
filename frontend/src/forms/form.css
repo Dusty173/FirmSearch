@@ -76,3 +76,11 @@
   button:hover{
     cursor: pointer;
   }
+
+  select{
+    width: 16em;
+    max-width: 16em;
+    padding: 0.5em;
+    border-radius: 5px;
+    border: none;
+  }

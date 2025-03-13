@@ -4,6 +4,6 @@ import "../forms/form.css";
 import Alert from "../common/Alert";
 import FirmSearchApi from "../Api";
 
-function AdvisorCard() {}
+function AdvisorCard(advisor) {}
 
 export default AdvisorCard;

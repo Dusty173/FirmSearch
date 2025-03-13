@@ -35,10 +35,25 @@ function Homepage() {
         <p className="app-description">
           <i>{homepgtxt}</i>
         </p>
-
+        <p className="informative-notes">
+          Who is included: Independent Registered Investment Advisers, as per
+          the SEC.
+        </p>
+        <p className="informative-notes">
+          We pull our data directly from SEC filings, which are updated once
+          <i> daily</i>, as well as all registered firms are required to update
+          <i> annually</i>. If you believe any data is not correct, or is not
+          being displayed properly, please contact us on our{" "}
+          <a className="contact-btn" href="/aboutus">
+            About Page
+          </a>{" "}
+          to correct any problems. Thank you!
+        </p>
         <div className="search-area">
           <ResearchPage />
         </div>
+
+        {/* Render Advisor List here instead of on new page, only move to new page when advisor is clicked on */}
 
         {currUser ? (
           <>
@@ -50,8 +65,8 @@ function Homepage() {
               <div className="admin-msg-container">
                 <p className="admin-msg">
                   You're seeing this message because you've been logged in as an
-                  Administrator and are capable of manipulatiing all data on
-                  this site.
+                  Administrator and are capable of manipulating all data on this
+                  site.
                 </p>
                 <div className="edit-container">
                   <button onClick={handleClick} className="edit-btn">

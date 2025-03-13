@@ -60,8 +60,8 @@ function ResearchPage() {
     try {
       let res = await SECApi.getCombination(inData);
       console.log(inData);
-      console.log(res); // Check for accurate data in console <=== (Delete later)
-      navigate("/advisorlist");
+      console.log(res.filings); // Check for accurate data in console <=== (Delete later)
+      setAdvisorData(res.filings);
     } catch (err) {
       setFormErr(err);
       return;
