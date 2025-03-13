@@ -11,11 +11,16 @@ function ResearchPage() {
   const [formErr, setFormErr] = useState([]);
   const [formData, setFormData] = useState({
     state: "",
-    zip: "",
     city: "",
   });
 
   const navigate = useNavigate();
+
+  // Reset state to try new search
+  function handleRefresh(e) {
+    e.preventDefault();
+    window.location.reload(false);
+  }
 
   // Form data change event handler
   function handleChange(evt) {
@@ -54,7 +59,6 @@ function ResearchPage() {
     let inData = {
       state: formData.state,
       city: formData.city,
-      zip: formData.zip,
     };
 
     try {
@@ -62,47 +66,46 @@ function ResearchPage() {
       console.log(inData);
       console.log(res.filings); // Check for accurate data in console <=== (Delete later)
       setAdvisorData(res.filings);
+      return;
     } catch (err) {
       setFormErr(err);
       return;
     }
   }
 
+  let advisorObj = advisorData;
+
   return (
     <>
-      <div className="search-div">
-        <div className="search-form">
-          <form>
-            <div className="requiredmsg">
-              <b>
-                <i>All fields are required</i>
-              </b>
-            </div>
-            <label htmlFor="state">State</label>
-            <Dropdown />
-            <label htmlFor="city">City</label>
-            <input
-              placeholder="Correct spelling sensitive!"
-              onChange={handleChange}
-              id="city"
-              name="city"
-              type="text"
-            />
-            <label htmlFor="zip">Zip Code</label>
-            <input
-              name="zip"
-              id="zip"
-              type="text"
-              pattern="[0-9]{5}"
-              onChange={handleChange}
-            />
-            {formErr ? <SECAlert type="danger" messages={formErr} /> : null}
-            <button className="submit-btn" onClick={handleSubmit}>
-              Search
-            </button>
-          </form>
+      {advisorData === null ? (
+        <div className="search-div">
+          <div className="search-form">
+            <form>
+              <label htmlFor="state">State</label>
+              <Dropdown />
+              <label htmlFor="city">City</label>
+              <input
+                placeholder="Correct spelling sensitive!"
+                onChange={handleChange}
+                id="city"
+                name="city"
+                type="text"
+              />
+              {formErr ? <SECAlert type="danger" messages={formErr} /> : null}
+              <button className="submit-btn" onClick={handleSubmit}>
+                Search
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="advisors-list">
+          <button onClick={handleRefresh} className="refresh-btn">
+            Reset
+          </button>
+          <AdvisorList data={advisorObj} />
+        </div>
+      )}
     </>
   );
 }

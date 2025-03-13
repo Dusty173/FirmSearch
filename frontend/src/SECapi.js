@@ -75,14 +75,12 @@ class SECApi {
 
   // Bulk search Logic (combination search runs query => Postalcode OR cityName AND statecode)
   static async getCombination(inData) {
-    const { state, zip, city } = inData;
-
+    const { state, city } = inData;
     if (state === "") throw Error("State cannot be empty!");
     if (city === "") throw Error("City cannot be empty");
-    if (zip === "") throw Error("Zipcode cannot be empty!");
 
     const data = {
-      query: `MainAddr.PostlCd:${zip} AND MainAddr.City:${city} AND MainAddr.State:${state}`,
+      query: `MainAddr.City:${city} AND MainAddr.State:${state}`,
       from: "0",
       size: "10",
     };

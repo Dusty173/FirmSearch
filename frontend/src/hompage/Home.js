@@ -53,7 +53,6 @@ function Homepage() {
           <ResearchPage />
         </div>
 
-        {/* Render Advisor List here instead of on new page, only move to new page when advisor is clicked on */}
 
         {currUser ? (
           <>
