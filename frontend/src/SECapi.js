@@ -97,6 +97,17 @@ class SECApi {
 
     return res;
   }
+
+  static async getByCrd(crdNum) {
+    const data = {
+      query: `Info.FirmCrdNb:${crdNum}`,
+      from: "0",
+      size: "10",
+    };
+
+    let res = await this.request("", data, "post");
+    return res;
+  }
 }
 
 export default SECApi;
