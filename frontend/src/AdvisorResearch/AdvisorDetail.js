@@ -6,30 +6,44 @@ import SECApi from "../SECapi";
 import Gather from "../common/Gather";
 
 function AdvisorDetail() {
-  const [loaded, setLoaded] = useState(false);
-  const { CrdNb } = useParams();
   const [firm, setFirm] = useState(null);
+  const { CrdNb } = useParams();
+
   // const [brochure, setBroch] = useState(null);
   useEffect(function getADVdata() {
     async function getFirm() {
       const firmRes = await SECApi.getByCrd(CrdNb);
-      setFirm(firmRes[0]);
-      setLoaded(true);
+      const advisor = firmRes.filings[0];
+      setFirm(advisor);
     }
 
-    getFirm().then((data) => {
-      setFirm(data);
-      console.log("FIRM DATA", firm);
-    });
-    setLoaded(false);
+    getFirm();
+    console.log("FIRM STATE", firm);
   }, []);
 
-  if (!loaded) return <Gather />;
+  if (!firm) return <Gather />;
+
+  let WebArr = firm.FormInfo.Part1A.Item1.WebAddrs.WebAddrs;
+
+  WebArr.forEach((e) => {
+    <div>{e}</div>;
+    console.log(e);
+  });
+
+  console.log("WEBS", WebArr);
 
   return (
     <>
       <div className="details">
-        <h1></h1>
+        <h1>{firm.Info.BusNm}</h1>
+        <h3>
+          {firm.MainAddr.Strt1} {firm.MainAddr.City}, {firm.MainAddr.State}{" "}
+          {firm.MainAddr.PostlCd}
+        </h3>
+        <ul>
+          <li>Phone: {firm.MainAddr.PhNb}</li>
+          {WebArr}
+        </ul>
       </div>
     </>
   );
