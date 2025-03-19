@@ -24,9 +24,13 @@ function AdvisorList({ data }) {
     <>
       {advisors.length ? (
         <div className="advisor-list">
-          {advisors.map((a) => (
-            <AdvisorCard advisor={a} />
-          ))}
+          <ul>
+            {advisors.map((a) => (
+              <li key={a.Info.FirmCrdNb}>
+                <AdvisorCard advisor={a} />
+              </li>
+            ))}
+          </ul>
         </div>
       ) : (
         <div>No results found, please try again.</div>

@@ -5,6 +5,7 @@ import stateCodes from "./stateCodes";
 import SECApi from "../SECapi";
 import AdvisorList from "./AdvisorList";
 import SECAlert from "../common/SECAlert";
+import LoadIcon from "../common/LoadIcon";
 
 function ResearchPage() {
   const [advisorData, setAdvisorData] = useState(null);
@@ -55,7 +56,7 @@ function ResearchPage() {
   // Submission handler, any empty fields are handled by Api and errors are sent to custom error display.
   async function handleSubmit(e) {
     e.preventDefault();
-
+    <LoadIcon />;
     let inData = {
       state: formData.state,
       city: formData.city,
@@ -63,7 +64,6 @@ function ResearchPage() {
 
     try {
       let res = await SECApi.getCombination(inData);
-      console.log(inData);
       console.log(res.filings); // Check for accurate data in console <=== (Delete later)
       setAdvisorData(res.filings);
       return;

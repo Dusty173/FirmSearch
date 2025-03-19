@@ -36,7 +36,7 @@ function Homepage() {
           <i>{homepgtxt}</i>
         </p>
         <p className="informative-notes">
-          Who is included: Independent Registered Investment Advisers, as per
+          Who is included: Independent Registered Investment Advisors, as per
           the SEC.
         </p>
         <p className="informative-notes">

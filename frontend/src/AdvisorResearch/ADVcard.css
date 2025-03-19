@@ -2,3 +2,12 @@
     border: 1px solid brown;
     margin: auto;
 }
+
+.adv-card-link {
+    color: white;
+    border-bottom: 1px solid white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+  }
+  
