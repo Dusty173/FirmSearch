@@ -39,7 +39,7 @@ function AdvisorDetail() {
         <ul className="contact-list">
           <li>Phone: {firm.MainAddr.PhNb}</li>
           <li>
-            Site:{" "}
+            Site:
             <a target="blank" href={site}>
               {site}
             </a>
@@ -53,10 +53,13 @@ function AdvisorDetail() {
             Number of Offices(DBA or Branches):
             <b>{firm.FormInfo.Part1A.Item1.Q1F5}</b>
           </li>
-          <li>Type of organization: {firm.FormInfo.Part1A.Item3A.OrgFormNm}</li>
+          <li>
+            Type of organization: <b>{firm.FormInfo.Part1A.Item3A.OrgFormNm}</b>
+          </li>
         </ul>
-        <h4>Services Offered</h4>
+
         <div className="services-container">
+          <h4 className="services-title">Advisory Services Offered:</h4>
           <Services service={service} />
         </div>
       </div>
