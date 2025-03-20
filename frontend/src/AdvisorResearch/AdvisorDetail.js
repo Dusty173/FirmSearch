@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import Alert from "../common/Alert";
-import FirmSearchApi from "../Api";
+import { useParams } from "react-router-dom";
 import SECApi from "../SECapi";
 import Gather from "../common/Gather";
+import Services from "./Services";
 
 function AdvisorDetail() {
   const [firm, setFirm] = useState(null);
   const { CrdNb } = useParams();
 
   // const [brochure, setBroch] = useState(null);
+
+  // Load firm data using CRD Number from request parameter
   useEffect(function getADVdata() {
     async function getFirm() {
       const firmRes = await SECApi.getByCrd(CrdNb);
@@ -18,32 +19,46 @@ function AdvisorDetail() {
     }
 
     getFirm();
-    console.log("FIRM STATE", firm);
   }, []);
+  console.log("FIRM STATE", firm);
 
   if (!firm) return <Gather />;
 
-  let WebArr = firm.FormInfo.Part1A.Item1.WebAddrs.WebAddrs;
-
-  WebArr.forEach((e) => {
-    <div>{e}</div>;
-    console.log(e);
-  });
-
-  console.log("WEBS", WebArr);
+  // Setting variables to shorten up data in returned HTML
+  let site = firm.FormInfo.Part1A.Item1.WebAddrs.WebAddr;
+  const location = firm.MainAddr;
+  const service = firm.FormInfo.Part1A.Item5G;
 
   return (
     <>
       <div className="details">
-        <h1>{firm.Info.BusNm}</h1>
-        <h3>
-          {firm.MainAddr.Strt1} {firm.MainAddr.City}, {firm.MainAddr.State}{" "}
-          {firm.MainAddr.PostlCd}
+        <h1 className="BusNm">{firm.Info.BusNm}</h1>
+        <h3 className="location">
+          {location.Strt1} {location.City}, {location.State} {location.PostlCd}
         </h3>
-        <ul>
+        <ul className="contact-list">
           <li>Phone: {firm.MainAddr.PhNb}</li>
-          {WebArr}
+          <li>
+            Site:{" "}
+            <a target="blank" href={site}>
+              {site}
+            </a>
+          </li>
         </ul>
+        <ul className="Info">
+          <li>
+            Staff Size: <b>{firm.FormInfo.Part1A.Item5A.TtlEmp}</b>
+          </li>
+          <li>
+            Number of Offices(DBA or Branches):
+            <b>{firm.FormInfo.Part1A.Item1.Q1F5}</b>
+          </li>
+          <li>Type of organization: {firm.FormInfo.Part1A.Item3A.OrgFormNm}</li>
+        </ul>
+        <h4>Services Offered</h4>
+        <div className="services-container">
+          <Services service={service} />
+        </div>
       </div>
     </>
   );
