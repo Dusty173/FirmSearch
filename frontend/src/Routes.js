@@ -17,11 +17,11 @@ function Routing({ login, signup, data }) {
     return auth.token ? <Outlet /> : <Navigate to="/" />;
   };
 
-  console.debug(
-    "Routes",
-    `login: ${typeof login}`,
-    `register: ${typeof signup}`
-  );
+  // console.debug(
+  //   "Routes",
+  //   `login: ${typeof login}`,
+  //   `register: ${typeof signup}`
+  // );
 
   return (
     <>

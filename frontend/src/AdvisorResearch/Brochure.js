@@ -5,7 +5,7 @@ import axios from "axios";
 
 function Brochure({ CrdNb }) {
   const crdNb = CrdNb;
-  const [brochure, setBroch] = useState(null);
+  const [brochure, setBroch] = useState([]);
   const API_KEY = process.env.REACT_APP_API_KEY;
 
   useEffect(function getFirmBrochure() {
@@ -13,26 +13,32 @@ function Brochure({ CrdNb }) {
       const res = await axios.get(
         `https://api.sec-api.io/form-adv/brochures/${crdNb}?token=${API_KEY}`
       );
+
       setBroch(res.data.brochures);
     }
     getBrochure(crdNb);
   }, []);
 
+  console.log("BROCHURES:", brochure);
+
   return (
     <>
       {brochure ? (
         <div className="brochure">
-          <ul>
-            {brochure.map((b) => {
-              {
-                console.log("INSIDE MAP", b.versionId);
-              }
-              <li key={b.versionId}>{b.name}</li>;
-            })}
+          <ul className="brochure-list">
+            {brochure.map((b) => (
+              <li key={b.versionId}>
+                <a href={b.url} target="blank">
+                  {b.name}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       ) : (
-        <p>No Brochures Found</p>
+        <div>
+          <p>No Brochures Found</p>
+        </div>
       )}
     </>
   );

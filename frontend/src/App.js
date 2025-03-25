@@ -14,11 +14,11 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const [currUser, setCurrUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
-  console.debug("App:", "loaded:", loaded, "User:", currUser, "token:", token);
+  // console.debug("App:", "loaded:", loaded, "User:", currUser, "token:", token);
 
   useEffect(
     function loadUser() {
-      console.debug("App useEffect loadUser", "token=", token);
+      // console.debug("App useEffect loadUser", "token=", token);
 
       async function getCurrentUser() {
         if (token) {

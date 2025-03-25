@@ -11,7 +11,7 @@ class FirmSearchApi {
   static token;
 
   static async request(endpoint, data = {}, method = "get") {
-    console.debug("API call:", endpoint, data, method);
+    // console.debug("API call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${FirmSearchApi.token}` };

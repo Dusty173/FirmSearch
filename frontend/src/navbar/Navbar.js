@@ -6,8 +6,6 @@ import "./Nav.css";
 function Navigation({ logout }) {
   const { currUser } = useContext(UserContext);
 
-  console.debug("Nav", "CurrUser:", currUser);
-
   function loggedInNav() {
     return (
       <ul className="navbar-list">

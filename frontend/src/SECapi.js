@@ -5,7 +5,7 @@ const SEC_API = process.env.REACT_APP_API_KEY;
 
 class SECApi {
   static async request(endpoint, data = {}, method = "get") {
-    console.debug("API call:", endpoint, data, method);
+    // console.debug("SEC_API call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `${SEC_API}` };
