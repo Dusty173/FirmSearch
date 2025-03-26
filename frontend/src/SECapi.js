@@ -89,6 +89,23 @@ class SECApi {
     return res;
   }
 
+  // Search logic for looking up by name as the SEC limits to 50 returns
+  static async getBySearch(inData) {
+    const { BusNm, city } = inData;
+    if (BusNm === "") throw Error("Please type a Business name to search");
+    if (city === "") throw Error("City cannot be empty");
+    console.log("INDATA:", inData);
+    const data = {
+      query: `Info.BusNm:${BusNm} AND MainAddr.City:${city}`,
+      from: "0",
+      size: "50",
+      sort: [{ "Filing.Dt": { order: "desc" } }],
+    };
+
+    let res = await this.request("", data, "post");
+    return res;
+  }
+
   // Brochure requests -----------------------------
 
   //   Get Brochure for firm in details page

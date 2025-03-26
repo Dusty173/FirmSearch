@@ -72,6 +72,25 @@ function ResearchPage() {
       return;
     }
   }
+  // Alternate submission handler for looking up by name.
+  async function handleSubmitAlt(e) {
+    e.preventDefault();
+    <LoadIcon />;
+    let inData = {
+      BusNm: formData.BusNm,
+      city: formData.city,
+    };
+
+    try {
+      let res = await SECApi.getBySearch(inData);
+      console.log(res.filings); // Check for accurate data in console <=== (Delete later)
+      setAdvisorData(res.filings);
+      return;
+    } catch (err) {
+      setFormErr(err);
+      return;
+    }
+  }
 
   let advisorObj = advisorData;
 
@@ -96,6 +115,31 @@ function ResearchPage() {
                 Search
               </button>
             </form>
+            <div className="search-div-alt">
+              <p>OR search by the city and business name</p>
+              <form>
+                <label htmlFor="city">City</label>
+                <input
+                  placeholder="Correct spelling sensitive!"
+                  onChange={handleChange}
+                  id="city"
+                  name="city"
+                  type="text"
+                />
+                <label htmlFor="business-name">Business Name</label>
+                <input
+                  placeholder="Correct spelling sensitive!"
+                  onChange={handleChange}
+                  id="BusNm"
+                  name="BusNm"
+                  type="text"
+                />
+                {formErr ? <SECAlert type="danger" messages={formErr} /> : null}
+                <button className="submit-btn" onClick={handleSubmitAlt}>
+                  Search
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       ) : (

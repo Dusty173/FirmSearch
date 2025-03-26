@@ -26,7 +26,7 @@ function AdvisorList({ data }) {
         <div className="advisor-list">
           <ul>
             {advisors.map((a) => (
-              <li key={a.Info.FirmCrdNb}>
+              <li key={a.Filing.Dt}>
                 <AdvisorCard advisor={a} />
               </li>
             ))}
