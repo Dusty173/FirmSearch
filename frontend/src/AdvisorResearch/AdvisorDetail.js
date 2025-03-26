@@ -95,6 +95,8 @@ function AdvisorDetail() {
         <div className="broch-container">
           <Brochure CrdNb={crdNb} />
         </div>
+        <div></div>
+        <div></div>
       </div>
     </>
   );

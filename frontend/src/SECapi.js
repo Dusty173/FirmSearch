@@ -82,7 +82,7 @@ class SECApi {
     const data = {
       query: `MainAddr.City:${city} AND MainAddr.State:${state}`,
       from: "0",
-      size: "10",
+      size: "50",
     };
 
     let res = await this.request("", data, "post");
