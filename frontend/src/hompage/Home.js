@@ -31,7 +31,7 @@ function Homepage() {
   return (
     <>
       <div className="Home">
-        <h1>Firm Search!</h1>
+        <h1>Advisory Evaluator</h1>
         <p className="app-description">
           <i>{homepgtxt}</i>
         </p>

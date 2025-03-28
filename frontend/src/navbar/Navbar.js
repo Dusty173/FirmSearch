@@ -48,7 +48,7 @@ function Navigation({ logout }) {
   return (
     <nav className="Navbar">
       <Link className="logo-link" to="/">
-        <h2>Firm Search</h2>
+        <h2>Advisory Evaluator</h2>
       </Link>
       {currUser ? loggedInNav() : loggedOutNav()}
     </nav>

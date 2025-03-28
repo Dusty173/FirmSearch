@@ -44,13 +44,13 @@
   form button {
     margin-top: 15px;
     margin-bottom: 10px;
-    background-color: purple;
+    background-color: brown;
     border: none;
     border-radius: 0.5em;
   }
   
   form button:hover {
-    background-color: violet;
+    background-color: rgb(226, 71, 71);
     border: none;
     border-radius: 0.5em;
     cursor: pointer;

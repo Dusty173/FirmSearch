@@ -1,13 +1,20 @@
 .adv-card{
-    border: 1px solid brown;
+    border: 1px solid Grey;
     margin: auto;
+    border-radius: 1rem;
 }
 
 .adv-card-link {
     color: white;
-    border-bottom: 1px solid white;
     text-decoration: none;
     display: flex;
     justify-content: center;
   }
   
+.adv-name{
+    color: #000;
+}
+
+.adv-info{
+    color: brown;
+}
