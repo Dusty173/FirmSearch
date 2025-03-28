@@ -6,6 +6,7 @@ import Services from "./Services";
 import Compensation from "./Compensation";
 import Brochure from "./Brochure";
 import AUM from "./AUM";
+import Staff from "./Staff";
 
 function AdvisorDetail() {
   const [firm, setFirm] = useState(null);
@@ -34,6 +35,8 @@ function AdvisorDetail() {
   const comp_Agrees = firm.FormInfo.Part1A.Item5E;
   const crdNb = firm.Info.FirmCrdNb;
   const totalAssets = firm.FormInfo.Part1A.Item5F.Q5F2C;
+  const staff = firm.FormInfo.Part1A.Item5B;
+  const totalStaff = firm.FormInfo.Part1A.Item5A.TtlEmp;
 
   // Function for returning Investment firm registration type
   function firmReg({ firm }) {
@@ -63,10 +66,6 @@ function AdvisorDetail() {
         </ul>
         <ul className="Info">
           <li>
-            Staff Size:{" "}
-            <b>{firm.FormInfo.Part1A.Item5A.TtlEmp || "No staff reported"}</b>
-          </li>
-          <li>
             Alternate Offices(DBA or Branches):
             <b>{firm.FormInfo.Part1A.Item1.Q1F5}</b>
           </li>
@@ -80,9 +79,9 @@ function AdvisorDetail() {
                 "No regularly managed accounts reported"}
             </b>
           </li>
-
           <AUM totalAssets={totalAssets} />
-        </ul>
+        </ul>{" "}
+        <Staff staff={staff} totalStaff={totalStaff} />
         <div className="managed-assets">
           <h4 className="comp-title">Compensation Agreements:</h4>
           <Compensation comp_Agrees={comp_Agrees} />
@@ -91,7 +90,6 @@ function AdvisorDetail() {
           <h4 className="services-title">Advisory Services Offered:</h4>
           <Services service={service} />
         </div>
-
         <div className="broch-container">
           <Brochure CrdNb={crdNb} />
         </div>

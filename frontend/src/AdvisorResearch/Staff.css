@@ -1,0 +1,22 @@
+.staff-container{
+    display: inline-flex;
+    margin: 5vw;
+    border: 1px solid gray;
+    border-radius: 1em;
+}
+
+
+
+.total-staff{
+    margin-left: auto;
+    padding-left: 10px;
+}
+
+.shown-staff{
+    color: brown;
+    display: block;
+}
+
+.hidden-staff{
+    display: none;
+}
