@@ -66,6 +66,9 @@ function AdvisorDetail() {
         </ul>
         <ul className="Info">
           <li>
+            Most recent Filing(YYYY-MM-DD): <b>{firm.Filing[0].Dt}</b>
+          </li>
+          <li>
             Alternate Offices(DBA or Branches):
             <b>{firm.FormInfo.Part1A.Item1.Q1F5}</b>
           </li>
@@ -80,7 +83,7 @@ function AdvisorDetail() {
             </b>
           </li>
           <AUM totalAssets={totalAssets} />
-        </ul>{" "}
+        </ul>
         <Staff staff={staff} totalStaff={totalStaff} />
         <div className="managed-assets">
           <h4 className="comp-title">Compensation Agreements:</h4>
