@@ -7,6 +7,7 @@ import Compensation from "./Compensation";
 import Brochure from "./Brochure";
 import AUM from "./AUM";
 import Staff from "./Staff";
+import Sites from "./Sites";
 
 function AdvisorDetail() {
   const [firm, setFirm] = useState(null);
@@ -29,7 +30,7 @@ function AdvisorDetail() {
   if (!firm) return <Gather />;
 
   // Setting variables to shorten up data in returned HTML
-  let site = firm.FormInfo.Part1A.Item1.WebAddrs.WebAddr;
+  let sites = firm.FormInfo.Part1A.Item1.WebAddrs.WebAddrs;
   const location = firm.MainAddr;
   const service = firm.FormInfo.Part1A.Item5G;
   const comp_Agrees = firm.FormInfo.Part1A.Item5E;
@@ -54,12 +55,7 @@ function AdvisorDetail() {
         </h3>
         <ul className="contact-list">
           <li>Phone: {firm.MainAddr.PhNb}</li>
-          <li>
-            Site:
-            <a target="blank" href={site}>
-              {site || "No website reported"}
-            </a>
-          </li>
+
           <li>
             Registration Type: <b>{firmReg({ firm })}</b>
           </li>
@@ -83,6 +79,8 @@ function AdvisorDetail() {
             </b>
           </li>
           <AUM totalAssets={totalAssets} />
+          <h4>Sites:</h4>
+          <Sites sites={sites} />
         </ul>
         <Staff staff={staff} totalStaff={totalStaff} />
         <div className="managed-assets">
