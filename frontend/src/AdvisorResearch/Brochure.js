@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Services.css";
 import Gather from "../common/Gather";
 import axios from "axios";
+import "./Brochures.css";
 
 function Brochure({ CrdNb }) {
   const crdNb = CrdNb;
@@ -24,11 +25,12 @@ function Brochure({ CrdNb }) {
   return (
     <>
       {brochure ? (
-        <div className="brochure">
+        <div className="brochures">
           <ul className="brochure-list">
+            <h4 className="broch-title">Brochures:</h4>
             {brochure.map((b) => (
               <li key={b.versionId}>
-                <a href={b.url} target="blank">
+                <a className="broch" href={b.url} target="blank">
                   {b.name}
                 </a>
               </li>

@@ -1,10 +1,15 @@
 .staff-container{
     display: inline-flex;
-    margin: 5vw;
+    margin: 2vw;
     border: 1px solid gray;
     border-radius: 1em;
 }
 
+
+.staff-title{
+    margin-left: auto;
+    padding-left: 10px;
+}
 
 
 .total-staff{

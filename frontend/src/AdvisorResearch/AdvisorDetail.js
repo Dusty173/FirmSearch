@@ -92,6 +92,7 @@ function AdvisorDetail() {
           <Services service={service} />
         </div>
         <div className="broch-container">
+          
           <Brochure CrdNb={crdNb} />
         </div>
         <div></div>

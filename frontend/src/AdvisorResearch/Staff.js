@@ -7,7 +7,7 @@ function Staff({ staff, totalStaff }) {
   return (
     <>
       <div className="staff-container">
-        <h4>Staff Breakdown</h4>
+        <h4 className="staff-title">Staff Breakdown</h4>
         <ul className="staff-list">
           <li className="total-staff">
             Total Advisory Staff: <b>{totalStaff || "No Staff Reported"}</b>

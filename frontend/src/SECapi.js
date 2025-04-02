@@ -73,7 +73,7 @@ class SECApi {
     return res;
   }
 
-  // Bulk search Logic (combination search runs query => Postalcode OR cityName AND statecode)
+  // Bulk search Logic (combination search runs query => cityName AND statecode)
   static async getCombination(inData) {
     const { state, city } = inData;
     if (state === "") throw Error("State cannot be empty!");

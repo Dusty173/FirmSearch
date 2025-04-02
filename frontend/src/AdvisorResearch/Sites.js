@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Services.css";
+import "./Site.css";
 
 function Sites({ sites }) {
   console.log("SITES", sites);
@@ -8,7 +8,7 @@ function Sites({ sites }) {
     <>
       {sites.map((s) => (
         <li>
-          <a href={s} target="blank">
+          <a className="sites" href={s} target="blank">
             {s}
           </a>
         </li>

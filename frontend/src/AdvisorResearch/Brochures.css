@@ -1,20 +1,16 @@
-.managed-assets{
+.broch{
+    text-decoration: none;
+    color: blue;
+   }
+
+.brochure-list{
     display: inline-flex;
     margin: 2vw;
     border: 1px solid gray;
     border-radius: 1em;
 }
 
-.comp-title{
+.broch-title{
     margin-left: auto;
     padding-left: 10px;
-}
-
-.shown{
-    color: brown;
-    display: block;
-}
-
-.hidden{
-    display: none;
 }
