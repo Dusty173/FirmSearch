@@ -20,7 +20,7 @@ function Brochure({ CrdNb }) {
     getBrochure(crdNb);
   }, []);
 
-  console.log("BROCHURES:", brochure);
+  // console.log("BROCHURES:", brochure);
 
   return (
     <>
