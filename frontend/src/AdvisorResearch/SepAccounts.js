@@ -21,21 +21,22 @@ function SepAccounts({ CrdNb }) {
   }, []);
 
   let custodians;
-  let BusNm;
 
   if (account) {
     custodians = account["3-custodiansForSeparatelyManagedAccounts"];
-    BusNm = custodians[0]["b-businessName"];
-    return { custodians, BusNm };
   }
 
-  console.log("BUSNM", BusNm);
   console.log("CUST", custodians);
 
   return (
     <>
       <h4>Separately Managed Accounts and Custodians:</h4>
-      <ul>Custodians:</ul>
+      <ul>
+        Custodians:
+        {custodians.map((c) => (
+          <li key={c["a-legalName"]}>{c["b-businessName"]}</li>
+        ))}
+      </ul>
     </>
   );
 }
