@@ -15,7 +15,7 @@ function AUM({ totalAssets }) {
   return (
     <>
       <li>
-        Firm size by U.S. dollar mount of Assets Under Management:{" "}
+        Firm size by U.S. dollar mount of Assets Under Management:&nbsp;
         <b>{checkSize(totalAssets)}</b>
       </li>
     </>

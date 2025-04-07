@@ -8,7 +8,7 @@ import Brochure from "./Brochure";
 import AUM from "./AUM";
 import Staff from "./Staff";
 import Sites from "./Sites";
-import SepAccounts from "./SepAccounts";
+import SepAccounts from "./Custodians";
 
 function AdvisorDetail() {
   const [firm, setFirm] = useState(null);
@@ -63,17 +63,17 @@ function AdvisorDetail() {
         </ul>
         <ul className="Info">
           <li>
-            Most recent Filing(YYYY-MM-DD): <b>{firm.Filing[0].Dt}</b>
+            Most recent Filing(YYYY-MM-DD):&nbsp;<b>{firm.Filing[0].Dt}</b>
           </li>
           <li>
             Alternate Offices(DBA or Branches):
-            <b>{firm.FormInfo.Part1A.Item1.Q1F5}</b>
+            <b>&nbsp;{firm.FormInfo.Part1A.Item1.Q1F5}</b>
           </li>
           <li>
-            Type of organization: <b>{firm.FormInfo.Part1A.Item3A.OrgFormNm}</b>
+            Type of organization:&nbsp;<b>{firm.FormInfo.Part1A.Item3A.OrgFormNm}</b>
           </li>
           <li>
-            Number of Accounts Managed:{" "}
+            Number of Accounts Managed:&nbsp;
             <b>
               {firm.FormInfo.Part1A.Item5F.Q5F2F ||
                 "No regularly managed accounts reported"}
@@ -92,7 +92,7 @@ function AdvisorDetail() {
           <h4 className="services-title">Advisory Services Offered:</h4>
           <Services service={service} />
         </div>
-        <div className="sep-accounts">
+        <div className="sep-accounts-container">
           <SepAccounts CrdNb={crdNb} />
         </div>
         <div></div>{" "}

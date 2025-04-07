@@ -10,7 +10,7 @@ function Staff({ staff, totalStaff }) {
         <h4 className="staff-title">Staff Breakdown</h4>
         <ul className="staff-list">
           <li className="total-staff">
-            Total Advisory Staff: <b>{totalStaff || "No Staff Reported"}</b>
+            Total Advisory Staff:&nbsp;<b>{totalStaff || "No Staff Reported"}</b>
           </li>
           <li className={handleNumOut(staff.Q5B1)}>
             Staff performing Investment Advisory Functions including Research:

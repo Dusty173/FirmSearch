@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Services.css";
+import "./Custodians.css";
 import Gather from "../common/Gather";
 import axios from "axios";
 
@@ -30,13 +30,22 @@ function SepAccounts({ CrdNb }) {
 
   return (
     <>
-      <h4>Separately Managed Accounts and Custodians:</h4>
-      <ul>
-        Custodians:
-        {custodians.map((c) => (
-          <li key={c["a-legalName"]}>{c["b-businessName"]}</li>
-        ))}
-      </ul>
+      {!custodians ? (
+        <p>No accounts found</p>
+      ) : (
+        <ul>
+          <h4>Custodians for Separately Managed Accounts:</h4>
+          {custodians.map((c) => (
+            <li className="custodian" key={c["a-legalName"]}>
+              {c["b-businessName"]}
+              <b>
+                <i>&nbsp;located&nbsp;in&nbsp;</i>
+              </b>
+              {c["c-locations"][0].city}, {c["c-locations"][0].state}
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }

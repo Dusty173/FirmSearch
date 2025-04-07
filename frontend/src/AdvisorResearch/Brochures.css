@@ -4,7 +4,7 @@
    }
 
 .brochure-list{
-    display: inline-flex;
+    display: inline-block;
     margin: 2vw;
     border: 1px solid gray;
     border-radius: 1em;

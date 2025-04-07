@@ -1,0 +1,10 @@
+.sep-accounts-container{
+    display: inline-block;
+    margin: 2vw;
+    border: 1px solid gray;
+    border-radius: 1em;
+}
+
+.custodian{
+    color: brown;
+}
