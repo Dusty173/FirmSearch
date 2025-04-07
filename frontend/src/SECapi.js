@@ -108,13 +108,6 @@ class SECApi {
 
   // Brochure requests -----------------------------
 
-  //   Get Brochure for firm in details page
-  static async getBrochure(crdNum) {
-    let res = await this.request(`${BASE_URL}/form-adv/brochures/${crdNum}`);
-
-    return res;
-  }
-
   static async getByCrd(crdNum) {
     const data = {
       query: `Info.FirmCrdNb:${crdNum}`,

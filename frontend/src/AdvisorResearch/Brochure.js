@@ -11,11 +11,13 @@ function Brochure({ CrdNb }) {
 
   useEffect(function getFirmBrochure() {
     async function getBrochure(crdNb) {
-      const res = await axios.get(
-        `https://api.sec-api.io/form-adv/brochures/${crdNb}?token=${API_KEY}`
-      );
+      try {
+        const res = await axios.get(
+          `https://api.sec-api.io/form-adv/brochures/${crdNb}?token=${API_KEY}`
+        );
 
-      setBroch(res.data.brochures);
+        setBroch(res.data.brochures);
+      } catch (err) {}
     }
     getBrochure(crdNb);
   }, []);

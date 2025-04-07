@@ -4,18 +4,20 @@ import Gather from "../common/Gather";
 import axios from "axios";
 
 function SepAccounts({ CrdNb }) {
-  console.log("SA-CRD", CrdNb);
+  // console.log("SA-CRD", CrdNb);
 
   const [account, setAcc] = useState([]);
   const API_KEY = process.env.REACT_APP_API_KEY;
 
   useEffect(function getFirmAccounts() {
     async function getAccounts(CrdNb) {
-      const res = await axios.get(
-        `https://api.sec-api.io/form-adv/schedule-d-5-k/${CrdNb}?token=${API_KEY}`
-      );
-      console.log(res.data);
-      setAcc(res.data);
+      try {
+        const res = await axios.get(
+          `https://api.sec-api.io/form-adv/schedule-d-5-k/${CrdNb}?token=${API_KEY}`
+        );
+        // console.log(res.data);
+        setAcc(res.data);
+      } catch (error) {}
     }
     getAccounts(CrdNb);
   }, []);
@@ -26,7 +28,7 @@ function SepAccounts({ CrdNb }) {
     custodians = account["3-custodiansForSeparatelyManagedAccounts"];
   }
 
-  console.log("CUST", custodians);
+  // console.log("CUST", custodians);
 
   return (
     <>

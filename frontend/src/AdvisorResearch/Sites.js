@@ -7,9 +7,9 @@ function Sites({ sites }) {
   return (
     <>
       {sites.map((s) => (
-        <li>
+        <li key={s}>
           <a className="sites" href={s} target="blank">
-            {s}
+            {s.toLowerCase()}
           </a>
         </li>
       ))}
