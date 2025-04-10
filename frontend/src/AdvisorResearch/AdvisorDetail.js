@@ -41,6 +41,7 @@ function AdvisorDetail() {
   const totalStaff = firm.FormInfo.Part1A.Item5A.TtlEmp;
   const privateFunds = firm.FormInfo.Part1A.Item7B.Q7B;
   const busActs = firm.FormInfo.Part1A.Item6A;
+  const passInfo = firm.FormInfo.Part1A;
 
   // Function for returning Investment firm registration type
   function firmReg({ firm }) {
@@ -96,7 +97,12 @@ function AdvisorDetail() {
           <Services service={service} />
         </div>
         <div className="sep-accounts-container">
-          <SepAccounts CrdNb={crdNb} PF={privateFunds} BusActs={busActs} />
+          <SepAccounts
+            CrdNb={crdNb}
+            PF={privateFunds}
+            BusActs={busActs}
+            otherInfo={passInfo}
+          />
         </div>
         <div></div>{" "}
         <div className="broch-container">

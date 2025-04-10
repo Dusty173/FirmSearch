@@ -4,8 +4,9 @@ import Gather from "../common/Gather";
 import axios from "axios";
 import handlePercent from "../common/togglePercent";
 import BusinessActs from "./BusinessActs";
+import Participation from "./PartClientInt";
 
-function SepAccounts({ CrdNb, PF, BusActs }) {
+function SepAccounts({ CrdNb, PF, BusActs, otherInfo }) {
   // console.log("SA-CRD", CrdNb);
 
   const [account, setAcc] = useState([]);
@@ -144,10 +145,13 @@ function SepAccounts({ CrdNb, PF, BusActs }) {
             )}
 
             <h4>Is an Advisor to Private Funds?</h4>
-            <li>{PF === "Y" ? "Yes" : "No"}</li>
+            <li className="PF">{PF === "Y" ? "Yes" : "No"}</li>
           </div>
           <div>
             <BusinessActs busActs={BusActs} />
+          </div>
+          <div>
+            <Participation partTransactions={otherInfo} />
           </div>
         </ul>
       )}
