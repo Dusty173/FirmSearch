@@ -39,6 +39,8 @@ function AdvisorDetail() {
   const totalAssets = firm.FormInfo.Part1A.Item5F.Q5F2C;
   const staff = firm.FormInfo.Part1A.Item5B;
   const totalStaff = firm.FormInfo.Part1A.Item5A.TtlEmp;
+  const privateFunds = firm.FormInfo.Part1A.Item7B.Q7B;
+  const busActs = firm.FormInfo.Part1A.Item6A;
 
   // Function for returning Investment firm registration type
   function firmReg({ firm }) {
@@ -70,7 +72,8 @@ function AdvisorDetail() {
             <b>&nbsp;{firm.FormInfo.Part1A.Item1.Q1F5}</b>
           </li>
           <li>
-            Type of organization:&nbsp;<b>{firm.FormInfo.Part1A.Item3A.OrgFormNm}</b>
+            Type of organization:&nbsp;
+            <b>{firm.FormInfo.Part1A.Item3A.OrgFormNm}</b>
           </li>
           <li>
             Number of Accounts Managed:&nbsp;
@@ -93,7 +96,7 @@ function AdvisorDetail() {
           <Services service={service} />
         </div>
         <div className="sep-accounts-container">
-          <SepAccounts CrdNb={crdNb} />
+          <SepAccounts CrdNb={crdNb} PF={privateFunds} BusActs={busActs} />
         </div>
         <div></div>{" "}
         <div className="broch-container">

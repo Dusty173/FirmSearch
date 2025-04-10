@@ -8,3 +8,15 @@
 .custodian{
     color: brown;
 }
+
+.percent{
+    color: brown;
+}
+
+.hidden-percent{
+    display: none;
+}
+
+.shown-percent{
+    display: block;
+}
