@@ -1,0 +1,20 @@
+.market-container{
+    display: inline-block;
+    margin: 2vw;
+    border: 1px solid gray;
+    border-radius: 1em;
+}
+
+.market-title{
+    margin-left: auto;
+    padding-left: 10px;
+}
+
+.shown{
+    color: brown;
+    display: block;
+}
+
+.hidden{
+    display: none;
+}

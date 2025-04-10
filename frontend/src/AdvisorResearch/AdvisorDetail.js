@@ -9,6 +9,7 @@ import AUM from "./AUM";
 import Staff from "./Staff";
 import Sites from "./Sites";
 import SepAccounts from "./Custodians";
+import MarketActivities from "./MarketActs";
 
 function AdvisorDetail() {
   const [firm, setFirm] = useState(null);
@@ -96,6 +97,9 @@ function AdvisorDetail() {
           <h4 className="services-title">Advisory Services Offered:</h4>
           <Services service={service} />
         </div>
+        <div className="market-container">
+          <MarketActivities passInfo={passInfo} />
+        </div>
         <div className="sep-accounts-container">
           <SepAccounts
             CrdNb={crdNb}
@@ -104,7 +108,7 @@ function AdvisorDetail() {
             otherInfo={passInfo}
           />
         </div>
-        <div></div>{" "}
+
         <div className="broch-container">
           <Brochure CrdNb={crdNb} />
         </div>

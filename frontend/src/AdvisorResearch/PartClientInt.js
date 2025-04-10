@@ -8,7 +8,7 @@ function Participation({ partTransactions }) {
   const info = partTransactions;
   return (
     <>
-      <h3>----Things To Keep In Mind----</h3>
+      <h3>----Things To Know----</h3>
       <h4>Proprietary Interest in Client Transactions:</h4>
       {info.Item8A.Q8A1 === "Y" || info.Item8A.Q8A2 === "Y" ? (
         <ul>
@@ -131,7 +131,7 @@ function Participation({ partTransactions }) {
           </ul>
         </>
       ) : (
-        <p>No Criminal Disclosures Found</p>
+        <h3 className="good-to-go">No Criminal Disclosures Found</h3>
       )}
     </>
   );
