@@ -2,6 +2,9 @@
 
 This website is for people looking for investment advice. All registered firms are located by relevant search terms and sent to SEC API. The response from the SEC is then parsed and relevant information is displayed in human, novice readable terms, judged by industry experts who can identify what information is most helpful for the average person.
 
+## Website Link:
+- Coming Soon, working on modern styling and writing tests before launch.
+
 ## Database Layout:
 
 - Database is only used for storing relevant text data as well as user data. No relations are required as any searched data is generated on demand.
