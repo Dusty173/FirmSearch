@@ -1,10 +1,9 @@
+
 .sites{
-    display: block;
-    width: 10%;
     text-decoration: none;
     color: blue;
 }
 
 .site{
-    display: flexbox;
+ overflow-wrap: anywhere;
 }

@@ -6,6 +6,7 @@ import Alert from "../common/Alert";
 function SignupForm({ signup }) {
   const navigate = useNavigate();
   const [formErrors, setFormErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -17,11 +18,17 @@ function SignupForm({ signup }) {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    let result = await signup(formData);
-    if (result.success) {
-      navigate("/");
-    } else {
-      setFormErrors(result.err);
+
+    try {
+      setIsLoading(true);
+      let result = await signup(formData);
+      if (result.success) {
+        navigate("/");
+      }
+    } catch (err) {
+      setFormErrors(err);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -76,8 +83,12 @@ function SignupForm({ signup }) {
               <Alert type="danger" messages={formErrors} />
             ) : null}
 
-            <button className="signupbtn" onClick={handleSubmit}>
-              Sign Up!
+            <button
+              className="signupbtn"
+              disabled={isLoading}
+              onClick={handleSubmit}
+            >
+              {isLoading ? "Signing up..." : "Sign Up!"}
             </button>
           </form>
         </div>

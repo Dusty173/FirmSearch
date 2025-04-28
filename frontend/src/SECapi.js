@@ -94,7 +94,7 @@ class SECApi {
     const { BusNm, city } = inData;
     if (BusNm === "") throw Error("Please type a Business name to search");
     if (city === "") throw Error("City cannot be empty");
-    console.log("INDATA:", inData);
+    // console.log("INDATA:", inData);
     const data = {
       query: `Info.BusNm:${BusNm} AND MainAddr.City:${city}`,
       from: "0",

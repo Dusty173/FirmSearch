@@ -43,7 +43,7 @@ class FirmSearchApi {
   // Signup route
   static async signup(data) {
     let res = await this.request(`auth/register`, data, "post");
-    console.log(res);
+    // console.log(res);
     return res.token;
   }
 
@@ -84,8 +84,7 @@ class FirmSearchApi {
   // PATCH for editing About Us info
   static async editAbout(data) {
     let res = await this.request("/updabout", data, "patch");
-    console.log(res);
-    return res.about;
+    // console.log(res);
   }
 }
 export default FirmSearchApi;

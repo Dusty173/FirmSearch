@@ -7,7 +7,7 @@ function Gather() {
   return (
     <>
       <div className="LoadIcon"></div>;
-      <div className="LoadText">Gathering Data</div>
+      <div className="LoadText">Gathering Data...</div>
     </>
   );
 }

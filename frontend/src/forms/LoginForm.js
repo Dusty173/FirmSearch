@@ -2,28 +2,36 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./form.css";
 import Alert from "../common/Alert";
+import LoadIcon from "../common/LoadIcon";
 
 function LoginForm({ login }) {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const navigate = useNavigate();
   const [formErrors, setFormErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    let result = await login(formData);
-    if (result.success) {
-      navigate("/");
-    } else {
-      setFormErrors(result.err);
-      console.log("ERRORS", result.err);
+    setIsLoading(true);
+
+    try {
+      let result = await login(formData);
+      if (result.success) {
+        navigate("/");
+      }
+    } catch (err) {
+      setFormErrors(err);
+    } finally {
+      setIsLoading(false);
     }
   }
+
   function handleChange(e) {
     const { name, value } = e.target;
     setFormData((f) => ({ ...f, [name]: value }));
   }
 
-  console.debug("LoginForm", "login=", typeof login, "formData=", formData);
+  // console.debug("LoginForm", "login=", typeof login, "formData=", formData);
 
   return (
     <>
@@ -56,8 +64,12 @@ function LoginForm({ login }) {
           <Alert type="danger" messages={formErrors} />
         ) : null}
 
-        <button className="loginbtn" onClick={handleSubmit}>
-          Log in
+        <button
+          className="loginbtn"
+          disabled={isLoading}
+          onClick={handleSubmit}
+        >
+          {isLoading ? "Attempting to Login..." : "Log In"}
         </button>
       </form>
     </>

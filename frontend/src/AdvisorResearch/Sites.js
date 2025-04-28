@@ -8,9 +8,9 @@ function Sites({ sites }) {
     <>
       <ul>
         {sites.map((s) => (
-          <li className="site" key={s}>
+          <li className="siteLi" key={s}>
             <a className="sites" href={s} target="blank">
-              {s.toLowerCase()}
+             <small className="site">{s.toLowerCase()}</small>
             </a>
           </li>
         ))}

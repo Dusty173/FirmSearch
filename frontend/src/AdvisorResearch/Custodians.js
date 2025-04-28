@@ -43,11 +43,8 @@ function SepAccounts({ CrdNb, PF, BusActs, otherInfo }) {
           <h4>Custodians for Separately Managed Accounts:</h4>
           {custodians.map((c) => (
             <li className="custodian" key={c["a-legalName"]}>
-              {c["b-businessName"]}
-              <b>
-                <i>&nbsp;located&nbsp;in&nbsp;</i>
-              </b>
-              {c["c-locations"][0].city}, {c["c-locations"][0].state}
+              {c["b-businessName"]}:&nbsp;&nbsp;
+              {c["c-locations"][0].city}, {c["c-locations"][0].state}.
             </li>
           ))}
           <br />

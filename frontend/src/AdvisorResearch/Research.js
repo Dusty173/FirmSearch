@@ -10,6 +10,7 @@ import LoadIcon from "../common/LoadIcon";
 function ResearchPage() {
   const [advisorData, setAdvisorData] = useState(null);
   const [formErr, setFormErr] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     state: "",
     city: "",
@@ -56,7 +57,6 @@ function ResearchPage() {
   // Submission handler, any empty fields are handled by Api and errors are sent to custom error display.
   async function handleSubmit(e) {
     e.preventDefault();
-    <LoadIcon />;
     let inData = {
       state: formData.state,
       city: formData.city,
@@ -65,10 +65,11 @@ function ResearchPage() {
     try {
       let res = await SECApi.getCombination(inData);
       setAdvisorData(res.filings);
-      return;
+      setIsLoading(true);
     } catch (err) {
       setFormErr(err);
-      return;
+    } finally {
+      setIsLoading(false);
     }
   }
   // Alternate submission handler for looking up by name.
@@ -82,7 +83,7 @@ function ResearchPage() {
 
     try {
       let res = await SECApi.getBySearch(inData);
-      console.log(res.filings); // Check for accurate data in console <=== (Delete later)
+      // console.log(res.filings); // Check for accurate data in console <=== (Delete later)
       setAdvisorData(res.filings);
       return;
     } catch (err) {
@@ -110,8 +111,12 @@ function ResearchPage() {
                 type="text"
               />
               {formErr ? <SECAlert type="danger" messages={formErr} /> : null}
-              <button className="submit-btn" onClick={handleSubmit}>
-                Search
+              <button
+                className="submit-btn"
+                disabled={isLoading}
+                onClick={handleSubmit}
+              >
+                {isLoading ? "Searching..." : "Search"}
               </button>
             </form>
             <div className="search-div-alt">
@@ -136,8 +141,12 @@ function ResearchPage() {
                   type="text"
                 />
                 {formErr ? <SECAlert type="danger" messages={formErr} /> : null}
-                <button className="submit-btn" onClick={handleSubmitAlt}>
-                  Search
+                <button
+                  className="submit-btn"
+                  disabled={isLoading}
+                  onClick={handleSubmitAlt}
+                >
+                  {isLoading ? "Searching..." : "Search"}
                 </button>
               </form>
             </div>

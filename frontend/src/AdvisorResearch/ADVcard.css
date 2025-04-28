@@ -4,6 +4,8 @@
     margin: auto;
     border-radius: 1rem;
     box-shadow: 0 20px 20px rgba(0,0,0, 0.7);
+    width: 20em;
+    height: 9em;
 }
 
 .adv-card:hover{
@@ -19,9 +21,16 @@
   }
   
 .adv-name{
+    margin: auto;
+    max-width: 80%;
     color: #000;
 }
 
 .adv-info{
     color: brown;
+}
+
+.advisor-list{
+    max-width: 90%;
+    display: inline;
 }

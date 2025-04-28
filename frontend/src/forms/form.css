@@ -93,3 +93,19 @@
   .orSearch{
     color: white;
   }
+
+  .no-res{
+    padding: 1em;
+    margin: auto;
+    color: red;
+  }
+
+  .signupbtn{
+    display: block;
+    margin: auto;
+    margin-top: 1em;
+    background-color: rgb(3, 15, 128);
+    border: none;
+    border-radius: 0.5em;
+    color: white;
+  }

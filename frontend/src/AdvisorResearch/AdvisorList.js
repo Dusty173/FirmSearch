@@ -19,7 +19,7 @@ function AdvisorList({ data }) {
   }
 
   if (!advisors) return <LoadIcon />;
-  console.log(advisors);
+  // console.log(advisors);
   return (
     <>
       {advisors.length ? (
@@ -33,7 +33,7 @@ function AdvisorList({ data }) {
           </ul>
         </div>
       ) : (
-        <div>No results found, please try again.</div>
+        <h2 className="no-res">No results found, please try again.</h2>
       )}
     </>
   );
