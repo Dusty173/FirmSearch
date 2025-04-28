@@ -5,7 +5,7 @@ import FirmSearchApi from "../Api";
 import "./ADVcard.css";
 
 function AdvisorCard(advisor) {
-  console.log("ADV-CARD DATA:", advisor);
+  // console.log("ADV-CARD DATA:", advisor);
   const ADV = advisor;
   const CrdNb = ADV.advisor.Info.FirmCrdNb;
   const BusNm = ADV.advisor.Info.BusNm;
@@ -14,7 +14,7 @@ function AdvisorCard(advisor) {
   const State = ADV.advisor.MainAddr.State;
   const recentFile = ADV.advisor.Filing[0].Dt;
 
-  console.log("-Business:", BusNm, "-CRD num:", CrdNb);
+  // console.log("-Business:", BusNm, "-CRD num:", CrdNb);
 
   return (
     <>

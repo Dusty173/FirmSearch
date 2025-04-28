@@ -35,6 +35,7 @@ function App() {
           }
         }
         setLoaded(true);
+        console.warn("Yarrr! Yee be findin only warnin's here!");
       }
       setLoaded(false);
       getCurrentUser();

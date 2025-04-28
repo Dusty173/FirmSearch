@@ -64,7 +64,6 @@ function ResearchPage() {
 
     try {
       let res = await SECApi.getCombination(inData);
-      console.log(res.filings); // Check for accurate data in console <=== (Delete later)
       setAdvisorData(res.filings);
       return;
     } catch (err) {

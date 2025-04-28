@@ -19,14 +19,14 @@ function AdvisorList({ data }) {
   }
 
   if (!advisors) return <LoadIcon />;
-
+  console.log(advisors);
   return (
     <>
       {advisors.length ? (
         <div className="advisor-list">
           <ul>
             {advisors.map((a) => (
-              <li key={a.Filing.Dt}>
+              <li key={a.Info.FirmCrdNb}>
                 <AdvisorCard advisor={a} />
               </li>
             ))}
