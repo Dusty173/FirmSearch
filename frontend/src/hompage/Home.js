@@ -31,13 +31,12 @@ function Homepage() {
   return (
     <>
       <div className="Home">
-        <h1>Advisory Evaluator</h1>
         <p className="app-description">
           <i>{homepgtxt}</i>
         </p>
         <p className="informative-notes">
-          Who is included: Independent Registered Investment Advisors, as per
-          the SEC.
+          <i>Who is included:</i> Independent Registered Investment Advisors, as
+          per the SEC.
         </p>
         <p className="informative-notes">
           We pull our data directly from SEC filings, which are updated once
@@ -52,7 +51,6 @@ function Homepage() {
         <div className="search-area">
           <ResearchPage />
         </div>
-
 
         {currUser ? (
           <>

@@ -1,6 +1,7 @@
 .App {
   display: block;
   text-align: center;
-  max-width: 100vw;
-
+  width: 100%;
+  height: 100%;
+  background-color: rgb(85, 64, 33);
 }

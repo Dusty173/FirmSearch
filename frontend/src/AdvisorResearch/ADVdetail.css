@@ -7,17 +7,25 @@
    
 }
 
-.broch-container{
-    display: block;
-    
-}
 
 .BusNm{
-    display: block;
-    
+padding: 0.5em;
+    border: none;
+
 }
 
 .details{
-    max-width: 80vw
+    max-width: 80%;
+    border-radius: 2em;
+    background-color: antiquewhite;
+    margin: auto;
 }
 
+.sites-div{
+    display: inline-block;
+    width: 80%;
+    border: 1px solid gray;
+    border-radius: 1em;
+    background-color: whitesmoke;
+    box-shadow: 0 10px 20px rgba(0,0,0, 0.7);
+}

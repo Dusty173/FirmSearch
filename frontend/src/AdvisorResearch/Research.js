@@ -115,7 +115,9 @@ function ResearchPage() {
               </button>
             </form>
             <div className="search-div-alt">
-              <p>OR search by the city and business name</p>
+              <p className="orSearch">
+                OR search by the city and business name
+              </p>
               <form>
                 <label htmlFor="city">City</label>
                 <input

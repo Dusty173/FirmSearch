@@ -6,13 +6,15 @@ function Sites({ sites }) {
 
   return (
     <>
-      {sites.map((s) => (
-        <li key={s}>
-          <a className="sites" href={s} target="blank">
-            {s.toLowerCase()}
-          </a>
-        </li>
-      ))}
+      <ul>
+        {sites.map((s) => (
+          <li className="site" key={s}>
+            <a className="sites" href={s} target="blank">
+              {s.toLowerCase()}
+            </a>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }

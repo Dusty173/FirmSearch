@@ -1,4 +1,10 @@
 .sites{
- text-decoration: none;
- color: blue;
+    display: block;
+    width: 10%;
+    text-decoration: none;
+    color: blue;
+}
+
+.site{
+    display: flexbox;
 }

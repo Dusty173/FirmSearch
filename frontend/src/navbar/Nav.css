@@ -1,23 +1,17 @@
 .Navbar{
   background-image: linear-gradient(
-    to bottom right,
-    rgb(255, 255, 255),
-    rgb(102, 102, 102))
+    to bottom left,
+    rgb(85, 64, 33),
+    rgb(0, 0, 0))
     
 }
 
 .logo-link {
   display: inline-flex;
-  color: brown;
   padding: 2px;
   text-decoration: none;
-  border: 1px solid rgb(121, 121, 121);
-  border-radius: 0.5em;
-  background-color: rgb(204, 204, 204);
 }
-.logo-link:hover {
-  background-color: rgb(255, 255, 255);
-}
+
 
 li {
   list-style: none;
@@ -26,29 +20,35 @@ li {
 }
 
 .nav-link {
-  border: 1px solid rgb(121, 121, 121);
-  border-radius: 0.5em;
-  background-color: rgb(204, 204, 204);
-  color: brown;
+  border-radius: 5px;
+  height: 2em;
+  width: 20vw;
+  background-color: rgb(94, 94, 94);
+  color: rgb(255, 255, 255);
+  text-align: center;
   text-decoration: none;
   padding: 2px;
 }
 
 .nav-link:hover {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(85, 64, 33);
+  transform: scale(1.1);
+  transition: all 200ms ease;
+ 
 }
 
 .navbar-list {
-  border-top: 2px solid white;
-  border-bottom: 2px solid brown;
+  border-top: 2px solid rgb(255, 255, 255);
   background-color: rgba(255, 255, 255,0);
 }
 
 .nav-link-logout{
-  border: 1px solid white;
-  border-radius: 0.5em;
-  background-color: rgb(24, 24, 24);
-  color: darkred;
+  border-radius: 5px;
+  height: 2em;
+  width: 20vw;
+  background-color: rgb(94, 94, 94);
+  color: rgb(255, 255, 255);
+  text-align: center;
   text-decoration: none;
   padding: 2px;
 }
@@ -56,4 +56,12 @@ li {
 .nav-link-logout:hover{
   color: red;
   background-color: rgb(255, 146, 146);
+  transform: scale(1.1);
+  transition: all 200ms ease;
+}
+
+.title {
+  border: 1px solid rgb(255, 255, 255);
+  border-style:none;
+  color: rgb(124, 124, 124);
 }

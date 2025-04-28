@@ -38,8 +38,8 @@ function AboutForm() {
         <div className="aboutform">
           <form onSubmit={handleSubmit}>
             <label htmlFor="aboutinfo">Write About Info here</label>
-            <input
-              type="textarea"
+            <textarea
+              
               id="aboutinfo"
               name="aboutinfo"
               value={formData.aboutinfo}

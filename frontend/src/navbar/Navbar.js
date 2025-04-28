@@ -48,7 +48,13 @@ function Navigation({ logout }) {
   return (
     <nav className="Navbar">
       <Link className="logo-link" to="/">
-        <h2>Advisory Evaluator</h2>
+        <img
+          src="logo.PNG"
+          width={70}
+          height={70}
+          alt="Image of a Magnifying Glass over a Briefcase"
+        ></img>{" "}
+        <h1 className="title">Advisory Evaluator</h1>
       </Link>
       {currUser ? loggedInNav() : loggedOutNav()}
     </nav>

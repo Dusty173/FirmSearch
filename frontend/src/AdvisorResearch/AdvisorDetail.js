@@ -10,6 +10,7 @@ import Staff from "./Staff";
 import Sites from "./Sites";
 import SepAccounts from "./Custodians";
 import MarketActivities from "./MarketActs";
+import "./ADVdetail.css";
 
 function AdvisorDetail() {
   const [firm, setFirm] = useState(null);
@@ -62,7 +63,7 @@ function AdvisorDetail() {
           <li>Phone: {firm.MainAddr.PhNb}</li>
 
           <li>
-            Registration Type: <b>{firmReg({ firm })}</b>
+            Registration Type:&nbsp;<b>{firmReg({ firm })}</b>
           </li>
         </ul>
         <ul className="Info">
@@ -85,9 +86,11 @@ function AdvisorDetail() {
             </b>
           </li>
           <AUM totalAssets={totalAssets} />
-          <h4>Sites:</h4>
-          <Sites sites={sites} />
         </ul>
+        <div className="sites-div">
+          <h4 className="sites-title">Sites:</h4>
+          <Sites sites={sites} />
+        </div>
         <Staff staff={staff} totalStaff={totalStaff} />
         <div className="managed-assets">
           <h4 className="comp-title">Compensation Agreements:</h4>

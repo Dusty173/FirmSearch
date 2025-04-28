@@ -7,6 +7,7 @@ import InitLoad from "./common/InitialLoad";
 import FirmSearchApi from "./Api";
 import UserContext from "./Usercontext";
 import jwt from "jsonwebtoken";
+import "./App.css";
 
 export const TOKEN_STORAGE_ID = "FS-token";
 

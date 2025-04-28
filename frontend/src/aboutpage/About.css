@@ -1,3 +1,36 @@
 .about-us{
-    margin: 5vw;
+    margin: 5%;
+    color: antiquewhite;
+}
+
+.about-us-title{
+    font-size: 4em;
+    color: antiquewhite;
+    border: none;
+}
+
+.contact-number{
+    color: antiquewhite;
+}
+
+.contact-email{
+    color: antiquewhite;
+}
+
+.edit-btn{
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 0.5em;
+    color: rgb(0, 0, 0);
+}
+
+.edit-btn:hover{
+    background-color: rgb(255, 251, 12);
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: all 200ms ease;
 }

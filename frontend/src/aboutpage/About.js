@@ -31,7 +31,7 @@ function Aboutpage() {
   return (
     <>
       <div className="About">
-        <h1>About Us</h1>
+        <h1 className="about-us-title">About Us</h1>
         <div className="about-container">
           <p className="about-us">{aboutinfo}</p>
         </div>
