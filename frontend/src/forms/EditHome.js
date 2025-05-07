@@ -35,7 +35,7 @@ function HomeForm() {
         <div className="aboutform">
           <form onSubmit={handleSubmit}>
             <label htmlFor="homepgtxt">Write a blurb about this site</label>
-            <input
+            <textarea
               type="textarea"
               id="homepgtxt"
               name="homepgtxt"

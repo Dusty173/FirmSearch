@@ -33,7 +33,10 @@ function AdvisorList({ data }) {
           </ul>
         </div>
       ) : (
-        <h2 className="no-res">No results found, please try again.</h2>
+        <>
+          <h2 className="no-res">No results found, please try again.</h2>
+          <h3 className="note">Note: Businesses with multiple branches are only required to report most data where they are <i>Headquartered</i>, so searching for a branch may not return anything.</h3>
+        </>
       )}
     </>
   );
