@@ -25,6 +25,9 @@ function SignupForm({ signup }) {
       if (result.success) {
         navigate("/");
       }
+      if (!result.success) {
+        setFormErrors(result.err);
+      }
     } catch (err) {
       setFormErrors(err);
     } finally {
