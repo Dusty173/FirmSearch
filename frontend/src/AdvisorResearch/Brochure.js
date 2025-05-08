@@ -22,11 +22,11 @@ function Brochure({ CrdNb }) {
     getBrochure(crdNb);
   }, []);
 
-  // console.log("BROCHURES:", brochure);
+  console.log("BROCHURES:", brochure);
 
   return (
     <>
-      {brochure ? (
+      {brochure.length ? (
         <div className="brochures">
           <ul className="brochure-list">
             <h4 className="broch-title">Brochures:</h4>

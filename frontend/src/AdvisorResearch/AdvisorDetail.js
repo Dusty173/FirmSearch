@@ -34,6 +34,7 @@ function AdvisorDetail() {
 
   // Setting variables to shorten up data in returned HTML
   let sites = firm.FormInfo.Part1A.Item1.WebAddrs.WebAddrs;
+  let site = firm.FormInfo.Part1A.Item1.WebAddrs.WebAddr;
   const location = firm.MainAddr;
   const service = firm.FormInfo.Part1A.Item5G;
   const comp_Agrees = firm.FormInfo.Part1A.Item5E;
@@ -60,7 +61,9 @@ function AdvisorDetail() {
           {location.Strt1} {location.City}, {location.State} {location.PostlCd}
         </h3>
         <ul className="contact-list">
-          <li>Phone: {firm.MainAddr.PhNb}</li>
+          <li>
+            Phone:&nbsp;<b>{firm.MainAddr.PhNb}</b>
+          </li>
 
           <li>
             Registration Type:&nbsp;<b>{firmReg({ firm })}</b>
@@ -89,7 +92,7 @@ function AdvisorDetail() {
         </ul>
         <div className="sites-div">
           <h4 className="sites-title">Sites:</h4>
-          <Sites sites={sites} />
+          <Sites sites={sites} site={site} />
         </div>
         <Staff staff={staff} totalStaff={totalStaff} />
         <div className="managed-assets">

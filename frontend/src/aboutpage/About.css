@@ -1,6 +1,5 @@
 .about-us{
     margin: 5%;
-    color: antiquewhite;
 }
 
 .about-us-title{
@@ -33,4 +32,11 @@
     cursor: pointer;
     transform: scale(1.2);
     transition: all 200ms ease;
+}
+
+.about-container{
+    margin: 20px;
+    border: 1px solid black;
+    border-radius: 2em;
+    background-color: antiquewhite;
 }

@@ -36,7 +36,7 @@ function SepAccounts({ CrdNb, PF, BusActs, otherInfo }) {
   return (
     <>
       {!custodians ? (
-        <p>No accounts found</p>
+        <p>No custodians or separately managed accounts found</p>
       ) : (
         <ul>
           <h3>FP Services Review</h3>
