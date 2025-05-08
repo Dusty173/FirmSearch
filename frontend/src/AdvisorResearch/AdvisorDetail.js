@@ -27,8 +27,8 @@ function AdvisorDetail() {
     }
 
     getFirm();
-  }, []);
-  console.log("FIRM STATE", firm);
+  }, [CrdNb]);
+  // console.log("FIRM STATE", firm);
 
   if (!firm) return <Gather />;
 

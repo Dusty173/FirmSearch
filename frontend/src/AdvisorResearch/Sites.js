@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Site.css";
 
 function Sites({ sites, site }) {
-  console.log("SITES", sites, "site:", site);
+  // console.log("SITES", sites, "site:", site);
 
   return (
     <>
-      {sites != undefined ? (
+      {sites !== undefined ? (
         <ul>
           {sites.map((s) => (
             <li className="siteLi" key={s}>

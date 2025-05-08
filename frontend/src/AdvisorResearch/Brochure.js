@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Services.css";
-import Gather from "../common/Gather";
 import axios from "axios";
 import "./Brochures.css";
 
@@ -22,8 +21,7 @@ function Brochure({ CrdNb }) {
     getBrochure(crdNb);
   }, []);
 
-  console.log("BROCHURES:", brochure);
-
+  // console.log("BROCHURES:", brochure);
   return (
     <>
       {brochure.length ? (

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Custodians.css";
-import Gather from "../common/Gather";
 import axios from "axios";
-import handlePercent from "../common/togglePercent";
 import BusinessActs from "./BusinessActs";
 import Participation from "./PartClientInt";
 
@@ -23,7 +21,7 @@ function SepAccounts({ CrdNb, PF, BusActs, otherInfo }) {
       } catch (error) {}
     }
     getAccounts(CrdNb);
-  }, []);
+  }, [CrdNb, API_KEY]);
 
   let custodians;
   let percentages;
@@ -32,7 +30,7 @@ function SepAccounts({ CrdNb, PF, BusActs, otherInfo }) {
     percentages = account["1-separatelyManagedAccounts"];
   }
 
-  // console.log("PERC:", percentages);
+  // console.log("CUST", custodians);
   return (
     <>
       {!custodians ? (

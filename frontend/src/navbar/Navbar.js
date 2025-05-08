@@ -16,7 +16,7 @@ function Navigation({ logout }) {
         </li>
         <li>
           <Link className="nav-link-logout" to="/" onClick={logout}>
-            Logout {currUser.username}
+            Logout
           </Link>
         </li>
       </ul>
