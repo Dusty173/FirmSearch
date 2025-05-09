@@ -80,7 +80,7 @@ class SECApi {
     if (city === "") throw Error("City cannot be empty");
 
     const data = {
-      query: `MainAddr.City:${city} AND MainAddr.State:${state}`,
+      query: `MainAddr.City:${city} AND MainAddr.State:${state} AND FormInfo.Part1A.Item7B.Q7B:N`,
       from: "0",
       size: "50",
     };
@@ -96,7 +96,7 @@ class SECApi {
     if (city === "") throw Error("City cannot be empty");
     // console.log("INDATA:", inData);
     const data = {
-      query: `Info.BusNm:${BusNm} AND MainAddr.City:${city}`,
+      query: `Info.BusNm:${BusNm} AND MainAddr.City:${city} AND FormInfo.Part1A.Item7B.Q7B:N`,
       from: "0",
       size: "50",
       sort: [{ "Filing.Dt": { order: "desc" } }],
