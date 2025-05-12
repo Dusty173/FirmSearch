@@ -19,6 +19,11 @@ function Navigation({ logout }) {
             Logout
           </Link>
         </li>
+        <li>
+          <NavLink className="nav-link" to="/explain-adv">
+            ADV Info
+          </NavLink>
+        </li>
       </ul>
     );
   }
@@ -39,6 +44,11 @@ function Navigation({ logout }) {
         <li>
           <NavLink className="nav-link" to="/aboutus">
             About
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="nav-link" to="/explain-adv">
+            ADV Info
           </NavLink>
         </li>
       </ul>

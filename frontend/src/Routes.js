@@ -8,6 +8,7 @@ import AboutForm from "./forms/EditAbout";
 import Aboutpage from "./aboutpage/About";
 import AdvisorList from "./AdvisorResearch/AdvisorList";
 import AdvisorDetail from "./AdvisorResearch/AdvisorDetail";
+import ExpPage from "./InfoPages/ADVexp";
 
 function Routing({ login, signup, data }) {
   const Navigate = useNavigate();
@@ -37,6 +38,8 @@ function Routing({ login, signup, data }) {
         <Route path="/advisorlist" element={<AdvisorList data={data} />} />
 
         <Route path="/advisordetail/:CrdNb" element={<AdvisorDetail />} />
+
+        <Route path="/explain-adv" element={<ExpPage />} />
 
         <Route element={<PrivateRoutes />}>
           <Route path="/updabout" element={<AboutForm />} />

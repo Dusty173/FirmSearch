@@ -35,18 +35,22 @@ function Homepage() {
           <i>{homepgtxt}</i>
         </p>
         <p className="informative-notes">
-          <i>Who is included:</i> Independent Registered Investment Advisors, as
-          per the SEC.
+          <b>
+            How <i>you</i> can learn more about any registered investment
+            advisor?
+          </b>{" "}
+          By reviewing the most pertinent portions of their respective Form ADV.
+          Search below to get started!
         </p>
         <p className="informative-notes">
-          We pull our data directly from SEC filings, which are updated once
-          <i> daily</i>, as well as all registered firms are required to update
+          We pull our data directly from SEC filings, which all registered firms
+          are required to update
           <i> annually</i>. If you believe any data is not correct, or is not
           being displayed properly, please contact us on our{" "}
           <a className="contact-btn" href="/aboutus">
             About Page
           </a>{" "}
-          to correct any problems. Thank you!
+          Thank you!
         </p>
         <div className="search-area">
           <ResearchPage />

@@ -1,0 +1,63 @@
+.ADV-expo-container{
+    margin: .5em;
+}
+
+.ADVexpo-title{
+  background-color: white;
+}
+
+.ADVexpo{
+    background-color: white;
+    border-radius: 2em;
+    margin: 2em;
+    padding: 1em;
+}
+
+.AER{
+    border: 1px solid black;
+    border-radius: 2em;
+    margin: 2em;
+}
+
+.CA{
+    border: 1px solid black;
+    border-radius: 2em;
+    margin: 2em;
+}
+
+.ASO{
+    border: 1px solid black;
+    border-radius: 2em;
+    margin: 2em;
+}
+
+.FPSR{
+    border: 1px solid black;
+    border-radius: 2em;
+    margin: 2em;
+}
+
+.Disclosures{
+    border: 1px solid black;
+    border-radius: 2em;
+    margin: 2em;
+}
+
+.example-img{
+    margin: auto;
+    padding-bottom: .5em;
+    width: 40vw;
+    height: 35vh;
+}
+
+.example-ul{
+    justify-content: start;
+    padding: 1em;
+    display: block;
+}
+
+.example-li{
+    display: flex;
+    padding-left: 1rem;
+    margin: 2px;
+}
