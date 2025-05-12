@@ -24,9 +24,9 @@ class SECApi {
   //   Search by zipcode
   static async getByZipcode(zipcode) {
     let data = {
-      query: `MainAddr.PostlCd:${zipcode}`,
+      query: `MainAddr.PostlCd:${zipcode} AND FormInfo.Part1A.Item7B.Q7B:N`,
       from: "0",
-      size: "20",
+      size: "50",
     };
 
     let res = await this.request("", data, "post");
@@ -37,9 +37,9 @@ class SECApi {
   //   Search by State
   static async getByState(stateCode) {
     let data = {
-      query: `MainAddr.State:${stateCode}`,
+      query: `MainAddr.State:${stateCode} AND FormInfo.Part1A.Item7B.Q7B:N`,
       from: "0",
-      size: "20",
+      size: "50",
     };
 
     let res = await this.request("", data, "post");
@@ -49,10 +49,12 @@ class SECApi {
 
   //   Search By City
   static async getByCity(cityName) {
+    if (cityName == "" || cityName == undefined)
+      throw Error("City cannot be empty");
     let data = {
-      query: `MainAddr.City:${cityName}`,
+      query: `MainAddr.City:${cityName} AND FormInfo.Part1A.Item7B.Q7B:N`,
       from: "0",
-      size: "20",
+      size: "50",
     };
 
     let res = await this.request("", data, "post");
@@ -62,10 +64,13 @@ class SECApi {
 
   // Search by Firm Name
   static async getByName(firmName) {
+    if (firmName == "" || firmName == undefined)
+      throw Error("Business name cannot be empty");
+
     let data = {
-      query: `Info.BusNm:${firmName}`,
+      query: `Info.BusNm:${firmName} AND FormInfo.Part1A.Item7B.Q7B:N`,
       from: "0",
-      size: "10",
+      size: "50",
     };
 
     let res = await this.request("", data, "post");
@@ -110,7 +115,7 @@ class SECApi {
 
   static async getByCrd(crdNum) {
     const data = {
-      query: `Info.FirmCrdNb:${crdNum}`,
+      query: `Info.FirmCrdNb:${crdNum} AND FormInfo.Part1A.Item7B.Q7B:N`,
       from: "0",
       size: "10",
     };

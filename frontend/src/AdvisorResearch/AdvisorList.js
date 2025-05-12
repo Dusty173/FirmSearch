@@ -19,11 +19,11 @@ function AdvisorList({ data }) {
   }
 
   if (!advisors) return <LoadIcon />;
-  // console.log(advisors);
   return (
     <>
       {advisors.length ? (
         <div className="advisor-list">
+          <p className="results">Found {advisors.length} results!</p>
           <ul>
             {advisors.map((a) => (
               <li key={a.Info.FirmCrdNb}>
@@ -35,7 +35,11 @@ function AdvisorList({ data }) {
       ) : (
         <>
           <h2 className="no-res">No results found, please try again.</h2>
-          <h3 className="note">Note: Businesses with multiple branches are only required to report most data where they are <i>Headquartered</i>, so searching for a branch may not return anything.</h3>
+          <h3 className="note">
+            Note: Businesses with multiple branches are only required to report
+            most data where they are <i>Headquartered</i>, so searching for a
+            branch may not return anything.
+          </h3>
         </>
       )}
     </>

@@ -5,7 +5,7 @@
     border-radius: 1rem;
     box-shadow: 0 20px 20px rgba(0,0,0, 0.7);
     width: 20em;
-    height: 9em;
+    height: 10em;
 }
 
 .adv-card:hover{
@@ -27,10 +27,18 @@
 }
 
 .adv-info{
+    margin: auto;
+    margin-top: .3em;
     color: brown;
+    max-width: 90%;
+    max-height: 95%;
 }
 
 .advisor-list{
     max-width: 90%;
     display: inline;
+}
+
+.nostrt{
+    margin: auto;
 }

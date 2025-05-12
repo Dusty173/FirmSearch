@@ -6,9 +6,11 @@ import SECApi from "../SECapi";
 import AdvisorList from "./AdvisorList";
 import SECAlert from "../common/SECAlert";
 import LoadIcon from "../common/LoadIcon";
+import handleTF from "../common/handleTF";
 
 function ResearchPage() {
   const [advisorData, setAdvisorData] = useState(null);
+  const [aSearch, setASearch] = useState(false);
   const [formErr, setFormErr] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -17,6 +19,11 @@ function ResearchPage() {
   });
 
   const navigate = useNavigate();
+
+  // toggle advanced Search
+  function advancedSearch(e) {
+    setASearch(!aSearch);
+  }
 
   // Reset state to try new search
   function handleRefresh(e) {
@@ -81,6 +88,28 @@ function ResearchPage() {
       city: formData.city,
     };
 
+    if (inData.city == "" || inData.city == undefined) {
+      try {
+        let res = await SECApi.getByName(inData.BusNm);
+        setAdvisorData(res.filings);
+        return;
+      } catch (err) {
+        setFormErr(err);
+        return;
+      }
+    }
+
+    if (inData.BusNm == undefined || inData.BusNm == "") {
+      try {
+        let res = await SECApi.getByCity(inData.city);
+        setAdvisorData(res.filings);
+        return;
+      } catch (err) {
+        setFormErr(err);
+        return;
+      }
+    }
+
     try {
       let res = await SECApi.getBySearch(inData);
       // console.log(res.filings); // Check for accurate data in console <=== (Delete later)
@@ -99,31 +128,33 @@ function ResearchPage() {
       {advisorData === null ? (
         <div className="search-div">
           <div className="search-form">
-            <form>
-              <label htmlFor="state">State</label>
-              <Dropdown />
-              <label htmlFor="city">City</label>
-              <input
-                placeholder="Correct spelling sensitive!"
-                onChange={handleChange}
-                id="city"
-                name="city"
-                type="text"
-              />
-              {formErr ? <SECAlert type="danger" messages={formErr} /> : null}
-              <button
-                className="submit-btn"
-                disabled={isLoading}
-                onClick={handleSubmit}
-              >
-                {isLoading ? "Searching..." : "Search"}
-              </button>
-            </form>
-            <div className="search-div-alt">
-              <p className="orSearch">
-                OR search by the city and business name
-              </p>
+            <div className={handleTF(!aSearch)}>
               <form>
+                <label htmlFor="state">State</label>
+                <Dropdown />
+                <label htmlFor="city">City</label>
+                <input
+                  placeholder="Correct spelling sensitive!"
+                  onChange={handleChange}
+                  id="city"
+                  name="city"
+                  type="text"
+                />
+                {formErr ? <SECAlert type="danger" messages={formErr} /> : null}
+                <button
+                  className="submit-btn"
+                  disabled={isLoading}
+                  onClick={handleSubmit}
+                >
+                  {isLoading ? "Searching..." : "Search"}
+                </button>
+              </form>
+            </div>
+
+            <div className={handleTF(aSearch)}>
+              <form>
+                <h3>Advanced Search</h3>
+                <h4 className="aSearch-info">*Not all fields are required*</h4>
                 <label htmlFor="city">City</label>
                 <input
                   placeholder="Correct spelling sensitive!"
@@ -150,6 +181,15 @@ function ResearchPage() {
                 </button>
               </form>
             </div>
+          </div>
+          <div className="ASearch-button">
+            <button
+              disabled={aSearch}
+              className="Adv-Search-btn"
+              onClick={advancedSearch}
+            >
+              Advanced Search
+            </button>
           </div>
         </div>
       ) : (

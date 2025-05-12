@@ -19,15 +19,18 @@ function AdvisorDetail() {
   // const [brochure, setBroch] = useState(null);
 
   // Load firm data using CRD Number from request parameter
-  useEffect(function getADVdata() {
-    async function getFirm() {
-      const firmRes = await SECApi.getByCrd(CrdNb);
-      const advisor = firmRes.filings[0];
-      setFirm(advisor);
-    }
+  useEffect(
+    function getADVdata() {
+      async function getFirm() {
+        const firmRes = await SECApi.getByCrd(CrdNb);
+        const advisor = firmRes.filings[0];
+        setFirm(advisor);
+      }
 
-    getFirm();
-  }, [CrdNb]);
+      getFirm();
+    },
+    [CrdNb]
+  );
   console.log("FIRM STATE", firm);
 
   if (!firm) return <Gather />;
@@ -57,9 +60,15 @@ function AdvisorDetail() {
     <>
       <div className="details">
         <h1 className="BusNm">{firm.Info.BusNm}</h1>
-        <h3 className="location">
-          {location.Strt1} {location.City}, {location.State} {location.PostlCd}
-        </h3>
+        {location.State ? (
+          <h3 className="location">
+            {location.Strt1} {location.City}, {location.State}{" "}
+            {location.PostlCd}
+          </h3>
+        ) : (
+          <h3>---No Street Address Filed---</h3>
+        )}
+
         <ul className="contact-list">
           <li>
             Phone:&nbsp;<b>{firm.MainAddr.PhNb}</b>
