@@ -10,6 +10,7 @@ import Staff from "./Staff";
 import Sites from "./Sites";
 import SepAccounts from "./Custodians";
 import MarketActivities from "./MarketActs";
+import FirmInfo from "./FirmInfo";
 import "./ADVdetail.css";
 
 function AdvisorDetail() {
@@ -31,7 +32,7 @@ function AdvisorDetail() {
     },
     [CrdNb]
   );
-  console.log("FIRM STATE", firm);
+  // console.log("FIRM STATE", firm);
 
   if (!firm) return <Gather />;
 
@@ -48,6 +49,7 @@ function AdvisorDetail() {
   const privateFunds = firm.FormInfo.Part1A.Item7B.Q7B;
   const busActs = firm.FormInfo.Part1A.Item6A;
   const passInfo = firm.FormInfo.Part1A;
+  const passAllData = firm.FormInfo;
 
   // Function for returning Investment firm registration type
   function firmReg({ firm }) {
@@ -99,9 +101,13 @@ function AdvisorDetail() {
           </li>
           <AUM totalAssets={totalAssets} />
         </ul>
+
         <div className="sites-div">
           <h4 className="sites-title">Sites:</h4>
           <Sites sites={sites} site={site} />
+        </div>
+        <div className="firm-info-div">
+          <FirmInfo firmInfo={passAllData} />
         </div>
         <Staff staff={staff} totalStaff={totalStaff} />
         <div className="managed-assets">

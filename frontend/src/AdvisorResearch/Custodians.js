@@ -32,7 +32,7 @@ function SepAccounts({ CrdNb, PF, BusActs, otherInfo }) {
     custodians = account["3-custodiansForSeparatelyManagedAccounts"];
   }
 
-  console.log("CUST", custodians);
+  // console.log("CUST", custodians);
   return (
     <>
       {!custodians ? (

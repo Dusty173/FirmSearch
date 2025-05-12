@@ -1,0 +1,29 @@
+.firm-info{
+    margin: auto;
+    margin-top: 1em;
+    display: inline-block;
+    width: 80%;
+    border: 1px solid gray;
+    border-radius: 1em;
+    background-color: whitesmoke;
+    box-shadow: 0 10px 20px rgba(0,0,0, 0.7);
+}
+
+.Item7A{
+    margin-left: auto;
+    padding-left: 10px;
+}
+
+.ItemJ{
+    margin-left: auto;
+    padding-left: 10px;
+}
+
+.shown{
+    color: brown;
+    display: block;
+}
+
+.hidden{
+    display: none;
+}
