@@ -63,7 +63,24 @@ function ExpPage() {
           </div>
           <div className="ASO">
             <h3>Advisory Services Offered</h3>
-            <h4 className="coming soon">Coming Soon...</h4>
+            <ul className="example-ul">
+              <li className="example-li">
+                - Financial Planning Services: This may include Investments,
+                Retirement, Estate Planning, Insurance, and Tax Planning (not to
+                be confused with “legal tax advice”)
+              </li>
+              <li className="example-li">
+                - Portfolio Management for Individuals and/or Businesses
+              </li>
+              <li className="example-li">
+                - Educational seminars/workshops: This firm likely offers adult
+                education seminars on matters related to Financial Planning
+              </li>
+              <li className="example-li">
+                - Other Services (Specified by Firm): This may include Estate
+                Planning, General Consulting Services, etc.
+              </li>
+            </ul>
           </div>
           <div className="FPSR">
             <h3>FP Services Review</h3>

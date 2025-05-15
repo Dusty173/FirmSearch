@@ -3,44 +3,73 @@
 }
 
 .ADVexpo-title{
-  background-color: white;
+    margin-top: 1em;
+    display: inline-block;
+    width: 90%;
+    border: 1px solid gray;
+    border-radius: 1em;
+    background-color: whitesmoke;
+    box-shadow: 0 10px 20px rgba(0,0,0, 0.7);
 }
 
 .ADVexpo{
-    background-color: white;
-    border-radius: 2em;
-    margin: 2em;
-    padding: 1em;
+    margin-top: 1em;
+    display: inline-block;
+    width: 90%;
+    border: 1px solid gray;
+    border-radius: 1em;
+    background-color: whitesmoke;
+    box-shadow: 0 10px 20px rgba(0,0,0, 0.7);
 }
 
 .AER{
-    border: 1px solid black;
-    border-radius: 2em;
-    margin: 2em;
+    margin-top: 1em;
+    display: inline-block;
+    width: 90%;
+    border: 1px solid gray;
+    border-radius: 1em;
+    background-color: whitesmoke;
+    box-shadow: 0 10px 20px rgba(0,0,0, 0.7);
 }
 
 .CA{
-    border: 1px solid black;
-    border-radius: 2em;
-    margin: 2em;
+    margin-top: 1em;
+    display: inline-block;
+    width: 90%;
+    border: 1px solid gray;
+    border-radius: 1em;
+    background-color: whitesmoke;
+    box-shadow: 0 10px 20px rgba(0,0,0, 0.7);
 }
 
 .ASO{
-    border: 1px solid black;
-    border-radius: 2em;
-    margin: 2em;
+     margin-top: 1em;
+    display: inline-block;
+    width: 90%;
+    border: 1px solid gray;
+    border-radius: 1em;
+    background-color: whitesmoke;
+    box-shadow: 0 10px 20px rgba(0,0,0, 0.7);
 }
 
 .FPSR{
-    border: 1px solid black;
-    border-radius: 2em;
-    margin: 2em;
+    margin-top: 1em;
+    display: inline-block;
+    width: 90%;
+    border: 1px solid gray;
+    border-radius: 1em;
+    background-color: whitesmoke;
+    box-shadow: 0 10px 20px rgba(0,0,0, 0.7);
 }
 
 .Disclosures{
-    border: 1px solid black;
-    border-radius: 2em;
-    margin: 2em;
+    margin-top: 1em;
+    display: inline-block;
+    width: 90%;
+    border: 1px solid gray;
+    border-radius: 1em;
+    background-color: whitesmoke;
+    box-shadow: 0 10px 20px rgba(0,0,0, 0.7);
 }
 
 .example-img{
