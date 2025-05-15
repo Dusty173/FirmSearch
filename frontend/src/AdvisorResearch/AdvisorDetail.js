@@ -32,7 +32,7 @@ function AdvisorDetail() {
     },
     [CrdNb]
   );
-  // console.log("FIRM STATE", firm);
+  console.log("FIRM STATE", firm);
 
   if (!firm) return <Gather />;
 

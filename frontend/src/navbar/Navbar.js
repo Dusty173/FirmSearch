@@ -9,17 +9,17 @@ function Navigation({ logout }) {
   function loggedInNav() {
     return (
       <ul className="navbar-list">
-        <li>
+        <li className="nav-li">
           <NavLink className="nav-link" to="/aboutus">
             About
           </NavLink>
         </li>
-        <li>
+        <li className="nav-li">
           <Link className="nav-link-logout" to="/" onClick={logout}>
             Logout
           </Link>
         </li>
-        <li>
+        <li className="nav-li">
           <NavLink className="nav-link" to="/explain-adv">
             ADV Info
           </NavLink>
@@ -31,22 +31,22 @@ function Navigation({ logout }) {
   function loggedOutNav() {
     return (
       <ul className="navbar-list">
-        <li>
+        <li className="nav-li">
           <NavLink className="nav-link" to="/login">
             Login
           </NavLink>
         </li>
-        <li>
+        <li className="nav-li">
           <NavLink className="nav-link" to="/signup">
             Sign Up
           </NavLink>
         </li>
-        <li>
+        <li className="nav-li">
           <NavLink className="nav-link" to="/aboutus">
             About
           </NavLink>
         </li>
-        <li>
+        <li className="nav-li">
           <NavLink className="nav-link" to="/explain-adv">
             ADV Info
           </NavLink>

@@ -13,12 +13,3 @@
     margin-left: auto;
     padding-left: 10px;
 }
-
-.shown{
-    color: brown;
-    display: block;
-}
-
-.hidden{
-    display: none;
-}

@@ -45,3 +45,33 @@ padding: 0.5em;
     background-color: whitesmoke;
     box-shadow: 0 10px 20px rgba(0,0,0, 0.7);
 }
+
+li{
+    list-style: none;
+}
+
+
+
+.shown{
+    color: brown;
+    list-style: disc;
+    list-style-position: inside;
+    text-align: left;
+    margin: 0.7em;
+    margin-left: 10rem;
+}
+
+@media screen and (max-width: 900px){
+    .shown{
+    color: brown;
+    list-style: disc;
+    list-style-position: inside;
+    text-align: left;
+    margin: 0.7em;
+    margin-inline-start: auto;
+}
+}
+
+.hidden{
+    display: none;
+}

@@ -129,7 +129,7 @@ function ResearchPage() {
         <div className="search-div">
           <div className="search-form">
             <div className={handleTF(!aSearch)}>
-              <form>
+              <form className="search-form">
                 <label htmlFor="state">State</label>
                 <Dropdown />
                 <label htmlFor="city">City</label>
@@ -152,7 +152,7 @@ function ResearchPage() {
             </div>
 
             <div className={handleTF(aSearch)}>
-              <form>
+              <form className="search-form">
                 <h3>Advanced Search</h3>
                 <h4 className="aSearch-info">*Not all fields are required*</h4>
                 <label htmlFor="city">City</label>
