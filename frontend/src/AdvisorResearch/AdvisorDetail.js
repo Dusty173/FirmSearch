@@ -49,7 +49,7 @@ function AdvisorDetail() {
   const privateFunds = firm.FormInfo.Part1A.Item7B.Q7B;
   const busActs = firm.FormInfo.Part1A.Item6A;
   const passInfo = firm.FormInfo.Part1A;
-  const passAllData = firm.FormInfo;
+  const clientType = firm.FormInfo.Part1A;
 
   // Function for returning Investment firm registration type
   function firmReg({ firm }) {
@@ -89,10 +89,6 @@ function AdvisorDetail() {
             <b>&nbsp;{firm.FormInfo.Part1A.Item1.Q1F5}</b>
           </li>
           <li>
-            Type of organization:&nbsp;
-            <b>{firm.FormInfo.Part1A.Item3A.OrgFormNm}</b>
-          </li>
-          <li>
             Number of Accounts Managed:&nbsp;
             <b>
               {firm.FormInfo.Part1A.Item5F.Q5F2F ||
@@ -106,10 +102,11 @@ function AdvisorDetail() {
           <h4 className="sites-title">Sites:</h4>
           <Sites sites={sites} site={site} />
         </div>
-        <div className="firm-info-div">
-          <FirmInfo firmInfo={passAllData} />
-        </div>
+
         <Staff staff={staff} totalStaff={totalStaff} />
+        <div className="firm-info-div">
+          <FirmInfo firmInfo={clientType} />
+        </div>
         <div className="managed-assets">
           <h4 className="comp-title">Compensation Agreements:</h4>
           <Compensation comp_Agrees={comp_Agrees} />

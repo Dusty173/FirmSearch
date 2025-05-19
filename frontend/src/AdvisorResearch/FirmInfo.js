@@ -1,55 +1,76 @@
 import React from "react";
 import "./firminfo.css";
-import handleOutput from "../common/handleOutput";
+import handleNum from "../common/handleNum";
 
 function FirmInfo({ firmInfo }) {
-  let firm = firmInfo;
+  // Set Items variable to save/access Info without issues
+  let Items = firmInfo;
+
+  // Get number of Individuals and HNW Individuals
+  const totalInd = Items.Item5D.Q5DA1;
+  const totalHnwInd = Items.Item5D.Q5DB1;
+
+  // Other Orgs
+  const pSharing = Items.Item5D.Q5DG1;
+  const charOrgs = Items.Item5D.Q5DH1;
+
+  // Set variables for math
+  const totalAUMInd = Items.Item5D.Q5DA3;
+  const totalHnwIndAUM = Items.Item5D.Q5DB3;
+
+  // Do math for All individuals
+  let avgAUM = totalAUMInd / totalInd;
+
+  // Do math for High Net worth Individuals
+  let avgHnwAUM = totalHnwIndAUM / totalHnwInd;
+
+  // Prettier totals
+  let totalIndAUM = Math.round(avgAUM);
+  let totalHnw = Math.round(avgHnwAUM);
+
+  // Function for displaying data depending on if it is present.
+  function showOthers(pSharing, charOrgs) {
+    if (pSharing || charOrgs) {
+      return "shown-title";
+    }
+    return "hidden";
+  }
+
+  // function to make big numbers human readable.
+  function addCommas(number) {
+    return number.toLocaleString("en-US");
+  }
 
   return (
     <>
-      <div className="firm-info">
-        <div className="Item7A">
-          <h4>Financial Industry Affiliations</h4>
-          {firm.Item7A ? (
-            <ul>
-              <li className={handleOutput(firm.Item7A.Q7A10)}>Accountant(s)</li>
-              <li className={handleOutput(firm.Item7A.Q7A11)}>
-                Lawyer/Law firms
-              </li>
-              <li className={handleOutput(firm.Item7A.Q7A12)}>
-                Insurance Company/Agencies
-              </li>
-            </ul>
-          ) : (
-            <p>No Affiliations Reported</p>
-          )}
-        </div>
-        <div className="ItemJ">
-          {firm.Part1b ? (
-            <div>
-              <h5>
-                Sole Proprietorship Information (Only for state registered
-                advisors)
-              </h5>
-              <ul>
-                <li className={handleOutput(firm.Part1b.ItemJ.Q1BJ2BCfp)}>
-                  Is a Certified Financial Planner (CFP)
-                </li>
-                <li className={handleOutput(firm.Part1b.ItemJ.Q1BJ2BCfa)}>
-                  Is a Chartered Financial Analyst (CFA)
-                </li>
-                <li className={handleOutput(firm.Part1b.ItemJ.Q1BJ2BChfc)}>
-                  Is a Chartered Financial Consultant (ChFC)
-                </li>
-              </ul>
-            </div>
-          ) : (
-            <span></span>
-          )}
-        </div>
+      <div className="client-type">
+        <h4>Client Type</h4>
+        <ul>
+          <li>
+            Individuals: <b>{totalInd}</b>
+          </li>
+          <li className="shown">
+            Average Assets Under Management for Individuals:{" "}
+            <b>${addCommas(totalIndAUM)}</b>
+          </li>
+          <br />
+          <li>
+            High Net Worth Individuals: <b>{totalHnwInd}</b>
+          </li>
+          <li className="shown">
+            Average Assets Under Management for High Net Worth Individuals:{" "}
+            <b>${addCommas(totalHnw)}</b>
+          </li>
+          <li className={showOthers(pSharing, charOrgs)}>Other Management:</li>
+          <li className={handleNum(pSharing)}>
+            Pension and Profit Sharing Plans: <b>{pSharing}</b>
+          </li>
+          <li className={handleNum(charOrgs)}>
+            Charitable Organizations: <b>{charOrgs}</b>
+          </li>
+        </ul>
       </div>
     </>
   );
 }
-
 export default FirmInfo;

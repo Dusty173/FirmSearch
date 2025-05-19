@@ -26,7 +26,7 @@ function AdvisorCard(advisor) {
 
   return (
     <>
-      {!City && !PoCity ? (
+      {(!City && !PoCity) ? (
         <Link className="adv-card-link" to={`/advisordetail/${CrdNb}`}>
           <div className="adv-card">
             <h3 className="adv-name">{BusNm}</h3>

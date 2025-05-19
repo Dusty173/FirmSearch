@@ -1,4 +1,4 @@
-.firm-info{
+.client-type{
     margin: auto;
     margin-top: 1em;
     display: inline-block;
@@ -9,13 +9,10 @@
     box-shadow: 0 10px 20px rgba(0,0,0, 0.7);
 }
 
-.Item7A{
-    margin-left: auto;
-    padding-left: 10px;
+.shown-title{
+    list-style: none;
 }
 
-.ItemJ{
-    margin-left: auto;
-    padding-left: 10px;
+.hidden-span{
+display: none;
 }
-

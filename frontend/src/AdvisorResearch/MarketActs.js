@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Market.css";
-import Gather from "../common/Gather";
-import handleOutput from "../common/handleOutput";
 
 function MarketActivities({ passInfo }) {
   const mInfo = passInfo.Item5L;
@@ -9,19 +7,16 @@ function MarketActivities({ passInfo }) {
   return (
     <>
       <h4 className="market-title">Marketing Activities:</h4>
-      {mInfo.Q5L1D == "Y" || mInfo.Q5L1E == "Y" ? (
+      {mInfo.Q5L2 === "Y" ? (
         <ul>
-          <li className={handleOutput(mInfo.Q5L1D)}>
-            This Firms Advertisements include Endorsements
-          </li>
-          <li className={handleOutput(mInfo.Q5L1E)}>
-            This Firms Advertisements include Third Party Ratings
+          <li className="pays">
+            Pays or otherwise provide cash or non-cash compensation, directly or
+            indirectly, in connection with the use of testimonials,
+            endorsements, or third-party ratings
           </li>
         </ul>
       ) : (
-        <p>
-          No Advertisement Endorsements or Third-Party Rating usage Reported.
-        </p>
+        <p>No Advertisement Activities Reported.</p>
       )}
     </>
   );
