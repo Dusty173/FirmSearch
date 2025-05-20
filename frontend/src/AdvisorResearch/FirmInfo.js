@@ -28,6 +28,9 @@ function FirmInfo({ firmInfo }) {
   let totalIndAUM = Math.round(avgAUM);
   let totalHnw = Math.round(avgHnwAUM);
 
+  if (totalIndAUM === NaN || undefined) totalAUMInd = "No Data Available.";
+  if (totalHnw === NaN || undefined) totalHnw = "No Data Available.";
+
   // Function for displaying data depending on if it is present.
   function showOthers(pSharing, charOrgs) {
     if (pSharing || charOrgs) {
@@ -38,7 +41,11 @@ function FirmInfo({ firmInfo }) {
 
   // function to make big numbers human readable.
   function addCommas(number) {
-    return number.toLocaleString("en-US");
+    if (isNaN(number)) {
+      return " No data available";
+    } else {
+      return number.toLocaleString("en-US");
+    }
   }
 
   return (

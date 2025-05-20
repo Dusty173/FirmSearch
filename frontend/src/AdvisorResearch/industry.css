@@ -1,0 +1,9 @@
+.firm-info{
+    margin-top: 1em;
+    display: inline-block;
+    width: 80%;
+    border: 1px solid gray;
+    border-radius: 1em;
+    background-color: whitesmoke;
+    box-shadow: 0 10px 20px rgba(0,0,0, 0.7);
+}

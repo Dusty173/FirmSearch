@@ -11,6 +11,7 @@ import Sites from "./Sites";
 import SepAccounts from "./Custodians";
 import MarketActivities from "./MarketActs";
 import FirmInfo from "./FirmInfo";
+import Industry from "./Industry";
 import "./ADVdetail.css";
 
 function AdvisorDetail() {
@@ -49,7 +50,6 @@ function AdvisorDetail() {
   const privateFunds = firm.FormInfo.Part1A.Item7B.Q7B;
   const busActs = firm.FormInfo.Part1A.Item6A;
   const passInfo = firm.FormInfo.Part1A;
-  const clientType = firm.FormInfo.Part1A;
 
   // Function for returning Investment firm registration type
   function firmReg({ firm }) {
@@ -105,7 +105,7 @@ function AdvisorDetail() {
 
         <Staff staff={staff} totalStaff={totalStaff} />
         <div className="firm-info-div">
-          <FirmInfo firmInfo={clientType} />
+          <FirmInfo firmInfo={passInfo} />
         </div>
         <div className="managed-assets">
           <h4 className="comp-title">Compensation Agreements:</h4>
@@ -117,6 +117,9 @@ function AdvisorDetail() {
         </div>
         <div className="market-container">
           <MarketActivities passInfo={passInfo} />
+        </div>
+        <div className="Industry-container">
+          <Industry firminfo={passInfo} />
         </div>
         <div className="sep-accounts-container">
           <SepAccounts
