@@ -42,6 +42,7 @@ function AdvisorDetail() {
   let site = firm.FormInfo.Part1A.Item1.WebAddrs.WebAddr;
   const location = firm.MainAddr;
   const service = firm.FormInfo.Part1A.Item5G;
+  const altService = firm.FormInfo.Part1A.Item5H;
   const comp_Agrees = firm.FormInfo.Part1A.Item5E;
   const crdNb = firm.Info.FirmCrdNb;
   const totalAssets = firm.FormInfo.Part1A.Item5F.Q5F2C;
@@ -113,7 +114,7 @@ function AdvisorDetail() {
         </div>
         <div className="services-container">
           <h4 className="services-title">Advisory Services Offered:</h4>
-          <Services service={service} />
+          <Services service={service} altService={altService} />
         </div>
         <div className="market-container">
           <MarketActivities passInfo={passInfo} />

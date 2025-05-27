@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./Services.css";
 import Gather from "../common/Gather";
 import handleOutput from "../common/handleOutput";
+import handleNum from "../common/handleNum";
+import handleString from "../common/handleString";
 
-function Services({ service }) {
+function Services({ service, altService }) {
   return (
     <>
       <ul className="services">
@@ -43,6 +45,21 @@ function Services({ service }) {
           Other Services (Specified by Firm): {service.Q5G12Oth}
         </li>
       </ul>
+      {altService.Q5H || altService.Q5HMT500 ? (
+        <div>
+          <h5>
+            Amount of Clients Engaged For Financial Planning Services Last Year:
+          </h5>
+          <ul className="services">
+            <li className={handleString(altService.Q5H)}>{altService.Q5H}</li>
+            <li className={handleNum(altService.Q5HMT500)}>
+              {altService.Q5HMT500}
+            </li>
+          </ul>
+        </div>
+      ) : (
+        <span className="hidden"></span>
+      )}
     </>
   );
 }
