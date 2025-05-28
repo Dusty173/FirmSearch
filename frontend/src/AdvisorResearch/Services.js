@@ -51,9 +51,9 @@ function Services({ service, altService }) {
             Amount of Clients Engaged For Financial Planning Services Last Year:
           </h5>
           <ul className="services">
-            <li className={handleString(altService.Q5H)}>{altService.Q5H}</li>
+            <li className={handleString(altService.Q5H)}>Range: {altService.Q5H}</li>
             <li className={handleNum(altService.Q5HMT500)}>
-              {altService.Q5HMT500}
+              Rounded to nearest 500: {altService.Q5HMT500}
             </li>
           </ul>
         </div>
