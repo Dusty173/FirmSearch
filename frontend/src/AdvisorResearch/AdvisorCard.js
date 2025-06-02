@@ -26,8 +26,12 @@ function AdvisorCard(advisor) {
 
   return (
     <>
-      {(!City && !PoCity) ? (
-        <Link className="adv-card-link" to={`/advisordetail/${CrdNb}`}>
+      {!City && !PoCity ? (
+        <Link
+          className="adv-card-link"
+          to={`/advisordetail/${CrdNb}`}
+          target="blank"
+        >
           <div className="adv-card">
             <h3 className="adv-name">{BusNm}</h3>
             <p className="no-res">No Mailing/Street Address Filed!</p>
@@ -37,7 +41,11 @@ function AdvisorCard(advisor) {
           </div>
         </Link>
       ) : (
-        <Link className="adv-card-link" to={`/advisordetail/${CrdNb}`}>
+        <Link
+          className="adv-card-link"
+          to={`/advisordetail/${CrdNb}`}
+          target="blank"
+        >
           <div className="adv-card">
             <h3 className="adv-name">{BusNm}</h3>
             {ADV.advisor.MainAddr.Strt1 ? (

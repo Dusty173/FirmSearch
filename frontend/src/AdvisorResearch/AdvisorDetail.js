@@ -27,6 +27,7 @@ function AdvisorDetail() {
         const firmRes = await SECApi.getByCrd(CrdNb);
         const advisor = firmRes.filings[0];
         setFirm(advisor);
+        console.log(advisor);
       }
 
       getFirm();
@@ -123,12 +124,7 @@ function AdvisorDetail() {
           <Industry firminfo={passInfo} />
         </div>
         <div className="sep-accounts-container">
-          <SepAccounts
-            CrdNb={crdNb}
-            PF={privateFunds}
-            BusActs={busActs}
-            otherInfo={passInfo}
-          />
+          <SepAccounts CrdNb={crdNb} BusActs={busActs} otherInfo={passInfo} />
         </div>
 
         <div className="broch-container">

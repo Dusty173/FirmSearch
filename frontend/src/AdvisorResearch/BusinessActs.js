@@ -3,7 +3,8 @@ import "./Custodians.css";
 import Gather from "../common/Gather";
 import handleOutput from "../common/handleOutput";
 
-function BusinessActs(busActs) {
+function BusinessActs({ busActs, altBusActs }) {
+  const altActs = altBusActs.Item6B;
   return (
     <>
       <h4>Other Business Activities:</h4>
@@ -48,6 +49,22 @@ function BusinessActs(busActs) {
         </ul>
       ) : (
         <p>No Alternate Business Activities Reported</p>
+      )}
+      {altActs.Q6B1 ? (
+        <ul>
+          <li className={handleOutput(altActs.Q6B1)}>
+            This Firm Engages in Other Business Activities.
+          </li>
+          <li className={handleOutput(altActs.Q6B3)}>
+            This Firm Sells Products or Services other than Investment Advice to
+            Clients.
+          </li>
+          <li className={handleOutput(altActs.Q6B2)}>
+            This Firm Sponsors the Wrap Fee Program.
+          </li>
+        </ul>
+      ) : (
+        <span></span>
       )}
     </>
   );

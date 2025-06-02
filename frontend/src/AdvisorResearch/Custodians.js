@@ -4,7 +4,7 @@ import axios from "axios";
 import BusinessActs from "./BusinessActs";
 import Participation from "./PartClientInt";
 
-function SepAccounts({ CrdNb, PF, BusActs, otherInfo }) {
+function SepAccounts({ CrdNb, BusActs, otherInfo }) {
   // console.log("SA-CRD", CrdNb);
 
   const [account, setAcc] = useState([]);
@@ -50,7 +50,7 @@ function SepAccounts({ CrdNb, PF, BusActs, otherInfo }) {
           <br />
 
           <div>
-            <BusinessActs busActs={BusActs} />
+            <BusinessActs busActs={BusActs} altBusActs={otherInfo} />
           </div>
           <div>
             <Participation partTransactions={otherInfo} />
