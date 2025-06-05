@@ -12,6 +12,7 @@ import SepAccounts from "./Custodians";
 import MarketActivities from "./MarketActs";
 import FirmInfo from "./FirmInfo";
 import Industry from "./Industry";
+import Investing from "./InvestingPract";
 import "./ADVdetail.css";
 
 function AdvisorDetail() {
@@ -27,7 +28,6 @@ function AdvisorDetail() {
         const firmRes = await SECApi.getByCrd(CrdNb);
         const advisor = firmRes.filings[0];
         setFirm(advisor);
-        console.log(advisor);
       }
 
       getFirm();
@@ -49,7 +49,6 @@ function AdvisorDetail() {
   const totalAssets = firm.FormInfo.Part1A.Item5F.Q5F2C;
   const staff = firm.FormInfo.Part1A.Item5B;
   const totalStaff = firm.FormInfo.Part1A.Item5A.TtlEmp;
-  const privateFunds = firm.FormInfo.Part1A.Item7B.Q7B;
   const busActs = firm.FormInfo.Part1A.Item6A;
   const passInfo = firm.FormInfo.Part1A;
 
@@ -116,6 +115,9 @@ function AdvisorDetail() {
         <div className="services-container">
           <h4 className="services-title">Advisory Services Offered:</h4>
           <Services service={service} altService={altService} />
+        </div>
+        <div className="investing-container">
+          <Investing info={passInfo} />
         </div>
         <div className="market-container">
           <MarketActivities passInfo={passInfo} />

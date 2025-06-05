@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Custodians.css";
-import Gather from "../common/Gather";
-import axios from "axios";
 import handleOutput from "../common/handleOutput";
 
 function Participation({ partTransactions }) {
@@ -26,9 +24,9 @@ function Participation({ partTransactions }) {
       )}
 
       <h4>Sales Interest in Client Transactions:</h4>
-      {info.Item8B.Q8B1 == "Y" ||
-      info.Item8B.Q8B2 == "Y" ||
-      info.Item8B.Q8B3 == "Y" ? (
+      {info.Item8B.Q8B1 === "Y" ||
+      info.Item8B.Q8B2 === "Y" ||
+      info.Item8B.Q8B3 === "Y" ? (
         <ul>
           <li className={handleOutput(info.Item8B.Q8B1)}>
             A Broker-dealer or Registered Representative of a Broker-dealer,
@@ -52,10 +50,10 @@ function Participation({ partTransactions }) {
         <p>None Reported</p>
       )}
       <h4>Investment or Brokerage Discretion:</h4>
-      {info.Item8C.Q8C1 == "Y" ||
-      info.Item8C.Q8C2 == "Y" ||
-      info.Item8C.Q8C3 == "Y" ||
-      info.Item8C.Q8C4 == "Y" ? (
+      {info.Item8C.Q8C1 === "Y" ||
+      info.Item8C.Q8C2 === "Y" ||
+      info.Item8C.Q8C3 === "Y" ||
+      info.Item8C.Q8C4 === "Y" ? (
         <ul>
           <li className={handleOutput(info.Item8C.Q8C1)}>
             Securities to be Bought or Sold for a Clients Account
@@ -76,10 +74,17 @@ function Participation({ partTransactions }) {
         <p>None Reported</p>
       )}
 
+      <h4>Wrap Fee Program Participation:</h4>
+      <p className="WFP">
+        {info.Item5I.Q5I1 === "Y"
+          ? "Participates in Wrap Fee Program"
+          : "Does not Participate."}
+      </p>
+
       <h4>Investment or Brokerage Discretion</h4>
-      {info.Item8G.Q8G1 == "Y" ||
-      info.Item8H.Q8H1 == "Y" ||
-      info.Item8I.Q8I == "Y" ? (
+      {info.Item8G.Q8G1 === "Y" ||
+      info.Item8H.Q8H1 === "Y" ||
+      info.Item8I.Q8I === "Y" ? (
         <ul>
           <li className={handleOutput(info.Item8G.Q8G1)}>
             This Firm or any related person(s) receives Research or other
@@ -100,10 +105,10 @@ function Participation({ partTransactions }) {
         <p>None reported</p>
       )}
       <h3>----Disclosures----</h3>
-      {info.Item11A.Q11A1 == "Y" ||
-      info.Item11A.Q11A2 == "Y" ||
-      info.Item11B.Q11B1 == "Y" ||
-      info.Item11B.Q11B2 == "Y" ? (
+      {info.Item11A.Q11A1 === "Y" ||
+      info.Item11A.Q11A2 === "Y" ||
+      info.Item11B.Q11B1 === "Y" ||
+      info.Item11B.Q11B2 === "Y" ? (
         <>
           <h4>Criminal Disclosures:</h4>
           <ul>

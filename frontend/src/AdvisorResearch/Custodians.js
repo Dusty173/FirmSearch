@@ -3,12 +3,13 @@ import "./Custodians.css";
 import axios from "axios";
 import BusinessActs from "./BusinessActs";
 import Participation from "./PartClientInt";
+import handleOutput from "../common/handleOutput";
 
 function SepAccounts({ CrdNb, BusActs, otherInfo }) {
   // console.log("SA-CRD", CrdNb);
-
   const [account, setAcc] = useState([]);
   const API_KEY = process.env.REACT_APP_API_KEY;
+  const Item9A = otherInfo.Item9A;
 
   useEffect(
     function getFirmAccounts() {
@@ -49,6 +50,18 @@ function SepAccounts({ CrdNb, BusActs, otherInfo }) {
           ))}
           <br />
 
+          <div>
+            <h4>Standing Letter of Instruction</h4>
+            {Item9A.Q91A1 ? (
+              <ul>
+                <li className={handleOutput(Item9A.Q91A1)}>
+                  This Firm has Custody of Cash or Bank Accounts
+                </li>
+              </ul>
+            ) : (
+              <p>No SLOA Reported</p>
+            )}
+          </div>
           <div>
             <BusinessActs busActs={BusActs} altBusActs={otherInfo} />
           </div>
