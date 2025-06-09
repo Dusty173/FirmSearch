@@ -11,6 +11,8 @@ const {
 const { BCRYPT_WORK_FACTOR } = require("../config.js");
 
 class User {
+  // auth/registering user models ------------------------
+
   static async authenticate(username, password) {
     const res = await db.query(
       `SELECT username, hashed_pw, is_admin FROM users WHERE username = $1`,
@@ -62,6 +64,8 @@ class User {
 
     return user;
   }
+
+  // User models ---------------------------------
 
   static async findAll() {
     const result = await db.query(
@@ -119,6 +123,40 @@ class User {
     const user = res.rows[0];
 
     if (!user) throw new NotFoundError(`Username ${username} does not exist`);
+  }
+
+  // models for saved firms ----------------------------
+
+  static async getFirmsByUser(userId) {
+    let res = await db.query(
+      `SELECT firmname, firmcrd FROM savedfirms WHERE user_id = $1`,
+      [userId]
+    );
+
+    let saved = res.rows[0];
+    if (!saved) throw new NotFoundError("You have no saved firms!");
+
+    return saved;
+  }
+
+  static async saveFirm(data) {
+    const { userId, firmCrd, firmName } = data;
+
+    let res = await db.query(
+      `INSERT INTO savedfirms (user_id, firmcrd, firmname) VALUES ($1, $2, $3) RETURNING user_id, firmcrd, firmname`,
+      [userId, firmCrd, firmName]
+    );
+    return res.rows;
+  }
+
+  static async removeFirm(data) {
+    const { firmCrd, userId } = data;
+
+    let res = await db.query(
+      `DELETE FROM savedfirms WHERE user_id = $1 AND firmcrd = $2`,
+      [userId, firmCrd]
+    );
+    return res.deleted;
   }
 }
 

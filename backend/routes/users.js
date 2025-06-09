@@ -13,7 +13,7 @@ const User = require("../models/user");
 const { createToken } = require("../helpers/token");
 const userRegister = require("../schemas/userRegister.json");
 const userUpdateSchema = require("../schemas/userUpdate.json");
-
+const addFirmSchema = require("../schemas/addFirmSchema.json");
 const router = express.Router();
 // Route for getting user for auth
 
@@ -82,6 +82,57 @@ router.delete(
     try {
       await User.removeUser(req.params.username);
       return res.json({ deleted: req.params.username });
+    } catch (err) {
+      return next(err);
+    }
+  }
+);
+
+// User route for saving a firm
+
+router.post(
+  "/:username/save-firm",
+  ensureCorrectUserOrAdmin,
+  async (req, res, next) => {
+    try {
+      const validator = jsonschema.validate(req.body, addFirmSchema);
+      if (!validator.valid) {
+        const err = validator.errors.map((e) => e.message);
+        throw new BadRequestError(err);
+      }
+
+      const saved = await User.saveFirm(req.body);
+      return res.status(201).json({ saved });
+    } catch (err) {
+      return next(err);
+    }
+  }
+);
+
+// User route for getting a list of firms they've saved
+
+router.get(
+  "/:username/saved-firms",
+  ensureCorrectUserOrAdmin,
+  async (req, res, next) => {
+    try {
+      const saved = await User.getFirmsByUser(req.body);
+      return res.json({ saved });
+    } catch (err) {
+      return next(err);
+    }
+  }
+);
+
+// User route for deleting a firm they've saved
+
+router.delete(
+  "/:username/delete-firm",
+  ensureCorrectUserOrAdmin,
+  async (req, res, next) => {
+    try {
+      await User.removeFirm(req.body);
+      return res.json({ deleted: req.body });
     } catch (err) {
       return next(err);
     }

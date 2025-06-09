@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/userUpdate.schema.json",
+    "type": "object",
+    "properties": {
+      "firmCrd": {
+        "type": "string"
+      },
+      "firmName": {
+        "type": "string"
+      },
+      "userId": {
+        "type": "string"
+        
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+        "firmCrd",
+        "firmName",
+        "userId"
+    ]
+  }

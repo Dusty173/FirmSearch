@@ -3,10 +3,11 @@ const jsonschema = require("jsonschema");
 const express = require("express");
 const router = new express.Router();
 const Page = require("../models/pageinfo");
-const { ensureAdmin } = require("../middleware/auth");
+const { ensureAdmin, ensureCorrectUserOrAdmin } = require("../middleware/auth");
 const { BadRequestError, ExpressError } = require("../expressError");
 const { default: test } = require("node:test");
 const updateAboutSchema = require("../schemas/updateAboutSchema.json");
+const addResourceSchema = require("../schemas/addResourceSchema.json");
 
 // ----------- Homepage -----------
 
@@ -57,5 +58,38 @@ router.patch("/updabout", ensureAdmin, async (req, res, next) => {
     return next(err);
   }
 });
+
+// ----------- Resource page -----------
+
+// Route for adding a resource to the page
+router.post(
+  "/add-resource",
+  ensureCorrectUserOrAdmin,
+  async (req, res, next) => {
+    try {
+      const validator = jsonschema.validate(req.body, addResourceSchema);
+      if (!validator.valid) {
+        const err = validator.errors.map((e) => e.message);
+        throw new BadRequestError(err);
+      }
+
+      const added = Page.addResource(req.body);
+      return res.status(201).json({ added });
+    } catch (err) {
+      return next(err);
+    }
+  }
+);
+
+// Route for getting all resources
+// Route for deleting a resource from the page
+// Route for getting a certain resource
+
+// ----------- Review page -----------
+
+// Route for adding a review
+// Route for getting all reviews
+// Route for getting a certain review
+// Route for deleting all reviews
 
 module.exports = router;
