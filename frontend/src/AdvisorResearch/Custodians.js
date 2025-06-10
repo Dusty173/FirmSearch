@@ -28,12 +28,12 @@ function SepAccounts({ CrdNb, BusActs, otherInfo }) {
   );
 
   let custodians;
-
+  let misc;
   if (account) {
     custodians = account["3-custodiansForSeparatelyManagedAccounts"];
+    misc = account["1-separatelyManagedAccounts"];
   }
 
-  // console.log("CUST", custodians);
   return (
     <>
       {!custodians ? (
@@ -66,7 +66,7 @@ function SepAccounts({ CrdNb, BusActs, otherInfo }) {
             <BusinessActs busActs={BusActs} altBusActs={otherInfo} />
           </div>
           <div>
-            <Participation partTransactions={otherInfo} />
+            <Participation partTransactions={otherInfo} miscInfo={misc} />
           </div>
         </ul>
       )}

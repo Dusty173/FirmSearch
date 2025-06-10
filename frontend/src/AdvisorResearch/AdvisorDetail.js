@@ -13,6 +13,8 @@ import MarketActivities from "./MarketActs";
 import FirmInfo from "./FirmInfo";
 import Industry from "./Industry";
 import Investing from "./InvestingPract";
+import DirectOwners from "./SchedA";
+import IndirectOwners from "./SchedB";
 import "./ADVdetail.css";
 
 function AdvisorDetail() {
@@ -34,7 +36,7 @@ function AdvisorDetail() {
     },
     [CrdNb]
   );
-  // console.log("FIRM STATE", firm);
+  console.log("FIRM STATE", firm);
 
   if (!firm) return <Gather />;
 
@@ -107,6 +109,12 @@ function AdvisorDetail() {
         <Staff staff={staff} totalStaff={totalStaff} />
         <div className="firm-info-div">
           <FirmInfo firmInfo={passInfo} />
+        </div>
+        <div className="owners-container">
+          <DirectOwners CrdNb={crdNb} />
+        </div>
+        <div className="indirect-owners-container">
+          <IndirectOwners CrdNb={crdNb} />
         </div>
         <div className="managed-assets">
           <h4 className="comp-title">Compensation Agreements:</h4>

@@ -2,8 +2,10 @@ import React from "react";
 import "./Custodians.css";
 import handleOutput from "../common/handleOutput";
 
-function Participation({ partTransactions }) {
+function Participation({ partTransactions, miscInfo }) {
   const info = partTransactions;
+  const misc = miscInfo;
+
   return (
     <>
       <h3>----Things To Know----</h3>
@@ -104,6 +106,16 @@ function Participation({ partTransactions }) {
       ) : (
         <p>None reported</p>
       )}
+
+      {misc.b.other !== "" ? (
+        <div>
+          <h4>Miscellaneous</h4>
+          <p>{misc.b.other}</p>
+        </div>
+      ) : (
+        <span></span>
+      )}
+
       <h3>----Disclosures----</h3>
       {info.Item11A.Q11A1 === "Y" ||
       info.Item11A.Q11A2 === "Y" ||

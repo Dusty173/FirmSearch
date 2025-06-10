@@ -3,7 +3,6 @@ import "./Custodians.css";
 import handleOutput from "../common/handleOutput";
 
 function Investing({ info }) {
-  console.log(info);
   const Item5J = info.Item5J;
   const Item5K = info.Item5K;
 
