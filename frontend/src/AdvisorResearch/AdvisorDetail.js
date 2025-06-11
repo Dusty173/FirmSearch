@@ -15,6 +15,7 @@ import Industry from "./Industry";
 import Investing from "./InvestingPract";
 import DirectOwners from "./SchedA";
 import IndirectOwners from "./SchedB";
+import OtherBusNms from "./OthBusNms";
 import "./ADVdetail.css";
 
 function AdvisorDetail() {
@@ -36,7 +37,7 @@ function AdvisorDetail() {
     },
     [CrdNb]
   );
-  console.log("FIRM STATE", firm);
+  // console.log("FIRM STATE", firm);
 
   if (!firm) return <Gather />;
 
@@ -105,8 +106,12 @@ function AdvisorDetail() {
           <h4 className="sites-title">Sites:</h4>
           <Sites sites={sites} site={site} />
         </div>
-
-        <Staff staff={staff} totalStaff={totalStaff} />
+        <div className="other-names-container">
+          <OtherBusNms crdNb={crdNb} />
+        </div>
+        <div>
+          <Staff staff={staff} totalStaff={totalStaff} />
+        </div>
         <div className="firm-info-div">
           <FirmInfo firmInfo={passInfo} />
         </div>

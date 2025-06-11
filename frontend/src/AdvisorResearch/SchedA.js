@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Custodians.css";
 import axios from "axios";
-import BusinessActs from "./BusinessActs";
-import Participation from "./PartClientInt";
-import handleOutput from "../common/handleOutput";
 
 function DirectOwners({ CrdNb }) {
   const [owners, setOwn] = useState([]);

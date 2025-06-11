@@ -36,3 +36,14 @@
 .good-to-go{
     color: green;
 }
+
+.j{
+    display: inline;
+    margin: .2em;
+}
+
+@media screen and (max-width: 585px){
+    .j{
+    display: block
+}
+}
