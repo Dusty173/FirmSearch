@@ -30,6 +30,7 @@ function AdvisorDetail() {
       async function getFirm() {
         const firmRes = await SECApi.getByCrd(CrdNb);
         const advisor = firmRes.filings[0];
+        console.log(firmRes);
         setFirm(advisor);
       }
 
@@ -37,7 +38,7 @@ function AdvisorDetail() {
     },
     [CrdNb]
   );
-  // console.log("FIRM STATE", firm);
+  console.log("FIRM STATE", firm);
 
   if (!firm) return <Gather />;
 

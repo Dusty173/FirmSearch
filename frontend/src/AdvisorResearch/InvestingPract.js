@@ -16,7 +16,7 @@ function Investing({ info }) {
         </li>
         <li className={handleOutput(Item5K.Q5K1)}>
           This Firm has Regulatory Assets Under Management attributed to clients
-          other than listed in the following boxes.
+          other than listed on Form ADV.
         </li>
         <li className={handleOutput(Item5K.Q5K2)}>
           This Firm engages in borrowing transactions on behalf of any of the
