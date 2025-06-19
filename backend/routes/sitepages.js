@@ -8,6 +8,7 @@ const { BadRequestError, ExpressError } = require("../expressError");
 const { default: test } = require("node:test");
 const updateAboutSchema = require("../schemas/updateAboutSchema.json");
 const addResourceSchema = require("../schemas/addResourceSchema.json");
+const { resolveMx } = require("dns");
 
 // ----------- Homepage -----------
 
@@ -82,14 +83,87 @@ router.post(
 );
 
 // Route for getting all resources
+router.get("/resources", async (req, res, next) => {
+  try {
+    const resources = await Page.getAllResources();
+    return res.json({ resources });
+  } catch (err) {
+    return next(err);
+  }
+});
+
 // Route for deleting a resource from the page
+router.delete(
+  "/remove-resource",
+  ensureCorrectUserOrAdmin,
+  async (req, res, next) => {
+    try {
+      const deleted = await Page.removeResource(req.body);
+      return res.json({ deleted });
+    } catch (err) {
+      return next(err);
+    }
+  }
+);
 // Route for getting a certain resource
+
+router.get("/resource/:id", async (req, res, next) => {
+  try {
+    const resource = await Page.selectResourc(req.body);
+    return res.json({ resource });
+  } catch (err) {
+    return next(err);
+  }
+});
 
 // ----------- Review page -----------
 
 // Route for adding a review
+router.post(
+  "/add-reviews",
+  ensureCorrectUserOrAdmin,
+  async (req, res, next) => {
+    try {
+      const review = await Page.addReview(req.body);
+      return res.json({ review });
+    } catch (err) {
+      return next(err);
+    }
+  }
+);
+
 // Route for getting all reviews
+router.get("/reviews", async (req, res, next) => {
+  try {
+    const reviews = await Page.getAllReviews();
+    return res.json({ reviews });
+  } catch (err) {
+    return next(err);
+  }
+});
+
 // Route for getting a certain review
-// Route for deleting all reviews
+router.get("/reviews/:id", async (req, res, next) => {
+  try {
+    const review = await Page.getReview(req.body);
+    return res.json({ review });
+  } catch (err) {
+    return next(err);
+  }
+});
+
+// Route for deleting a review
+router.delete(
+  "/remove-review",
+  ensureCorrectUserOrAdmin,
+  async (req, res, next) => {
+    try {
+      const deleteReview = await Page.removeReview(req.body);
+      return res.json({ deleteReview });
+    } catch (err) {
+      return next(err);
+    }
+  }
+);
 
 module.exports = router;
