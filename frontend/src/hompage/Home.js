@@ -26,7 +26,7 @@ function Homepage() {
   }
 
   if (!homeState) return <LoadIcon />;
-
+  // console.log("HOMESTATE", homeState);
   const { homepgtxt } = homeState;
   return (
     <>

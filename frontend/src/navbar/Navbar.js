@@ -24,6 +24,16 @@ function Navigation({ logout }) {
             ADV Info
           </NavLink>
         </li>
+        <li className="nav-li">
+          <NavLink className="nav-link" to="/reviews">
+            Reviews
+          </NavLink>
+        </li>
+        <li className="nav-li">
+          <NavLink className="nav-link" to="/resources">
+            Resources
+          </NavLink>
+        </li>
       </ul>
     );
   }
@@ -49,6 +59,16 @@ function Navigation({ logout }) {
         <li className="nav-li">
           <NavLink className="nav-link" to="/explain-adv">
             ADV Info
+          </NavLink>
+        </li>
+        <li className="nav-li">
+          <NavLink className="nav-link" to="/reviews">
+            Reviews
+          </NavLink>
+        </li>
+        <li className="nav-li">
+          <NavLink className="nav-link" to="/resources">
+            Resources
           </NavLink>
         </li>
       </ul>

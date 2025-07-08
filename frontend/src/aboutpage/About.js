@@ -20,6 +20,7 @@ function Aboutpage() {
 
   async function loader() {
     const aboutInfo = await FirmSearchApi.getAbout();
+    console.log(aboutInfo);
     setAboutState(aboutInfo[0]);
   }
 

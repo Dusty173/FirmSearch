@@ -9,6 +9,9 @@ import Aboutpage from "./aboutpage/About";
 import AdvisorList from "./AdvisorResearch/AdvisorList";
 import AdvisorDetail from "./AdvisorResearch/AdvisorDetail";
 import ExpPage from "./InfoPages/ADVexp";
+import ReviewPage from "./reviewpages/ReviewHome";
+import ReviewDetails from "./reviewpages/ReviewDetails";
+import ResourcePage from "./resourcepages/ResourceHome";
 
 function Routing({ login, signup, data }) {
   const Navigate = useNavigate();
@@ -40,6 +43,11 @@ function Routing({ login, signup, data }) {
         <Route path="/advisordetail/:CrdNb" element={<AdvisorDetail />} />
 
         <Route path="/explain-adv" element={<ExpPage />} />
+
+        <Route path="/reviews" element={<ReviewPage />} />
+        <Route path="/reviews/:id" element={<ReviewDetails />} />
+
+        <Route path="/resources" element={<ResourcePage />} />
 
         <Route element={<PrivateRoutes />}>
           <Route path="/updabout" element={<AboutForm />} />

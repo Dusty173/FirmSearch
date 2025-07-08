@@ -21,7 +21,7 @@ CREATE TABLE savedfirms(
     user_id INTEGER REFERENCES users,
     firmcrd INTEGER NOT NULL,
     firmname TEXT NOT NULL
-)
+);
 
 CREATE TABLE resourcepage(
     id SERIAL PRIMARY KEY,
@@ -29,7 +29,7 @@ CREATE TABLE resourcepage(
     created_at TIMESTAMP,
     textdata TEXT NOT NULL,
     link TEXT NOT NULL
-)
+);
 
 CREATE TABLE reviewpage(
     id SERIAL PRIMARY KEY,
@@ -38,4 +38,4 @@ CREATE TABLE reviewpage(
     title TEXT NOT NULL,
     textdata TEXT NOT NULL,
     link TEXT NOT NULL
-)
+);

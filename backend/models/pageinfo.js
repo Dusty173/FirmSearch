@@ -126,7 +126,7 @@ class Page {
 
   static async getAllReviews() {
     const result = await db.query(
-      `SELECT id, author_id, created_at, title, textdata, link FROM reviewpage ORDER BY created_at DESC`
+      `SELECT id, author_id, created_at, title, textdata, link FROM reviewpage ORDER BY id DESC`
     );
 
     return result.rows;
@@ -141,7 +141,7 @@ class Page {
     if (!result)
       throw new BadRequestError(`Unable to retrieve Review with ID ${id}`);
 
-    return result.rows[0];
+    return result.rows;
   }
 
   static async addReview(data) {

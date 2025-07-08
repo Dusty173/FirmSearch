@@ -8,7 +8,6 @@ const { BadRequestError, ExpressError } = require("../expressError");
 const { default: test } = require("node:test");
 const updateAboutSchema = require("../schemas/updateAboutSchema.json");
 const addResourceSchema = require("../schemas/addResourceSchema.json");
-const { resolveMx } = require("dns");
 
 // ----------- Homepage -----------
 
@@ -109,7 +108,7 @@ router.delete(
 
 router.get("/resource/:id", async (req, res, next) => {
   try {
-    const resource = await Page.selectResourc(req.body);
+    const resource = await Page.selectResource(req.body);
     return res.json({ resource });
   } catch (err) {
     return next(err);
@@ -145,7 +144,7 @@ router.get("/reviews", async (req, res, next) => {
 // Route for getting a certain review
 router.get("/reviews/:id", async (req, res, next) => {
   try {
-    const review = await Page.getReview(req.body);
+    const review = await Page.getReview(req.params.id);
     return res.json({ review });
   } catch (err) {
     return next(err);

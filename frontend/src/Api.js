@@ -86,5 +86,19 @@ class FirmSearchApi {
     let res = await this.request("/updabout", data, "patch");
     // console.log(res);
   }
+
+  // Review Page Related Requests ---------------------------
+
+  // GET for page info
+  static async getReviews() {
+    let res = await this.request("/reviews");
+    return res.reviews;
+  }
+
+  // GET certain review
+  static async getReview(id) {
+    let res = await this.request(`/reviews/${id}`);
+    return res.review;
+  }
 }
 export default FirmSearchApi;
