@@ -24,7 +24,7 @@ class SECApi {
   //   Search by zipcode
   static async getByZipcode(zipcode) {
     let data = {
-      query: `MainAddr.PostlCd:${zipcode} AND FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item5F.Q5F2F:>0 AND Rgstn.FirmType:Registered`,
+      query: `FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item5F.Q5F2F:>0 AND Rgstn.FirmType:Registered AND MainAddr.PostlCd:${zipcode}`,
       from: "0",
       size: "50",
     };
@@ -37,7 +37,7 @@ class SECApi {
   //   Search by State
   static async getByState(stateCode) {
     let data = {
-      query: `MainAddr.State:${stateCode} AND FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item5F.Q5F2F:>0 AND Rgstn.FirmType:Registered`,
+      query: `FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item5F.Q5F2F:>0 AND Rgstn.FirmType:Registered AND MainAddr.State:${stateCode}`,
       from: "0",
       size: "50",
     };
@@ -52,7 +52,7 @@ class SECApi {
     if (cityName === "" || cityName === undefined)
       throw Error("City cannot be empty");
     let data = {
-      query: `MainAddr.City:${cityName} AND FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item5F.Q5F2F:>0 AND Rgstn.FirmType:Registered`,
+      query: `FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item5F.Q5F2F:>0 AND Rgstn.FirmType:Registered AND MainAddr.City:${cityName}`,
       from: "0",
       size: "50",
     };
@@ -68,7 +68,7 @@ class SECApi {
       throw Error("Business name cannot be empty");
 
     let data = {
-      query: `Info.BusNm:${firmName} AND FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item5F.Q5F2F:>0 AND Rgstn.FirmType:Registered`,
+      query: `FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item5F.Q5F2F:>0 AND Rgstn.FirmType:Registered AND Info.BusNm:${firmName}`,
       from: "0",
       size: "50",
     };
@@ -85,7 +85,7 @@ class SECApi {
     if (city === "") throw Error("City cannot be empty");
 
     const data = {
-      query: `MainAddr.City:${city} AND MainAddr.State:${state} AND FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item5F.Q5F2F:>0 AND Rgstn.FirmType:Registered`,
+      query: `FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item5F.Q5F2F:>0 AND Rgstn.FirmType:Registered AND MainAddr.City:${city} AND MainAddr.State:${state}`,
       from: "0",
       size: "50",
     };
@@ -101,7 +101,7 @@ class SECApi {
     if (city === "") throw Error("City cannot be empty");
     // console.log("INDATA:", inData);
     const data = {
-      query: `Info.BusNm:${BusNm} AND MainAddr.City:${city} AND FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item5F.Q5F2F:>0 AND Rgstn.FirmType:Registered`,
+      query: `FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item5F.Q5F2F:>0 AND Rgstn.FirmType:Registered AND Info.BusNm:${BusNm} AND MainAddr.City:${city}`,
       from: "0",
       size: "50",
       sort: [{ "Filing.Dt": { order: "desc" } }],
@@ -115,7 +115,7 @@ class SECApi {
 
   static async getByCrd(crdNum) {
     const data = {
-      query: `Info.FirmCrdNb:${crdNum} AND FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item5F.Q5F2F:>0 AND Rgstn.FirmType:Registered`,
+      query: `FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item5F.Q5F2F:>0 AND Rgstn.FirmType:Registered AND Info.FirmCrdNb:${crdNum}`,
       from: "0",
       size: "10",
     };

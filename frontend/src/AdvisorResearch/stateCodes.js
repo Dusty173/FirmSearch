@@ -37,7 +37,7 @@ const stateCodes = [
   { code: "ND", name: "North Dakota" },
   { code: "OH", name: "Ohio" },
   { code: "OK", name: "Oklahoma" },
-  { code: "OR", name: "Oregon" },
+  { code: "or", name: "Oregon" },
   { code: "PA", name: "Pennsylvania" },
   { code: "RI", name: "Rhode Island" },
   { code: "SC", name: "South Carolina" },
