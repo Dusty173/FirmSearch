@@ -3,13 +3,27 @@
 This website is for people looking for investment advice. All registered firms are located by relevant search terms and sent to SEC API. The response from the SEC is then parsed and relevant information is displayed in human, novice readable terms, judged by industry experts who can identify what information is most helpful for the average person.
 
 ## Website Link:
+
 - https://advisory-evaluator.onrender.com
+
+## Changes:
+
+- Improved Search Result Accuracy
+- Added User Ability to Save Firms
+- Added Review Page
+- Added Resource Page
+
+## Fixes:
+
+- Fixed an issue where no results would return when looking for a firm in Oregon.
 
 ## Database Layout:
 
-- Database is only used for storing relevant text data as well as user data. No relations are required as any searched data is generated on demand.
+- Each user has access to all site functions, logged in or otherwise.
+- ONLY ADMINISTRATORS are able to Post, Delete, or Change relevant page data.
+- All Users are capable of Saving a firm, this stores the firm on the saved firms table, so that if a user likes a certain firm and wants to come back later they can find it easier.
 
-![Database](Db.PNG)
+![Database](Updated DB.PNG)
 
 ## Features:
 
@@ -30,5 +44,4 @@ This website is for people looking for investment advice. All registered firms a
 
 ## Future additions:
 
-- More search fields
 - Prettier Styling
