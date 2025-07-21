@@ -8,6 +8,7 @@ const { BadRequestError, ExpressError } = require("../expressError");
 const { default: test } = require("node:test");
 const updateAboutSchema = require("../schemas/updateAboutSchema.json");
 const addResourceSchema = require("../schemas/addResourceSchema.json");
+const addReviewSchema = require("../schemas/addReviewSchema.json");
 
 // ----------- Homepage -----------
 
@@ -118,18 +119,20 @@ router.get("/resource/:id", async (req, res, next) => {
 // ----------- Review page -----------
 
 // Route for adding a review
-router.post(
-  "/add-reviews",
-  ensureCorrectUserOrAdmin,
-  async (req, res, next) => {
-    try {
-      const review = await Page.addReview(req.body);
-      return res.json({ review });
-    } catch (err) {
-      return next(err);
+router.post("/add-review", ensureCorrectUserOrAdmin, async (req, res, next) => {
+  try {
+    const validator = jsonschema.validate(req.body, addReviewSchema);
+    if (!validator.valid) {
+      const err = validator.errors.map((e) => e.message);
+      throw new BadRequestError(err);
     }
+
+    const review = await Page.addReview(req.body);
+    return res.status(201).json({ review });
+  } catch (err) {
+    return next(err);
   }
-);
+});
 
 // Route for getting all reviews
 router.get("/reviews", async (req, res, next) => {

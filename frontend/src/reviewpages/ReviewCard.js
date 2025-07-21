@@ -18,7 +18,7 @@ function ReviewCard({ data }) {
       <Link to={`/reviews/${id}`}>
         <div className="review-card">
           <h2>
-            {title}, {id}
+            {title}
           </h2>
           <p>{text}</p>
         </div>

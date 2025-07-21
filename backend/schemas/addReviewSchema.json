@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/userUpdate.schema.json",
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string"
+      },
+      "textdata": {
+        "type": "string"
+      },
+      "link": {
+        "type": "string"
+      },
+      "authId": {
+        "type": "integer"
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+        "title",
+        "textdata",
+        "link",
+        "authId"
+    ]
+  }

@@ -12,7 +12,7 @@ function ReviewPage() {
 
   function handleClick(e) {
     e.preventDefault();
-    navigate("/add-reviews");
+    navigate("/addreviewform");
   }
 
   useEffect(function getReviewsOnLoad() {

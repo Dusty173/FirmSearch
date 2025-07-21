@@ -134,7 +134,7 @@ class Page {
 
   static async getReview(id) {
     const result = await db.query(
-      `SELECT id, author_id, created_at, title, textdata, link FROM reviewpage WHERE id = $1`,
+      `SELECT r.id, r.author_id, r.created_at, r.title, r.textdata, r.link, u.firstname, u.lastname FROM reviewpage AS r INNER JOIN users AS u ON r.author_id = u.id WHERE r.id = $1`,
       [id]
     );
 
@@ -163,15 +163,13 @@ class Page {
   }
 
   static async removeReview(data) {
-    const { authId, reviewId } = data;
+    const { id } = data;
+    console.log("DATA AT BACKEND:", id);
+    if (!id) throw new BadRequestError("No Review ID");
 
-    if (!authId) throw new BadRequestError("No Author ID");
-    if (!reviewId) throw new BadRequestError("No Review ID");
-
-    const deleted = await db.query(
-      `DELETE FROM reviewpage WHERE id = $1 AND author_id = $2`,
-      [reviewId, authId]
-    );
+    const deleted = await db.query(`DELETE FROM reviewpage WHERE id = $1`, [
+      id,
+    ]);
 
     if (!deleted) throw new BadRequestError("Failed to delete Review");
 

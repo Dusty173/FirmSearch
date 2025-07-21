@@ -12,6 +12,7 @@ import ExpPage from "./InfoPages/ADVexp";
 import ReviewPage from "./reviewpages/ReviewHome";
 import ReviewDetails from "./reviewpages/ReviewDetails";
 import ResourcePage from "./resourcepages/ResourceHome";
+import ReviewForm from "./forms/AddReview";
 
 function Routing({ login, signup, data }) {
   const Navigate = useNavigate();
@@ -52,6 +53,7 @@ function Routing({ login, signup, data }) {
         <Route element={<PrivateRoutes />}>
           <Route path="/updabout" element={<AboutForm />} />
           <Route path="/updhome" element={<HomeForm />} />
+          <Route path="/addreviewform" element={<ReviewForm />} />
         </Route>
       </Routes>
     </>
