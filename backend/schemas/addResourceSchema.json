@@ -3,8 +3,11 @@
     "$id": "http://example.com/userUpdate.schema.json",
     "type": "object",
     "properties": {
-      "authId": {
+      "title": {
         "type": "string"
+      },
+      "authId": {
+        "type": "integer"
       },
       "textdata": {
         "type": "string"
@@ -16,6 +19,7 @@
     },
     "additionalProperties": false,
     "required": [
+        "title",
         "authId",
         "textdata",
         "link"

@@ -25,6 +25,7 @@ CREATE TABLE savedfirms(
 
 CREATE TABLE resourcepage(
     id SERIAL PRIMARY KEY,
+    title TEXT NOT NULL,
     author_id INTEGER REFERENCES users,
     created_at TIMESTAMP,
     textdata TEXT NOT NULL,

@@ -13,6 +13,8 @@ import ReviewPage from "./reviewpages/ReviewHome";
 import ReviewDetails from "./reviewpages/ReviewDetails";
 import ResourcePage from "./resourcepages/ResourceHome";
 import ReviewForm from "./forms/AddReview";
+import ResourceForm from "./forms/AddResource";
+import ResourceDetail from "./resourcepages/ResourceDetail";
 
 function Routing({ login, signup, data }) {
   const Navigate = useNavigate();
@@ -49,11 +51,13 @@ function Routing({ login, signup, data }) {
         <Route path="/reviews/:id" element={<ReviewDetails />} />
 
         <Route path="/resources" element={<ResourcePage />} />
+        <Route path="/resources/:id" element={<ResourceDetail />} />
 
         <Route element={<PrivateRoutes />}>
           <Route path="/updabout" element={<AboutForm />} />
           <Route path="/updhome" element={<HomeForm />} />
           <Route path="/addreviewform" element={<ReviewForm />} />
+          <Route path="/addresourceform" element={<ResourceForm />} />
         </Route>
       </Routes>
     </>

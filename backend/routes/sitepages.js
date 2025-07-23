@@ -107,9 +107,9 @@ router.delete(
 );
 // Route for getting a certain resource
 
-router.get("/resource/:id", async (req, res, next) => {
+router.get("/resources/:id", async (req, res, next) => {
   try {
-    const resource = await Page.selectResource(req.body);
+    const resource = await Page.selectResource(req.params.id);
     return res.json({ resource });
   } catch (err) {
     return next(err);

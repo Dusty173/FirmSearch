@@ -68,7 +68,7 @@ class Page {
 
   static async getAllResources() {
     const result = await db.query(
-      `SELECT id, author_id, created_at, textdata, link FROM resourcepage ORDER BY created_at DESC`
+      `SELECT id, title, author_id, created_at, textdata, link FROM resourcepage ORDER BY created_at DESC`
     );
 
     return result.rows;
@@ -76,28 +76,31 @@ class Page {
 
   static async selectResource(id) {
     const result = await db.query(
-      `SELECT id, author_id, created_at, textdata, link FROM resourcepage WHERE id = $1`,
+      `SELECT r.id, r.author_id, r.created_at, r.title, r.textdata, r.link, u.firstname, u.lastname FROM resourcepage AS r INNER JOIN users AS u ON r.author_id = u.id WHERE r.id = $1`,
       [id]
     );
 
     if (!result)
       throw new BadRequestError(`Unable to retrieve post with ID ${id}`);
 
-    return result;
+    return result.rows;
   }
 
   static async addResource(data) {
-    const { authId, textdata, link } = data;
+    const { title, authId, textdata, link } = data;
+
+    if (!title === "")
+      throw new BadRequestError("Cannot submit without a Title.");
 
     if (!authId) throw new BadRequestError("No Author ID found.");
 
-    if (textdata.length < 1) throw new BadRequestError("Body too short.");
+    if (textdata === "") throw new BadRequestError("Body too short.");
 
-    if (link < 1) throw new BadRequestError("Link not long enough.");
+    if (link === "") throw new BadRequestError("Link not long enough.");
 
     const insert = await db.query(
-      `INSERT INTO resourcepage (author_id, created_at, textdata, link) VALUES ($1, $2, $3, $4)`,
-      [authId, new Date(), textdata, link]
+      `INSERT INTO resourcepage (title, author_id, created_at, textdata, link) VALUES ($1, $2, $3, $4, $5)`,
+      [title, authId, new Date(), textdata, link]
     );
 
     if (!insert) throw new BadRequestError("Resource addition failed.");
@@ -106,16 +109,13 @@ class Page {
   }
 
   static async removeResource(data) {
-    const { authId, postId } = data;
+    const { id } = data;
 
-    if (!authId) throw new BadRequestError("No Author ID found.");
+    if (!id) throw new BadRequestError("No Post ID found.");
 
-    if (!postId) throw new BadRequestError("No Post ID found.");
-
-    const deleted = await db.query(
-      `DELETE FROM resourcepage WHERE id = $1 AND author_id = $2`,
-      [postId, authId]
-    );
+    const deleted = await db.query(`DELETE FROM resourcepage WHERE id = $1`, [
+      id,
+    ]);
 
     if (!deleted) throw new BadRequestError("Delete failed");
 

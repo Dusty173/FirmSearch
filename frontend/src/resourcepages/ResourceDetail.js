@@ -2,22 +2,22 @@ import React, { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import FirmSearchApi from "../Api";
 import Gather from "../common/Gather";
-import "./reviewcard.css";
+import "./resourcecard.css";
 import UserContext from "../Usercontext";
 
-function ReviewDetails() {
+function ResourceDetail() {
   const { id } = useParams();
-  const [review, setReview] = useState(null);
+  const [resource, setResource] = useState(null);
   const navigate = useNavigate();
   const { currUser } = useContext(UserContext);
 
   useEffect(
-    function getReviewData() {
-      async function getReview() {
-        const revRes = await FirmSearchApi.getReview(id);
-        setReview(revRes[0]);
+    function getResourceData() {
+      async function getResource() {
+        const resourceRes = await FirmSearchApi.getResource(id);
+        setResource(resourceRes[0]);
       }
-      getReview();
+      getResource();
     },
     [id]
   );
@@ -25,33 +25,30 @@ function ReviewDetails() {
   async function handleDelete(e) {
     e.preventDefault();
 
-    let deletedata = { id: review.id };
-
-    const deleted = await FirmSearchApi.deleteReview(deletedata);
-    navigate("/reviews");
+    let deletedata = { id: resource.id };
+    const deleted = await FirmSearchApi.deleteResource(deletedata);
+    navigate("/resources");
     return deleted;
   }
 
-  if (!review) return <Gather />;
+  if (!resource) return <Gather />;
 
-  let time = review.created_at;
+  let time = resource.created_at;
   let newTime = new Date(time);
   let formattedTime = newTime.toDateString();
-
-  // console.log("REV DETAILS", review);
 
   return (
     <>
       <div>
-        <h1>{review.title}</h1>
+        <h1>{resource.title}</h1>
         <h3>
-          Written by: {review.firstname} {review.lastname}
+          Written by: {resource.firstname} {resource.lastname}
         </h3>
         <h4>Posted: {formattedTime}</h4>
         <h4>
-          Link: <a href={review.link}>{review.link}</a>
+          Link: <a href={resource.link}>{resource.link}</a>
         </h4>
-        <p className="textdata">{review.textdata}</p>
+        <p className="textdata">{resource.textdata}</p>
       </div>
       {currUser.is_admin ? (
         <button className="remove-btn" onClick={handleDelete}>
@@ -64,4 +61,4 @@ function ReviewDetails() {
   );
 }
 
-export default ReviewDetails;
+export default ResourceDetail;

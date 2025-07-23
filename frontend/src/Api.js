@@ -122,8 +122,40 @@ class FirmSearchApi {
 
   // DELETE for removing a review
   static async deleteReview(data) {
-    console.log("Data at API:", data)
+    // console.log("Data at API:", data);
     const res = await this.request(`/remove-review`, data, "delete");
+    return res.deleted;
+  }
+
+  // Resource Page Related Requests ----------------------------
+
+  // GET for resources on homepage
+  static async getResources() {
+    let res = await this.request("/resources");
+    return res.resources;
+  }
+
+  // GET a certain resource
+  static async getResource(id) {
+    let res = await this.request(`/resources/${id}`);
+    return res.resource;
+  }
+
+  // POST for adding a resource
+  static async addResource(data) {
+    const { authId, title, textdata, link } = data;
+
+    if (!authId) throw Error("Invalid Author ID, Submission Aborted.");
+    if (title === "") throw Error("Title cannot be empty!");
+    if (textdata === "") throw Error("Summary cannot be empty!");
+    if (link === "") throw Error("Link cannot be empty");
+
+    let res = await this.request("/add-resource", data, "post");
+    return res.resource;
+  }
+  // DELETE for removing a resource
+  static async deleteResource(data) {
+    const res = await this.request(`/remove-resource`, data, "delete");
     return res.deleted;
   }
 }

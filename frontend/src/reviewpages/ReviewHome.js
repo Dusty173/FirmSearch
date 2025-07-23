@@ -27,7 +27,7 @@ function ReviewPage() {
 
   const { currUser } = useContext(UserContext);
 
-  //   if (!revState) return <LoadIcon />;
+  if (!revState) return <LoadIcon />;
 
   return (
     <>
