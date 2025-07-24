@@ -4,13 +4,14 @@
     "type": "object",
     "properties": {
       "firmCrd": {
-        "type": "string"
+        "type": "integer"
       },
+      "username": {"type": "string"},
       "firmName": {
         "type": "string"
       },
       "userId": {
-        "type": "string"
+        "type": "integer"
         
       }
     },

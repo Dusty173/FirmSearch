@@ -3,12 +3,14 @@ const jsonschema = require("jsonschema");
 const express = require("express");
 const router = new express.Router();
 const Page = require("../models/pageinfo");
+const User = require("../models/user");
 const { ensureAdmin, ensureCorrectUserOrAdmin } = require("../middleware/auth");
 const { BadRequestError, ExpressError } = require("../expressError");
 const { default: test } = require("node:test");
 const updateAboutSchema = require("../schemas/updateAboutSchema.json");
 const addResourceSchema = require("../schemas/addResourceSchema.json");
 const addReviewSchema = require("../schemas/addReviewSchema.json");
+const addFirmSchema = require("../schemas/addFirmSchema.json");
 
 // ----------- Homepage -----------
 
@@ -162,6 +164,57 @@ router.delete(
     try {
       const deleteReview = await Page.removeReview(req.body);
       return res.json({ deleteReview });
+    } catch (err) {
+      return next(err);
+    }
+  }
+);
+
+// User route for saving a firm
+router.post(
+  "/:username/save-firm",
+  ensureCorrectUserOrAdmin,
+  async (req, res, next) => {
+    try {
+      const validator = jsonschema.validate(req.body, addFirmSchema);
+      if (!validator.valid) {
+        const err = validator.errors.map((e) => e.message);
+        throw new BadRequestError(err);
+      }
+
+      const saved = await User.saveFirm(req.body);
+      return res.status(201).json({ saved });
+    } catch (err) {
+      return next(err);
+    }
+  }
+);
+
+// User route for getting a list of firms they've saved
+
+router.get(
+  "/:username/saved-firms",
+  ensureCorrectUserOrAdmin,
+  async (req, res, next) => {
+    try {
+      // console.log("Backend Route data:", req.params.username);
+      const saved = await User.getFirmsByUser(req.params.username);
+      return res.json({ saved });
+    } catch (err) {
+      return next(err);
+    }
+  }
+);
+
+// User route for deleting a firm they've saved
+
+router.delete(
+  "/:username/delete-firm",
+  ensureCorrectUserOrAdmin,
+  async (req, res, next) => {
+    try {
+      await User.removeFirm(req.body);
+      return res.json({ deleted: req.body });
     } catch (err) {
       return next(err);
     }

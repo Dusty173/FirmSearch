@@ -15,6 +15,14 @@ function Navigation({ logout }) {
           </NavLink>
         </li>
         <li className="nav-li">
+          <NavLink
+            className="nav-link"
+            to={`/${currUser.username}/saved-firms`}
+          >
+            My Firms
+          </NavLink>
+        </li>
+        <li className="nav-li">
           <Link className="nav-link-logout" to="/" onClick={logout}>
             Logout
           </Link>

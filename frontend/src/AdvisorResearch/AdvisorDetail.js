@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import SECApi from "../SECapi";
+import FirmSearchApi from "../Api";
 import Gather from "../common/Gather";
 import Services from "./Services";
 import Compensation from "./Compensation";
@@ -16,10 +17,14 @@ import Investing from "./InvestingPract";
 import DirectOwners from "./SchedA";
 import IndirectOwners from "./SchedB";
 import OtherBusNms from "./OthBusNms";
+import UserContext from "../Usercontext";
 import "./ADVdetail.css";
 
 function AdvisorDetail() {
+  const { currUser } = useContext(UserContext);
   const [firm, setFirm] = useState(null);
+  const [savedFirms, setSaved] = useState(null);
+  const [toggle, setToggle] = useState(true);
   const { CrdNb } = useParams();
 
   // const [brochure, setBroch] = useState(null);
@@ -30,8 +35,10 @@ function AdvisorDetail() {
       async function getFirm() {
         const firmRes = await SECApi.getByCrd(CrdNb);
         const advisor = firmRes.filings[0];
+        const isSaved = await FirmSearchApi.getUserFirms(currUser);
         // console.log(firmRes);
         setFirm(advisor);
+        setSaved(isSaved);
       }
 
       getFirm();
@@ -39,7 +46,7 @@ function AdvisorDetail() {
     [CrdNb]
   );
   // console.log("FIRM STATE", firm);
-
+  // console.log("SAVED", savedFirms);
   if (!firm) return <Gather />;
 
   // Setting variables to shorten up data in returned HTML
@@ -50,6 +57,7 @@ function AdvisorDetail() {
   const altService = firm.FormInfo.Part1A.Item5H;
   const comp_Agrees = firm.FormInfo.Part1A.Item5E;
   const crdNb = firm.Info.FirmCrdNb;
+  const BusNm = firm.Info.BusNm;
   const totalAssets = firm.FormInfo.Part1A.Item5F.Q5F2C;
   const staff = firm.FormInfo.Part1A.Item5B;
   const totalStaff = firm.FormInfo.Part1A.Item5A.TtlEmp;
@@ -63,8 +71,44 @@ function AdvisorDetail() {
       return "SEC Registered Advisory Firm";
   }
 
+  async function handleSave(crdNb, BusNm, user, id) {
+    setToggle(false);
+
+    const saveData = {
+      username: user,
+      userId: id,
+      firmCrd: crdNb,
+      firmName: BusNm,
+    };
+
+    let saveMe = await FirmSearchApi.saveFirm(saveData);
+    return saveMe;
+  }
+
+  function checkFirms(savedFirms, crdNb) {
+    const prop = "firmcrd";
+    const exists = savedFirms.some((s) => s[prop] === crdNb);
+    return exists;
+  }
+
   return (
     <>
+      <div className="save">
+        {checkFirms(savedFirms, crdNb) === false ? (
+          <div>
+            <button
+              onClick={() =>
+                handleSave(crdNb, BusNm, currUser.username, currUser.id)
+              }
+              className={toggle ? "save-btn" : "hidden"}
+            >
+              Save This Firm
+            </button>
+          </div>
+        ) : (
+          <span></span>
+        )}
+      </div>
       <div className="details">
         <h1 className="BusNm">{firm.Info.BusNm}</h1>
         {location.State ? (

@@ -9,6 +9,7 @@ const {
 } = require("../expressError");
 
 const { BCRYPT_WORK_FACTOR } = require("../config.js");
+const { Console } = require("console");
 
 class User {
   // auth/registering user models ------------------------
@@ -127,16 +128,24 @@ class User {
 
   // models for saved firms ----------------------------
 
-  static async getFirmsByUser(userId) {
-    let res = await db.query(
-      `SELECT firmname, firmcrd FROM savedfirms WHERE user_id = $1`,
-      [userId]
-    );
+  static async getFirmsByUser(username) {
+    let user = await db.query(`SELECT id FROM users WHERE username = $1`, [
+      username,
+    ]);
 
-    let saved = res.rows[0];
-    if (!saved) throw new NotFoundError("You have no saved firms!");
+    // console.log("USER ID RETURN", user.rows[0].id);
 
-    return saved;
+    if (user.rows[0].id) {
+      let userId = user.rows[0].id;
+      let res = await db.query(
+        `SELECT id, firmname, firmcrd FROM savedfirms WHERE user_id = $1`,
+        [userId]
+      );
+      let saved = res.rows;
+      // console.log("-------SAVED FIRMS:", saved);
+      return saved;
+    }
+    return { saved: "No saved Firms" };
   }
 
   static async saveFirm(data) {
@@ -150,11 +159,11 @@ class User {
   }
 
   static async removeFirm(data) {
-    const { firmCrd, userId } = data;
+    const { id, userId } = data;
 
     let res = await db.query(
-      `DELETE FROM savedfirms WHERE user_id = $1 AND firmcrd = $2`,
-      [userId, firmCrd]
+      `DELETE FROM savedfirms WHERE user_id = $1 AND id = $2`,
+      [userId, id]
     );
     return res.deleted;
   }

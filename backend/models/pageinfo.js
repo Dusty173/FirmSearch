@@ -164,7 +164,6 @@ class Page {
 
   static async removeReview(data) {
     const { id } = data;
-    console.log("DATA AT BACKEND:", id);
     if (!id) throw new BadRequestError("No Review ID");
 
     const deleted = await db.query(`DELETE FROM reviewpage WHERE id = $1`, [

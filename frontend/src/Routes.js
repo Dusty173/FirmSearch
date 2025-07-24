@@ -15,6 +15,8 @@ import ResourcePage from "./resourcepages/ResourceHome";
 import ReviewForm from "./forms/AddReview";
 import ResourceForm from "./forms/AddResource";
 import ResourceDetail from "./resourcepages/ResourceDetail";
+import AdminHome from "./Adminpages/Adminhome";
+import SavedFirms from "./savedFirms/savedHome";
 
 function Routing({ login, signup, data }) {
   const Navigate = useNavigate();
@@ -58,6 +60,8 @@ function Routing({ login, signup, data }) {
           <Route path="/updhome" element={<HomeForm />} />
           <Route path="/addreviewform" element={<ReviewForm />} />
           <Route path="/addresourceform" element={<ResourceForm />} />
+          <Route path="/a-home" element={<AdminHome />} />
+          <Route path="/:username/saved-firms" element={<SavedFirms />} />
         </Route>
       </Routes>
     </>

@@ -83,6 +83,7 @@
 
   .refresh-btn{
     background-color: rgb(255, 230, 230);
+    padding: 1em;
     border: none;
     border-radius: 0.5em;
     color: rgb(255, 0, 0);

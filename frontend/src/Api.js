@@ -65,6 +65,35 @@ class FirmSearchApi {
     return res.user;
   }
 
+  // GET a list of users ADMIN ONLY
+  static async getUserList() {
+    let res = await this.request("/users-list");
+    return res.users;
+  }
+
+  // Firm saving requests -----------------------------------
+
+  // GET for retrieving a list of users saved firms
+  static async getUserFirms(data) {
+    const { username } = data;
+    let res = await this.request(`${username}/saved-firms`);
+    return res.saved;
+  }
+
+  // POST for saving firms
+  static async saveFirm(data) {
+    const { username } = data;
+    let res = await this.request(`${username}/save-firm`, data, "post");
+    return res.saved;
+  }
+
+  // DELETE for removing a firm from the saved list for a user.
+  static async deleteFirm(data) {
+    const user = data.username;
+    let res = await this.request(`${user}/delete-firm`, data, "delete");
+    return res;
+  }
+
   // Home page related requests -----------------------------
 
   // GET for mission statement
