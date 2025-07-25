@@ -23,7 +23,7 @@ This website is for people looking for investment advice. All registered firms a
 - ONLY ADMINISTRATORS are able to Post, Delete, or Change relevant page data.
 - All Users are capable of Saving a firm, this stores the firm on the saved firms table, so that if a user likes a certain firm and wants to come back later they can find it easier.
 
-![Database](Updated DB.PNG)
+![Database](Db.PNG)
 
 ## Features:
 
