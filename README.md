@@ -9,6 +9,8 @@ This website is for people looking for investment advice. All registered firms a
 ## Changes:
 
 - Improved Search Result Accuracy
+- Changed Search Bar orientation for large screens
+- Consolidated Search Bar into single form, no more toggling for Advanced Searches
 - Added User Ability to Save Firms
 - Added Review Page
 - Added Resource Page
@@ -44,5 +46,6 @@ This website is for people looking for investment advice. All registered firms a
 
 ## Future additions:
 
-- Prettier Styling
-- Changes to ADV Form return coming.
+- Prettier Styling - Currently using very basic styles to ensure good functionality.
+- Changes to ADV Forms coming.
+- Name Change

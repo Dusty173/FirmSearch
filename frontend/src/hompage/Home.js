@@ -42,6 +42,9 @@ function Homepage() {
           By reviewing the most pertinent portions of their respective Form ADV.
           Search below to get started!
         </p>
+        <div className="search-area">
+          <ResearchPage />
+        </div>
         <p className="informative-notes">
           We pull our data directly from SEC filings, which all registered firms
           are required to update
@@ -52,9 +55,6 @@ function Homepage() {
           </a>{" "}
           Thank you!
         </p>
-        <div className="search-area">
-          <ResearchPage />
-        </div>
 
         {currUser ? (
           <>
