@@ -131,7 +131,7 @@ class SECApi {
 
   static async getByCrd(crdNum) {
     const data = {
-      query: `FormInfo.Part1A.Item7B.Q7B:N AND FormInfo.Part1A.Item5F.Q5F2F:>0 AND Rgstn.FirmType:Registered AND Info.FirmCrdNb:${crdNum}`,
+      query: `Info.FirmCrdNb:${crdNum}`,
       from: "0",
       size: "10",
     };
