@@ -52,10 +52,13 @@ function SepAccounts({ CrdNb, BusActs, otherInfo }) {
 
           <div>
             <h4>Standing Letter of Instruction</h4>
-            {Item9A.Q91A1 ? (
+            {Item9A.Q91A1 || Item9A.Q9A1B === "Y" ? (
               <ul>
                 <li className={handleOutput(Item9A.Q91A1)}>
                   This Firm has Custody of Cash or Bank Accounts
+                </li>
+                <li className={handleOutput(Item9A.Q9A1B)}>
+                  This Firm has Securities
                 </li>
               </ul>
             ) : (
