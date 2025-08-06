@@ -12,7 +12,7 @@ function FirmInfo({ firmInfo }) {
   const TotalNonDesc = Items.Item5F.Q5F2B;
   const totalForeign = Items.Item5F.Q5F3;
 
-  console.log("FIRM INFO:", Items);
+  // console.log("FIRM INFO:", Items);
 
   // Get number of Individuals and HNW Individuals
   const totalInd = Items.Item5D.Q5DA1;

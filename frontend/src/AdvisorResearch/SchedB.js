@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Custodians.css";
 import axios from "axios";
+import handleOutput from "../common/handleOutput";
 
-function IndirectOwners({ CrdNb }) {
+function IndirectOwners({ CrdNb, Item10A }) {
   const [owners, setOwn] = useState([]);
   const API_KEY = process.env.REACT_APP_API_KEY;
   const crd = CrdNb;
@@ -50,6 +51,15 @@ function IndirectOwners({ CrdNb }) {
               <li>Entity Owned: {o.entityOwned}</li>
             </ul>
           ))}
+          <div>
+            <ul>
+              <li className={handleOutput(Item10A)}>
+                Person(s) not named in ADV Parts: Item1A, or Schedules A,B, or
+                C,&nbsp;
+                <i>Directly or Indirectly</i> controls Management or Policies.
+              </li>
+            </ul>
+          </div>
         </div>
       ) : (
         <div>

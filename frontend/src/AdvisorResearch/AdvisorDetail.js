@@ -45,7 +45,7 @@ function AdvisorDetail() {
     },
     [CrdNb]
   );
-  console.log("FIRM STATE", firm);
+  // console.log("FIRM STATE", firm);
   // console.log("SAVED", savedFirms);
   if (!firm) return <Gather />;
 
@@ -63,6 +63,7 @@ function AdvisorDetail() {
   const totalStaff = firm.FormInfo.Part1A.Item5A.TtlEmp;
   const busActs = firm.FormInfo.Part1A.Item6A;
   const passInfo = firm.FormInfo.Part1A;
+  const Item10 = firm.FormInfo.Part1A.Item10A;
 
   // Function for returning Investment firm registration type
   function firmReg({ firm }) {
@@ -164,7 +165,7 @@ function AdvisorDetail() {
           <DirectOwners CrdNb={crdNb} />
         </div>
         <div className="indirect-owners-container">
-          <IndirectOwners CrdNb={crdNb} />
+          <IndirectOwners CrdNb={crdNb} Item10A={Item10} />
         </div>
         <div className="managed-assets">
           <h4 className="comp-title">Compensation Agreements:</h4>
