@@ -5,6 +5,14 @@ import handleNum from "../common/handleNum";
 function FirmInfo({ firmInfo }) {
   // Set Items variable to save/access Info without issues
   let Items = firmInfo;
+  const BTI = Items.Item5D.Q5DC1;
+  const InvComp = Items.Item5D.Q5DD1;
+  const Pooled = Items.Item5D.Q5DF1;
+  const Insure = Items.Item5D.Q5DL1;
+  const TotalNonDesc = Items.Item5F.Q5F2B;
+  const totalForeign = Items.Item5F.Q5F3;
+
+  console.log("FIRM INFO:", Items);
 
   // Get number of Individuals and HNW Individuals
   const totalInd = Items.Item5D.Q5DA1;
@@ -74,6 +82,26 @@ function FirmInfo({ firmInfo }) {
           </li>
           <li className={handleNum(charOrgs)}>
             Charitable Organizations: <b>{charOrgs}</b>
+          </li>
+          <li className={handleNum(BTI)}>
+            Banking or Thrift Institutions: <b>{BTI}</b>
+          </li>
+          <li className={handleNum(InvComp)}>
+            Investment Companies: <b>{InvComp}</b>
+          </li>
+          <li className={handleNum(Pooled)}>
+            Pooled Investment Vehicle: <b>{Pooled}</b>
+          </li>
+          <li className={handleNum(Insure)}>
+            Insurance Companies: <b>{Insure}</b>
+          </li>
+          <li className={handleNum(TotalNonDesc)}>
+            Total Amount of Non-Discretionary Assets:{" "}
+            <b>${addCommas(TotalNonDesc)}</b>
+          </li>
+          <li className={handleNum(totalForeign)}>
+            Total Amount of Assets Under Management for Non-U.S. Persons:{" "}
+            <b>${addCommas(totalForeign)}</b>
           </li>
         </ul>
       </div>

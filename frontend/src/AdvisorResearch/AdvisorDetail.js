@@ -45,7 +45,7 @@ function AdvisorDetail() {
     },
     [CrdNb]
   );
-  // console.log("FIRM STATE", firm);
+  console.log("FIRM STATE", firm);
   // console.log("SAVED", savedFirms);
   if (!firm) return <Gather />;
 
