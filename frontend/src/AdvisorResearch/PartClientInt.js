@@ -142,7 +142,7 @@ function Participation({ partTransactions, miscInfo }) {
         <p>None reported</p>
       )}
 
-      {misc.b.other !== "" ? (
+      {misc.b.other ? (
         <div>
           <h4>Miscellaneous</h4>
           <p>{misc.b.other}</p>
