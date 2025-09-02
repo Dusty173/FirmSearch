@@ -59,7 +59,6 @@ function AdvisorDetail() {
   const crdNb = firm.Info.FirmCrdNb;
   const BusNm = firm.Info.BusNm;
   const totalAssets = firm.FormInfo.Part1A.Item5F.Q5F2C;
-  const staff = firm.FormInfo.Part1A.Item5B;
   const totalStaff = firm.FormInfo.Part1A.Item5A.TtlEmp;
   const busActs = firm.FormInfo.Part1A.Item6A;
   const passInfo = firm.FormInfo.Part1A;
@@ -156,7 +155,7 @@ function AdvisorDetail() {
           <OtherBusNms crdNb={crdNb} />
         </div>
         <div>
-          <Staff staff={staff} totalStaff={totalStaff} />
+          <Staff staffInfo={passInfo} totalStaff={totalStaff} />
         </div>
         <div className="firm-info-div">
           <FirmInfo firmInfo={passInfo} />

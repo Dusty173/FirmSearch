@@ -5,7 +5,7 @@
     border-radius: 1rem;
     box-shadow: 0 20px 20px rgba(0,0,0, 0.7);
     width: 20em;
-    height: 10em;
+    height: 25em;
 }
 
 .adv-card:hover{
@@ -40,5 +40,9 @@
 }
 
 .nostrt{
+    margin: auto;
+}
+
+.services-card .shown{
     margin: auto;
 }

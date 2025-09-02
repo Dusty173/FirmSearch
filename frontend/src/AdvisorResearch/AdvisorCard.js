@@ -4,9 +4,10 @@ import Alert from "../common/Alert";
 import FirmSearchApi from "../Api";
 import AUMCard from "./AUMcard";
 import "./ADVcard.css";
+import ServicesCard from "./ServiceCard";
 
 function AdvisorCard(advisor) {
-  // console.log("ADV-CARD DATA:", advisor);
+  console.log("ADV-CARD DATA:", advisor);
 
   // Set variables for easy access:
 
@@ -16,7 +17,8 @@ function AdvisorCard(advisor) {
   const City = ADV.advisor.MainAddr.City;
   const State = ADV.advisor.MainAddr.State;
   const totalAssets = ADV.advisor.FormInfo.Part1A.Item5F.Q5F2C;
-
+  const service = ADV.advisor.FormInfo.Part1A.Item5G;
+  const altService = ADV.advisor.FormInfo.Part1A.Item5H;
   // Address variables if only has PO box:
   const PoBox = ADV.advisor.MailingAddr.Strt1;
   const PoState = ADV.advisor.MailingAddr.State;
@@ -55,6 +57,9 @@ function AdvisorCard(advisor) {
                 <br />
                 <small className="adv-info">
                   <AUMCard totalAssets={totalAssets} />
+                </small>
+                <small className="services-card">
+                  <ServicesCard service={service} />
                 </small>
               </p>
             ) : (

@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./Services.css";
 import handleNumOut from "../common/handleNumOut";
 import "./Staff.css";
+import handleOutput from "../common/handleOutput";
 
-function Staff({ staff, totalStaff }) {
-  // console.log("STAFF:", staff, totalStaff)
+function Staff({ staffInfo, totalStaff }) {
+  // console.log("STAFF:", staffInfo, "Total staff:", totalStaff);
+
+  let staff = staffInfo.Item5B;
+  let Item2 = staffInfo.Item2A;
 
   return (
     <>
@@ -45,6 +49,19 @@ function Staff({ staff, totalStaff }) {
             Amount of People/Firms that solicit clients on this Firms behalf:
             <br />
             {staff.Q5B6}
+          </li>
+          <li className={handleOutput(Item2.Q2A5)}>
+            Firm is an Investment Advisor to an Investment company (ie Mutual
+            Fund)
+          </li>
+          <li className={handleOutput(Item2.Q2A8)}>
+            Firm is a Related Adviser under rule 203A-2(b) that controls, is
+            controlled by, or is under common control with, an Investment
+            Adviser that is registered with the SEC, and the Principal Office
+            and place of business is the same as the Registered Adviser.
+          </li>
+          <li className={handleOutput(Item2.Q2A11)}>
+            Firm is an Internet Advisor.
           </li>
           <small>(Some Staff may perform multiple roles)</small>
         </ul>
