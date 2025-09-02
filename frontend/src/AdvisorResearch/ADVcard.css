@@ -1,5 +1,5 @@
 .adv-card{
-    background-color: rgb(202, 204, 170);
+    background-color: rgb(249, 250, 227);
     border: 1px solid rgb(0, 0, 0);
     margin: auto;
     border-radius: 1rem;
@@ -14,7 +14,7 @@
 }
 
 .adv-card-link {
-    color: white;
+    color: rgb(0, 0, 0);
     text-decoration: none;
     display: inline-block;
     justify-content: center;
@@ -23,13 +23,13 @@
 .adv-name{
     margin: auto;
     max-width: 80%;
-    color: #000;
+    color: #0077ff;
 }
 
 .adv-info{
     margin: auto;
     margin-top: .3em;
-    color: brown;
+    color: rgb(58, 58, 58);
     max-width: 90%;
     max-height: 95%;
 }
@@ -45,4 +45,5 @@
 
 .services-card .shown{
     margin: auto;
+    color: green;
 }

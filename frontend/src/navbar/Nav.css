@@ -1,8 +1,8 @@
 .Navbar{
   background-image: linear-gradient(
     to bottom left,
-    rgb(85, 64, 33),
-    rgb(0, 0, 0))
+    rgb(255, 255, 255),
+    rgb(138, 138, 138))
     
 }
 
@@ -23,7 +23,7 @@
   border-radius: 5px;
   height: 2em;
   width: 20vw;
-  background-color: rgb(94, 94, 94);
+  background-color: rgb(45, 118, 255);
   color: rgb(255, 255, 255);
   text-align: center;
   text-decoration: none;
@@ -31,7 +31,7 @@
 }
 
 .nav-link:hover {
-  background-color: rgb(85, 64, 33);
+  background-color: rgb(0, 82, 175);
   transform: scale(1.1);
   transition: all 200ms ease;
  
@@ -46,7 +46,7 @@
   border-radius: 5px;
   height: 2em;
   width: 20vw;
-  background-color: rgb(94, 94, 94);
+  background-color: rgb(45, 118, 255);
   color: rgb(255, 255, 255);
   text-align: center;
   text-decoration: none;
@@ -63,5 +63,5 @@
 .title {
   border: 1px solid rgb(255, 255, 255);
   border-style:none;
-  color: rgb(124, 124, 124);
-}
+  color: rgb(68, 68, 68);
+} 

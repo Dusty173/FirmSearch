@@ -1,7 +1,7 @@
 .Home {
   width: 100%;
   height: 100%;
-  background-color: rgb(85, 64, 33);
+  background-color: rgb(255, 255, 255);
 }
 
 h1 {
@@ -22,13 +22,13 @@ h3 {
   margin: auto;
   padding-top: 2em;
   padding-bottom: 2em;
-  color: antiquewhite;
+  color: rgb(0, 0, 0);
   width: 80%;
   text-align: center;
 }
 
 .msg {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   text-align: center;
   padding: 2px;
   font-style: italic;
@@ -43,7 +43,7 @@ h3 {
   padding: 0.5rem;
   padding-bottom: 1rem;
   width: 40vw;
-  color: antiquewhite
+  color: rgb(0, 0, 0)
 }
 
 .admin-msg{
@@ -52,9 +52,9 @@ h3 {
   text-align: center;
 }
 
-.edit-btn{
+button .edit-btn{
   margin-left: 40vw;
- 
+  background-color: antiquewhite;
   border-radius: 5px;
   border-style: none;
   padding: 2px;

@@ -15,12 +15,14 @@ function ReviewCard({ data }) {
 
   return (
     <>
-      <Link to={`/reviews/${id}`}>
-        <div className="review-card">
-          <h2>{title}</h2>
-          <p>{text}</p>
-        </div>
-      </Link>
+      <div className="review-card-container">
+        <Link to={`/reviews/${id}`}>
+          <div className="review-card">
+            <h2>{title}</h2>
+            <p>{text}</p>
+          </div>
+        </Link>
+      </div>
     </>
   );
 }

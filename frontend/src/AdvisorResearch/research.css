@@ -26,7 +26,7 @@ label{
 
 .search-button {
     background-color: #007bff;
-    color: white;
+    color: rgb(0, 0, 0);
     margin: .2em;
     padding: .3em;
     border: none;
@@ -55,7 +55,7 @@ label{
     }
     .search-input{
         background-color: white;
-        color: grey;
+        color: rgb(0, 0, 0);
         width: 16em;
         max-width: 16em;
         padding: 0.5em;

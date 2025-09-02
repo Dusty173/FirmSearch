@@ -75,7 +75,7 @@ function ResearchPage() {
       crd: formData.crd,
     };
 
-    console.log(inData);
+    // console.log(inData);
 
     // Search by CRD when provided, ignores all other fields.
     if (inData.crd.length > 1) {

@@ -11,12 +11,14 @@ function ResourceCard({ data }) {
 
   return (
     <>
-      <Link to={`/resources/${id}`}>
-        <div className="resource-card">
-          <h2>{title}</h2>
-          <p>{text}</p>
-        </div>
-      </Link>
+      <div className="resource-card">
+        <Link to={`/resources/${id}`}>
+          <div className="resource-data">
+            <h2>{title}</h2>
+            <p>{text}</p>
+          </div>
+        </Link>
+      </div>
     </>
   );
 }

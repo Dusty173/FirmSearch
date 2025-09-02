@@ -4,22 +4,22 @@
 
 .about-us-title{
     font-size: 4em;
-    color: antiquewhite;
+    color: rgb(0, 0, 0);
     border: none;
 }
 
 .contact-number{
-    color: antiquewhite;
+    color: rgb(0, 0, 0);
 }
 
 .contact-email{
-    color: antiquewhite;
+    color: rgb(0, 0, 0);
 }
 
 .edit-btn{
     margin-top: 1em;
     margin-bottom: 1em;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(247, 210, 175);
     border: none;
     border-radius: 0.5em;
     color: rgb(0, 0, 0);

@@ -15,19 +15,6 @@ function Navigation({ logout }) {
           </NavLink>
         </li>
         <li className="nav-li">
-          <NavLink
-            className="nav-link"
-            to={`/${currUser.username}/saved-firms`}
-          >
-            My Firms
-          </NavLink>
-        </li>
-        <li className="nav-li">
-          <Link className="nav-link-logout" to="/" onClick={logout}>
-            Logout
-          </Link>
-        </li>
-        <li className="nav-li">
           <NavLink className="nav-link" to="/explain-adv">
             ADV Info
           </NavLink>
@@ -41,6 +28,19 @@ function Navigation({ logout }) {
           <NavLink className="nav-link" to="/resources">
             Resources
           </NavLink>
+        </li>{" "}
+        <li className="nav-li">
+          <NavLink
+            className="nav-link"
+            to={`/${currUser.username}/saved-firms`}
+          >
+            My Firms
+          </NavLink>
+        </li>
+        <li className="nav-li">
+          <Link className="nav-link-logout" to="/" onClick={logout}>
+            Logout
+          </Link>
         </li>
       </ul>
     );
@@ -49,16 +49,6 @@ function Navigation({ logout }) {
   function loggedOutNav() {
     return (
       <ul className="navbar-list">
-        <li className="nav-li">
-          <NavLink className="nav-link" to="/login">
-            Login
-          </NavLink>
-        </li>
-        <li className="nav-li">
-          <NavLink className="nav-link" to="/signup">
-            Sign Up
-          </NavLink>
-        </li>
         <li className="nav-li">
           <NavLink className="nav-link" to="/aboutus">
             About
@@ -77,6 +67,16 @@ function Navigation({ logout }) {
         <li className="nav-li">
           <NavLink className="nav-link" to="/resources">
             Resources
+          </NavLink>
+        </li>
+        <li className="nav-li">
+          <NavLink className="nav-link" to="/login">
+            Login
+          </NavLink>
+        </li>
+        <li className="nav-li">
+          <NavLink className="nav-link" to="/signup">
+            Sign Up
           </NavLink>
         </li>
       </ul>

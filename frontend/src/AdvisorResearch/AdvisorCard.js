@@ -7,7 +7,7 @@ import "./ADVcard.css";
 import ServicesCard from "./ServiceCard";
 
 function AdvisorCard(advisor) {
-  console.log("ADV-CARD DATA:", advisor);
+  // console.log("ADV-CARD DATA:", advisor);
 
   // Set variables for easy access:
 

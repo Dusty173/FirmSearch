@@ -5,7 +5,21 @@ function ExpPage() {
   return (
     <>
       <div className="ADV-expo-container">
-        <h1 className="ADVexpo-title">Understanding A Form ADV</h1>
+        <h1>Informative Notes:</h1>
+        <div className="ADVexpo">
+          <p>
+            According to the Envestnet | MoneyGuide 2024 State of Financial
+            Planning & Fees Study: The average fixed percentage fee for a
+            financial advisor is 1.05% on total Assets Under Management.
+          </p>
+          <ul>
+            <li>The average flat fee is $2,554</li>
+            <li>The average hourly rate is $268</li>
+            <li>The average annual/retainer fee is $4,484</li>
+            <li>The average subscription fee is $215/month</li>
+          </ul>
+        </div>
+
         <div className="ADVexpo">
           <div className="AER">
             <h3>Advisory Evaluator Report:</h3>
@@ -42,53 +56,98 @@ function ExpPage() {
               ></img>
             </div>
           </div>
-          <div className="CA">
-            <h3>Compensation Agreement:</h3>
-            <p>
-              One of the most important aspects of an advisor is having a clear
-              understanding of how they charge for their services.
-            </p>
-            <p>Common practice is to bill their fees based on:</p>
-            <ul className="example-ul">
-              <li className="example-li">
-                - Takes percentage of assets under management (ie $500k at 1%
-                fee is $5,000 annually)
+          <div className="AER">
+            <h3>
+              Everything that follows on the page is generated and run through
+              logic to make it easier to understand, as well as only displaying
+              the relevant information for said Firm
+            </h3>
+            <ul className="list-ul">
+              <li className="list-li">
+                <b>- Sites:</b>&nbsp; Websites Listed for this firm
               </li>
-              <li className="example-li">- Charges Hourly</li>
-              <li className="example-li">
-                - Fixed Fees (ie “project-based financial planning,” no
-                recurring charges)
+              <li className="list-li">
+                <b>- Other Business Names:</b>&nbsp; Displays any other Business
+                names and Jurisdictions for this firm
+              </li>
+              <li className="list-li">
+                <b>- Staff Brakedown:</b>&nbsp; A breakdown of the Total number
+                of staff and how many staff are performing any relevant roles,
+                keeping in mind some staff may perform multiple roles.
+              </li>
+              <li className="list-li">
+                <b>- Client Type:</b>&nbsp; Shows how many of each type of
+                client (Individual vs High Net Worth Individual) that this firm
+                Manages Assets for. As well as other relevant Assets Under
+                Management.
+              </li>
+              <li className="list-li">
+                <b>- Direct Owners:</b>&nbsp; People or entities that directly
+                own this firm, as well as their type of ownership.
+              </li>
+              <li className="list-li">
+                <b>- Indirect Owners:</b>&nbsp; This is a list of indirect
+                owners and the Relevant Entity they own.
+              </li>
+              <li className="list-li">
+                <b>- Compensation Agreements:</b>&nbsp; The agreements this Firm
+                allows between the Client and this Firm to receive payment in
+                return for its services
+              </li>
+              <li className="list-li">
+                <b>- Advisory Services Offered:</b>&nbsp; Lists all the services
+                that this Firm provides, including any other non-standard
+                services that the firm provides.
+              </li>
+              <li className="list-li">
+                <b>- Investing Practices:</b>&nbsp; Lists relevant investment
+                information that this Firm uses to conduct business, including
+                additional information about their advisory business.{" "}
+              </li>
+              <li className="list-li">
+                <b>- Marketing Activities:</b>&nbsp; Lists the type of marketing
+                this Firm practices or pays for.
+              </li>
+              <li className="list-li">
+                <b>- Financial Industry Affiliations and/or Related Persons:</b>
+                &nbsp; Lists the type of Affiliations this firm has as well as
+                any Related people to any person/ this firm.
+              </li>
+              <li className="list-li">
+                <b>- FP Services Review</b>&nbsp;
+                <p>
+                  Judged by Industry Experts this shows any related information
+                  that you may want to consider when doing business with this
+                  firm, sub-categories include:
+                  <i>Custodians for Separately Managed Accounts</i>,&nbsp;
+                  <i>Standing Letter of Instruction</i>,&nbsp;
+                  <i>Other Business Activities</i>
+                </p>
+              </li>
+              <li className="list-li">
+                <b>- Things to Know:</b>&nbsp;Items under things to know are for
+                your consideration as a potential client, this information is
+                more for transparency so you can see more about how a Firm
+                operates.
+              </li>
+              <li className="list-li">
+                <b>- Disclosures:</b>
+                <p>
+                  &nbsp;Go on Green! This part of the form is very important.
+                  This is a Firms disclosure section and shows disciplinary
+                  actions brought against this firm or any related persons to
+                  this firm.&nbsp;
+                  <i>
+                    We filter out any disciplined firms,{" "}
+                    <b>UNLESS you search for a Firm by their CRD Number.</b>
+                  </i>
+                </p>
+              </li>
+              <li className="list-li">
+                <b>- Brochures:</b>&nbsp;Lists all the Brochures related to this
+                firm.
               </li>
             </ul>
-          </div>
-          <div className="ASO">
-            <h3>Advisory Services Offered</h3>
-            <ul className="example-ul">
-              <li className="example-li">
-                - Financial Planning Services: This may include Investments,
-                Retirement, Estate Planning, Insurance, and Tax Planning (not to
-                be confused with “legal tax advice”)
-              </li>
-              <li className="example-li">
-                - Portfolio Management for Individuals and/or Businesses
-              </li>
-              <li className="example-li">
-                - Educational seminars/workshops: This firm likely offers adult
-                education seminars on matters related to Financial Planning
-              </li>
-              <li className="example-li">
-                - Other Services (Specified by Firm): This may include Estate
-                Planning, General Consulting Services, etc.
-              </li>
-            </ul>
-          </div>
-          <div className="FPSR">
-            <h3>FP Services Review</h3>
-            <h4 className="coming soon">Coming Soon...</h4>
-          </div>
-          <div className="Disclosures">
-            <h3>Disclosures</h3>
-            <h4 className="coming soon">Coming Soon...</h4>
           </div>
         </div>
       </div>
