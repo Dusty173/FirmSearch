@@ -67,7 +67,7 @@ class FirmSearchApi {
 
   // GET a list of users ADMIN ONLY
   static async getUserList() {
-    let res = await this.request("/users-list");
+    let res = await this.request("users/");
     return res.users;
   }
 

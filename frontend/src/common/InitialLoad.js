@@ -6,8 +6,10 @@ import "./LoadIcon.css";
 function InitLoad() {
   return (
     <>
-      <div className="LoadIcon"></div>;
-      <div className="LoadText">Please wait as initial load times may take longer than usual!</div>
+      <div className="LoadIcon"></div>
+      <div className="LoadText">
+        Please wait as initial load times may take longer than usual!
+      </div>
     </>
   );
 }

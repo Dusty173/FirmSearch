@@ -72,7 +72,7 @@ class User {
     const result = await db.query(
       `SELECT username, email, firstname, lastname, is_admin
            FROM users
-           ORDER BY username`
+           ORDER BY created_at`
     );
 
     return result.rows;

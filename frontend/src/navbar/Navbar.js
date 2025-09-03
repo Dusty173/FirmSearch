@@ -29,6 +29,15 @@ function Navigation({ logout }) {
             Resources
           </NavLink>
         </li>{" "}
+        {currUser.is_admin ? (
+          <li className="nav-li">
+            <NavLink className="nav-link" to={`/user-list`}>
+              Admin Page
+            </NavLink>
+          </li>
+        ) : (
+          <span></span>
+        )}
         <li className="nav-li">
           <NavLink
             className="nav-link"

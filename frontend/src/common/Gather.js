@@ -6,7 +6,7 @@ import "./LoadIcon.css";
 function Gather() {
   return (
     <>
-      <div className="LoadIcon"></div>;
+      <div className="LoadIcon"></div>
       <div className="LoadText">Gathering Data...</div>
     </>
   );

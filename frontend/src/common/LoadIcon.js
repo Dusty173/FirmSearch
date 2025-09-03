@@ -5,13 +5,11 @@ import "./LoadIcon.css";
 
 function LoadIcon() {
   return (
-  <>
-    <div className="LoadIcon"></div>;
-    <div className="LoadText">This may take a moment...</div>
-  </>)
-  
-  
-
+    <>
+      <div className="LoadIcon"></div>
+      <div className="LoadText">This may take a moment...</div>
+    </>
+  );
 }
 
 export default LoadIcon;

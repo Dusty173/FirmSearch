@@ -60,7 +60,7 @@ function Routing({ login, signup, data }) {
           <Route path="/updhome" element={<HomeForm />} />
           <Route path="/addreviewform" element={<ReviewForm />} />
           <Route path="/addresourceform" element={<ResourceForm />} />
-          <Route path="/a-home" element={<AdminHome />} />
+          <Route path="/user-list" element={<AdminHome />} />
           <Route path="/:username/saved-firms" element={<SavedFirms />} />
         </Route>
       </Routes>

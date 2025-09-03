@@ -1,0 +1,13 @@
+.user-container{
+    margin: 1.5em;
+    display: inline-block;
+    width: 80%;
+    border: 1px solid rgb(28, 140, 184);
+    border-radius: 1em;
+    background-color: whitesmoke;
+    box-shadow: 0 10px 20px rgba(0, 161, 108, 0.7);
+}
+
+.user-container li {
+    padding: 0.2em;
+}
