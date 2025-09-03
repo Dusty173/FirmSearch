@@ -22,7 +22,7 @@ import "./ADVdetail.css";
 
 function AdvisorDetail() {
   const { currUser } = useContext(UserContext);
-  console.log(currUser);
+  // console.log(currUser);
   const [firm, setFirm] = useState(null);
   const [savedFirms, setSaved] = useState(null);
   const [toggle, setToggle] = useState(true);

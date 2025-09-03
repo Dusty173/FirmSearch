@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Custodians.css";
-import axios from "axios";
 import BusinessActs from "./BusinessActs";
 import Participation from "./PartClientInt";
 import handleOutput from "../common/handleOutput";
+import SchedApi from "../Schedapi";
 
 function SepAccounts({ CrdNb, BusActs, otherInfo }) {
   // console.log("SA-CRD", CrdNb);
@@ -15,11 +15,9 @@ function SepAccounts({ CrdNb, BusActs, otherInfo }) {
     function getFirmAccounts() {
       async function getAccounts(CrdNb) {
         try {
-          const res = await axios.get(
-            `https://api.sec-api.io/form-adv/schedule-d-5-k/${CrdNb}?token=${API_KEY}`
-          );
-          // console.log(res.data);
-          setAcc(res.data);
+          const res = await SchedApi.getSchedD5K(CrdNb);
+          // console.log("Custodians SMA", res);
+          setAcc(res);
         } catch (error) {}
       }
       getAccounts(CrdNb);

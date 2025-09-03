@@ -14,10 +14,15 @@ This website is for people looking for investment advice. All registered firms a
 - Added User Ability to Save Firms
 - Added Review Page
 - Added Resource Page
+- Changed Styling
+- Added Services to each pop up when searching for firms by location.
+- Moved Schedule Forms retrieval to its own Api File.
+- Added breakdown and other information to ADV Info page.
 
 ## Fixes:
 
 - Fixed an issue where no results would return when looking for a firm in Oregon.
+- Fixed an issue where no data would populate if not logged in.
 
 ## Database Layout:
 

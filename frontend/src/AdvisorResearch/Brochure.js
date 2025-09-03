@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "./Services.css";
-import axios from "axios";
 import "./Brochures.css";
+import SchedApi from "../Schedapi";
 
 function Brochure({ CrdNb }) {
   const crdNb = CrdNb;
   const [brochure, setBroch] = useState([]);
-  const API_KEY = process.env.REACT_APP_API_KEY;
+  useEffect(
+    function getFirmBrochure() {
+      async function getBrochure(crdNb) {
+        try {
+          const res = await SchedApi.getBrochures(crdNb);
 
-  useEffect(function getFirmBrochure() {
-    async function getBrochure(crdNb) {
-      try {
-        const res = await axios.get(
-          `https://api.sec-api.io/form-adv/brochures/${crdNb}?token=${API_KEY}`
-        );
-
-        setBroch(res.data.brochures);
-      } catch (err) {}
-    }
-    getBrochure(crdNb);
-  }, []);
+          setBroch(res);
+        } catch (err) {}
+      }
+      getBrochure(crdNb);
+    },
+    [crdNb]
+  );
 
   // console.log("BROCHURES:", brochure);
   return (

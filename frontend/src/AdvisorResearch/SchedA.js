@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Custodians.css";
-import axios from "axios";
+import SchedApi from "../Schedapi";
 
 function DirectOwners({ CrdNb }) {
   const [owners, setOwn] = useState([]);
-  const API_KEY = process.env.REACT_APP_API_KEY;
   const crd = CrdNb;
   //   console.log("DI", crd);
 
@@ -12,16 +11,14 @@ function DirectOwners({ CrdNb }) {
     function getFirmOwners() {
       async function getOwners(crd) {
         try {
-          const res = await axios.get(
-            `https://api.sec-api.io/form-adv/schedule-a-direct-owners/${crd}?token=${API_KEY}`
-          );
-          //   console.log(res.data);
-          setOwn(res.data);
-        } catch (error) {}
+          const res = await SchedApi.getSchedA(crd);
+          // console.log("Direct Owners", res);
+          setOwn(res);
+        } catch (err) {}
       }
       getOwners(crd);
     },
-    [crd, API_KEY]
+    [crd]
   );
 
   let owner = owners;

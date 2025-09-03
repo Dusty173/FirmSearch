@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Custodians.css";
-import axios from "axios";
+import SchedApi from "../Schedapi";
 
 function OtherBusNms({ crdNb }) {
   const [BusNames, setBus] = useState([]);
@@ -11,11 +11,9 @@ function OtherBusNms({ crdNb }) {
     function getAltBusNames() {
       async function getBusNames(crd) {
         try {
-          const res = await axios.get(
-            `https://api.sec-api.io/form-adv/schedule-d-1-b/${crd}?token=${API_KEY}`
-          );
-          //   console.log(res.data);
-          setBus(res.data);
+          const res = await SchedApi.getSchedD1B(crd);
+          //   console.log("OthBusNms",res);
+          setBus(res);
         } catch (error) {}
       }
       getBusNames(crd);

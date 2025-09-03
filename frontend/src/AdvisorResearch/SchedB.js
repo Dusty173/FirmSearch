@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Custodians.css";
-import axios from "axios";
 import handleOutput from "../common/handleOutput";
+import SchedApi from "../Schedapi";
 
 function IndirectOwners({ CrdNb, Item10A }) {
   const [owners, setOwn] = useState([]);
@@ -13,12 +13,10 @@ function IndirectOwners({ CrdNb, Item10A }) {
     function getFirmOwners() {
       async function getOwners(crd) {
         try {
-          const res = await axios.get(
-            `https://api.sec-api.io/form-adv/schedule-b-indirect-owners/${crd}?token=${API_KEY}`
-          );
-          //   console.log(res.data);
-          setOwn(res.data);
-        } catch (error) {}
+          const res = await SchedApi.getSchedB(crd);
+          // console.log("Indirect Owners", res);
+          setOwn(res);
+        } catch (err) {}
       }
       getOwners(crd);
     },
