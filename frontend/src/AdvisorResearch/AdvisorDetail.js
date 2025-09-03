@@ -22,11 +22,12 @@ import "./ADVdetail.css";
 
 function AdvisorDetail() {
   const { currUser } = useContext(UserContext);
+  console.log(currUser);
   const [firm, setFirm] = useState(null);
   const [savedFirms, setSaved] = useState(null);
   const [toggle, setToggle] = useState(true);
   const { CrdNb } = useParams();
-
+  let isSaved;
   // const [brochure, setBroch] = useState(null);
 
   // Load firm data using CRD Number from request parameter
@@ -35,7 +36,12 @@ function AdvisorDetail() {
       async function getFirm() {
         const firmRes = await SECApi.getByCrd(CrdNb);
         const advisor = firmRes.filings[0];
-        const isSaved = await FirmSearchApi.getUserFirms(currUser);
+        if (currUser == null) {
+          setToggle(false);
+        } else {
+          isSaved = await FirmSearchApi.getUserFirms(currUser);
+        }
+
         // console.log(firmRes);
         setFirm(advisor);
         setSaved(isSaved);
@@ -94,7 +100,9 @@ function AdvisorDetail() {
   return (
     <>
       <div className="save">
-        {checkFirms(savedFirms, crdNb) === false ? (
+        {currUser == null ? (
+          <span></span>
+        ) : checkFirms(savedFirms, crdNb) === false ? (
           <div>
             <button
               onClick={() =>
